@@ -229,10 +229,10 @@
                 <a href="#protocol" class="hover:text-purple-400 transition">How It Works</a>
                 <a href="#timeline" class="hover:text-purple-400 transition">Crisis Timeline</a>
                 <a href="#pricing" class="hover:text-purple-400 transition">Plans</a>
-                <a href="#assessment" class="hover:text-purple-400 transition">Assessment</a>
+                <a href="workbook.html" class="hover:text-purple-400 transition">Workbook</a>
                 <a href="#contact" class="bg-purple-600 hover:bg-purple-500 px-5 py-2.5 rounded-full text-white font-bold text-xs transition shadow-lg shadow-purple-600/30">Emergency Line</a>
             </div>
-            <button id="mobile-toggle" class="md:hidden text-white p-2">
+            <button id="mobile-toggle" class="md:hidden text-white p-2" aria-label="Toggle menu" aria-expanded="false">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
         </div>
@@ -241,7 +241,7 @@
                 <a href="#protocol" class="hover:text-purple-400 mobile-link">How It Works</a>
                 <a href="#timeline" class="hover:text-purple-400 mobile-link">Crisis Timeline</a>
                 <a href="#pricing" class="hover:text-purple-400 mobile-link">Plans</a>
-                <a href="#assessment" class="hover:text-purple-400 mobile-link">Assessment</a>
+                <a href="workbook.html" class="hover:text-purple-400 mobile-link">Crisis Workbook</a>
                 <a href="#contact" class="text-purple-400 font-bold mobile-link">Emergency Line</a>
             </div>
         </div>
@@ -269,7 +269,7 @@
                         See Response Plans
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </a>
-                    <a href="#assessment" class="glass border-white/10 hover:border-purple-500/50 transition px-8 py-4 rounded-full text-white font-medium text-sm">Free Risk Assessment →</a>
+                    <a href="workbook.html" class="glass border-white/10 hover:border-purple-500/50 transition px-8 py-4 rounded-full text-white font-medium text-sm">Free Risk Assessment →</a>
                 </div>
                 <div class="flex items-center gap-4 mt-12 text-sm text-gray-500">
                     <div class="flex items-center gap-1">
@@ -724,7 +724,7 @@
                 <h2 class="text-4xl md:text-5xl font-black gradient-text mb-6">Protect it like one.</h2>
                 <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">Don't wait for the 2 AM phone call. Get a free 15-minute risk assessment. We'll identify your top 3 vulnerability points — no pitch, no pressure.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="mailto:shield@liabilityliberators.com?subject=Free%20Risk%20Assessment%20Request" class="bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition px-10 py-4 rounded-full text-white font-bold shadow-2xl shadow-purple-600/40 text-sm">📧 Request Free Assessment</a>
+                    <a href="workbook.html" class="bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition px-10 py-4 rounded-full text-white font-bold shadow-2xl shadow-purple-600/40 text-sm">📧 Start Free Assessment</a>
                     <a href="tel:+1-000-000-0000" class="glass border-white/10 hover:border-white/30 transition px-10 py-4 rounded-full text-white font-medium text-sm">📞 Emergency Line</a>
                 </div>
                 <p class="text-xs text-gray-500 mt-8">Responses within 2 hours during business hours, 7 minutes for active clients.</p>
@@ -738,9 +738,9 @@
             <span class="text-white font-black tracking-tight">LIABILITY <span class="text-purple-400">LIBERATORS</span></span>
             <span class="text-gray-600 text-xs">© 2026 · Crisis Response Division · Confidentiality Guaranteed</span>
             <div class="flex gap-6 text-gray-500 text-xs">
-                <a href="#" class="hover:text-purple-400 transition">X / Twitter</a>
-                <a href="#" class="hover:text-purple-400 transition">LinkedIn</a>
-                <a href="#" class="hover:text-purple-400 transition">Privacy</a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition">X / Twitter</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition">LinkedIn</a>
+                <a href="privacy.html" class="hover:text-purple-400 transition">Privacy Policy</a>
             </div>
         </div>
     </footer>
@@ -751,11 +751,13 @@
         const mobileToggle = document.getElementById('mobile-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            mobileToggle.setAttribute('aria-expanded', !isHidden);
         });
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
+                mobileToggle.setAttribute('aria-expanded', 'false');
             });
         });
 
@@ -794,7 +796,5 @@
         });
     </script>
 
-</body>
-</html>
 </body>
 </html>
