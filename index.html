@@ -79,12 +79,24 @@ select.wb-input option{background-color:#0f0f1a;color:#f3f4f6;padding:8px}
 .guarantee-pill:hover{border-color:rgba(139,92,246,0.4);box-shadow:0 0 20px rgba(139,92,246,0.1)}
 @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
 .shimmer-text{background:linear-gradient(90deg,#A78BFA,#EC4899,#A78BFA);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+
+.marquee-wrap{overflow:hidden;position:relative;background:rgba(0,0,0,0.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05)}
+.marquee-track{display:flex;gap:3.5rem;width:max-content;animation:llMarquee 32s linear infinite;padding:14px 0}
+.marquee-wrap:hover .marquee-track{animation-play-state:paused}
+@keyframes llMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{display:flex;align-items:center;gap:0.75rem;color:#c4b5fd;font-size:0.72rem;font-weight:800;letter-spacing:0.18em;white-space:nowrap}
+.marquee-dot{width:6px;height:6px;border-radius:9999px;background:linear-gradient(135deg,#8B5CF6,#EC4899);box-shadow:0 0 8px rgba(139,92,246,0.6)}
+.btn-cta-glow{animation:ctaGlow 3.2s ease-in-out infinite}
+@keyframes ctaGlow{0%,100%{box-shadow:0 20px 40px rgba(139,92,246,0.35)}50%{box-shadow:0 20px 60px rgba(236,72,153,0.55)}}
+@media (prefers-reduced-motion:reduce){.marquee-track,.btn-cta-glow,.floating-shield,.shimmer-text{animation:none!important}}
 @media (max-width:768px){.orb-1{width:200px;height:200px}.orb-2{width:150px;height:150px}.orb-3{width:120px;height:120px}}
 </style>
 <base target="_blank">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<base target="_blank">
+<base target="_blank">
 <base target="_blank">
 <base target="_blank">
 <base target="_blank">
@@ -150,7 +162,7 @@ ACTIVE RESPONSE: 7-MINUTE AVERAGE DEPLOYMENT
 The 2 AM subpoena does not wait. Neither does your S-1. Rapid-response crisis management for pre-IPO fintech founders facing regulatory exposure, cap table panic, and S-1 delays. We deploy in 7 minutes.
 </p>
 <div class="flex flex-wrap gap-4">
-<button onclick="openModal('The Cavalry')" class="bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition px-8 py-4 rounded-full text-white font-bold shadow-2xl shadow-purple-600/40 flex items-center gap-2 text-sm">
+<button onclick="openModal('The Cavalry')" class="btn-cta-glow bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition px-8 py-4 rounded-full text-white font-bold shadow-2xl shadow-purple-600/40 flex items-center gap-2 text-sm">
 Apply for The Cavalry
 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
 </button>
@@ -160,9 +172,10 @@ Apply for The Cavalry
 <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
 Free 15-min assessment. Response within 2 hours during business hours.
 </div>
-<div class="flex items-center gap-4 mt-8 text-sm text-gray-500">
-<div class="flex items-center gap-1"><span class="text-yellow-400">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
-<span class="text-gray-400">Trusted by <span class="text-white font-bold">pre-IPO fintech founders</span> defending S-1s, regulatory actions, and banking partnerships</span>
+<div class="flex flex-wrap items-center gap-3 mt-8 text-xs font-bold">
+<div class="flex items-center gap-2 glass px-4 py-2 rounded-full border border-purple-500/25 text-gray-200"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>FINTECH ONLY. NO EXCEPTIONS.</div>
+<div class="flex items-center gap-2 glass px-4 py-2 rounded-full border border-green-500/25 text-gray-200"><span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>60-MIN GUARANTEE &mdash; OR THAT MONTH IS FREE</div>
+<div class="flex items-center gap-2 glass px-4 py-2 rounded-full border border-cyan-500/25 text-gray-200"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>FIXED MONTHLY. NO HOURLY BILLING.</div>
 </div>
 </div>
 <div class="relative flex justify-center lg:justify-end">
@@ -186,6 +199,7 @@ Free 15-min assessment. Response within 2 hours during business hours.
 </div>
 </section>
 
+<div class="marquee-wrap"><div class="marquee-track"><span class="marquee-item"><span class="marquee-dot"></span>7-MINUTE AVERAGE RESPONSE</span><span class="marquee-item"><span class="marquee-dot"></span>24/7 HUMAN HOTLINE</span><span class="marquee-item"><span class="marquee-dot"></span>FINTECH ONLY &mdash; NO EXCEPTIONS</span><span class="marquee-item"><span class="marquee-dot"></span>60-MIN RESPONSE GUARANTEE</span><span class="marquee-item"><span class="marquee-dot"></span>FIXED MONTHLY PRICING</span><span class="marquee-item"><span class="marquee-dot"></span>S-1 TIMELINE PROTECTION</span><span class="marquee-item"><span class="marquee-dot"></span>S-1 RISK FACTOR AUDITS</span><span class="marquee-item"><span class="marquee-dot"></span>SPONSOR BANK DEFENSE</span><span class="marquee-item"><span class="marquee-dot"></span>7-MINUTE AVERAGE RESPONSE</span><span class="marquee-item"><span class="marquee-dot"></span>24/7 HUMAN HOTLINE</span><span class="marquee-item"><span class="marquee-dot"></span>FINTECH ONLY &mdash; NO EXCEPTIONS</span><span class="marquee-item"><span class="marquee-dot"></span>60-MIN RESPONSE GUARANTEE</span><span class="marquee-item"><span class="marquee-dot"></span>FIXED MONTHLY PRICING</span><span class="marquee-item"><span class="marquee-dot"></span>S-1 TIMELINE PROTECTION</span><span class="marquee-item"><span class="marquee-dot"></span>S-1 RISK FACTOR AUDITS</span><span class="marquee-item"><span class="marquee-dot"></span>SPONSOR BANK DEFENSE</span></div></div>
 <section class="relative z-10 border-y border-white/5 py-10 bg-black/30 backdrop-blur-sm">
 <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
 <span class="text-gray-400 font-semibold text-sm tracking-widest uppercase">Industry We Protect</span>
@@ -518,9 +532,9 @@ Free 15-min assessment. Response within 2 hours during business hours.
 <section id="proof" class="relative z-10 py-28 px-6">
 <div class="max-w-7xl mx-auto">
 <div class="text-center mb-16">
-<span class="text-green-400 font-bold text-sm tracking-widest bg-green-500/10 px-4 py-1.5 rounded-full border border-green-500/20">PROOF OF WORK</span>
-<h2 class="text-4xl md:text-5xl font-black mt-5"><span class="text-white">Real fintech crises.</span> <span class="gradient-text">Real outcomes.</span></h2>
-<p class="text-gray-400 mt-4 max-w-2xl mx-auto">Anonymized case studies from the field. Because in crisis management, trust is everything. And trust requires proof. Every case below is a pre-IPO fintech company.</p>
+<span class="text-green-400 font-bold text-sm tracking-widest bg-green-500/10 px-4 py-1.5 rounded-full border border-green-500/20">SCENARIO LIBRARY</span>
+<h2 class="text-4xl md:text-5xl font-black mt-5"><span class="text-white">The scenarios</span> <span class="gradient-text">we were built for.</span></h2>
+<p class="text-gray-400 mt-4 max-w-2xl mx-auto">Composite scenarios drawn from the crisis patterns that take pre-IPO fintechs out. Identities generalized &mdash; the outcomes below are the standard we hold ourselves to. In crisis work, trust is everything. We don't fake it.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="reveal glass rounded-2xl p-8 border border-white/5 hover:border-purple-500/30 transition card-lift">
@@ -587,8 +601,9 @@ Free 15-min assessment. Response within 2 hours during business hours.
 </div>
 </div>
 <div class="mt-8 text-center">
-<p class="text-gray-400 text-sm italic">"The investment in The Cavalry saved us a $2.4M consent order and an S-1 delay that would have cost us our lead underwriter."</p>
-<p class="text-gray-500 text-xs mt-2">— Pre-IPO payments founder, contained CFPB inquiry in 6 hours</p>
+<span class="text-purple-400 font-bold text-xs tracking-widest bg-purple-500/10 px-4 py-1.5 rounded-full border border-purple-500/20">FOUNDING-CLIENT TERMS</span>
+<p class="text-gray-300 text-sm mt-4 max-w-xl mx-auto">We're taking the first three pre-IPO fintechs we accept at founding rates &mdash; in exchange for a candid case study, if we earn it.</p>
+<p class="text-gray-500 text-xs mt-2">When those three spots are gone, we quote standard pricing.</p>
 </div>
 </div>
 </div>
@@ -628,6 +643,7 @@ Free 15-min assessment. Response within 2 hours during business hours.
 <p class="text-gray-500 text-sm mt-2">For active regulatory or media threats.</p>
 <div class="mt-6 flex items-baseline gap-1"><span class="text-5xl font-black gradient-gold">$12,500</span><span class="text-gray-400">/mo</span></div>
 <div class="mt-2 text-xs text-yellow-400 font-semibold">Capped at 15 fintech clients. 2 spots available this quarter.</div>
+<div class="mt-3 inline-flex items-center gap-1.5 text-xs text-white font-bold bg-gradient-to-r from-purple-600 to-pink-500 px-3 py-1.5 rounded-full shadow-lg shadow-purple-600/30">&#10022; Founding-client rate for the first 3 accepted</div>
 <ul class="mt-8 space-y-4 text-sm text-gray-200 flex-grow">
 <li class="flex items-start gap-3"><span class="text-yellow-400 text-lg mt-0.5">&#10022;</span> <span><strong>24/7 human crisis hotline</strong> — real people, real time</span></li>
 <li class="flex items-start gap-3"><span class="text-yellow-400 text-lg mt-0.5">&#10022;</span> <span><strong>7-minute average response</strong> from first contact to action</span></li>
@@ -637,7 +653,7 @@ Free 15-min assessment. Response within 2 hours during business hours.
 <li class="flex items-start gap-3"><span class="text-yellow-400 text-lg mt-0.5">&#10022;</span> <span>Board and investor narrative management</span></li>
 <li class="flex items-start gap-3"><span class="text-yellow-400 text-lg mt-0.5">&#10022;</span> <span>Post-crisis S-1 readiness recovery plan</span></li>
 </ul>
-<button onclick="openModal('The Cavalry')" class="block w-full text-center mt-10 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition shadow-2xl shadow-purple-600/40 text-white font-bold text-sm">Apply for The Cavalry</button>
+<button onclick="openModal('The Cavalry')" class="btn-cta-glow block w-full text-center mt-10 py-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition shadow-2xl shadow-purple-600/40 text-white font-bold text-sm">Apply for The Cavalry</button>
 </div>
 </div>
 <div class="reveal glass rounded-2xl p-8 card-lift border border-white/10 tier-airforce hover:border-cyan-400/30">
@@ -688,7 +704,7 @@ Free 15-min assessment. Response within 2 hours during business hours.
 <div class="max-w-4xl mx-auto text-center">
 <span class="text-pink-400 font-bold text-sm tracking-widest bg-pink-500/10 px-4 py-1.5 rounded-full border border-pink-500/20">WHO WE SERVE</span>
 <h2 class="text-3xl md:text-4xl font-black mt-4 text-white">Built for pre-IPO fintech founders who cannot afford a narrative breach.</h2>
-<p class="text-gray-400 mt-3 max-w-xl mx-auto text-sm">This is not a marketing choice. It is a competence choice. If you are not building a fintech company or not on the path to an S-1, we are not your firm.</p>
+<p class="text-gray-400 mt-3 max-w-xl mx-auto text-sm">This is not a marketing choice. It is a competence choice. If you are not building a fintech company or not on the path to an S-1, we are not the right fit for you.</p>
 <div class="mt-10 text-left space-y-4">
 <div class="reveal glass rounded-xl p-5 border border-white/5 hover:border-purple-500/30 transition">
 <h4 class="text-white font-bold text-sm">Payments companies</h4>
@@ -781,7 +797,7 @@ Free 15-min assessment. Response within 2 hours during business hours.
 <h2 class="text-4xl md:text-5xl font-black gradient-text mb-6">Protect it like one.</h2>
 <p class="text-gray-400 text-lg max-w-2xl mx-auto mb-10">Do not wait for the 2 AM phone call. Get a free 15-minute risk assessment. We will identify your top 3 vulnerability points. No pitch, no pressure.</p>
 <div class="flex flex-col sm:flex-row justify-center gap-4">
-<a href="#workbook" onclick="navigateTo('workbook');return false;" class="bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition px-10 py-4 rounded-full text-white font-bold shadow-2xl shadow-purple-600/40 text-sm">Start Free Assessment</a>
+<a href="#workbook" onclick="navigateTo('workbook');return false;" class="btn-cta-glow bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition px-10 py-4 rounded-full text-white font-bold shadow-2xl shadow-purple-600/40 text-sm">Start Free Assessment</a>
 <a href="tel:+18168197410" class="glass border-white/10 hover:border-white/30 transition px-10 py-4 rounded-full text-white font-medium text-sm flex items-center justify-center gap-2">
 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.057 15.057 0 01-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1.01A11.36 11.36 0 018.59 3.99c0-.55-.45-1-1-1H4.08c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM5.03 5h1.5c.07.88.22 1.75.45 2.58l-1.2 1.21c-.4-1.21-.66-2.47-.75-3.79zM19 18.97c-1.32-.09-2.6-.35-3.8-.76l1.2-1.2c.85.24 1.72.39 2.6.45v1.51z"/></svg>
 Call +1 (816) 819-7410
@@ -798,12 +814,11 @@ Response within 2 hours during business hours, 7 minutes for active clients.
 <footer class="relative z-10 py-12 px-6 text-center border-t border-white/5">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
 <span class="text-white font-black tracking-tight">LIABILITY <span class="text-purple-400">LIBERATORS</span></span>
-<span class="text-gray-600 text-xs">&copy; 2026 &middot; Launched by former SEC enforcement counsel and neobank CCOs &middot; Confidentiality Guaranteed</span>
+<span class="text-gray-600 text-xs">&copy; 2026 &middot; Independent crisis-response practice &middot; Built exclusively for pre-IPO fintech &middot; Confidentiality Guaranteed</span>
 <div class="flex gap-5 text-gray-500 text-xs items-center">
   <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="X / Twitter"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-  <a href="https://substack.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="Substack Newsletter"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
-  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="YouTube"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-  <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="Telegram"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+  <a href="https://www.linkedin.com/in/liability-liberators" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="LinkedIn"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+  <a href="https://substack.com/@liabilityliberators" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="Substack Newsletter"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
   <a href="#privacy" onclick="navigateTo('privacy');return false;" class="hover:text-purple-400 transition">Privacy Policy</a>
 </div>
 </div>
@@ -979,7 +994,7 @@ Response within 2 hours during business hours, 7 minutes for active clients.
 <button onclick="submitWorkbook()" class="bg-gradient-to-r from-purple-600 to-pink-500 hover:scale-105 transition px-8 py-3 rounded-full text-white font-bold text-sm shadow-lg shadow-purple-600/30">Submit Workbook</button>
 <button onclick="window.print()" class="glass border-white/10 hover:border-white/30 transition px-8 py-3 rounded-full text-white font-medium text-sm">Print This Workbook</button>
 </div>
-<p class="text-xs text-gray-500 mt-4">Your data is compiled into an email draft. You will send it directly from your email client.</p>
+<p class="text-xs text-gray-500 mt-4">Your answers go straight to our team &mdash; you will get a confirmation email right away.</p>
 </div>
 <div class="glass rounded-2xl p-8 text-center border border-purple-500/20 mt-10">
 <h3 class="text-xl font-bold text-white mb-2">You have filled the blanks. Now what?</h3>
@@ -1094,12 +1109,11 @@ Back to Homepage
 <footer class="relative z-10 py-12 px-6 text-center border-t border-white/5">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
 <span class="text-white font-black tracking-tight">LIABILITY <span class="text-purple-400">LIBERATORS</span></span>
-<span class="text-gray-600 text-xs">&copy; 2026 &middot; Launched by former SEC enforcement counsel and neobank CCOs &middot; Confidentiality Guaranteed</span>
+<span class="text-gray-600 text-xs">&copy; 2026 &middot; Independent crisis-response practice &middot; Built exclusively for pre-IPO fintech &middot; Confidentiality Guaranteed</span>
 <div class="flex gap-5 text-gray-500 text-xs items-center">
   <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="X / Twitter"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-  <a href="https://substack.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="Substack Newsletter"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
-  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="YouTube"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-  <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="Telegram"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+  <a href="https://www.linkedin.com/in/liability-liberators" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="LinkedIn"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+  <a href="https://substack.com/@liabilityliberators" target="_blank" rel="noopener noreferrer" class="hover:text-purple-400 transition" aria-label="Substack Newsletter"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
   <a href="#privacy" onclick="navigateTo('privacy');return false;" class="hover:text-purple-400 transition">Privacy Policy</a>
 </div>
 </div>
@@ -1311,6 +1325,41 @@ function closeModal() {
     document.body.style.overflow = '';
 }
 
+// === SUBMISSION BACKEND ===
+// Free form backend (Web3Forms): submissions go straight to shield@liabilityliberators.com.
+// 1. Go to https://web3forms.com and enter shield@liabilityliberators.com — they email you a free access key (2 minutes).
+// 2. Paste the key below, replacing YOUR_ACCESS_KEY.
+// Until a valid key is set, submissions fall back to the old email-draft method, so nothing breaks.
+const WEB3FORMS_KEY = 'b886a2df-32ac-4365-b9b5-4a7aac9a7977';
+function submitToBackend(subject, body, replyTo, successMsg) {
+    const doFallback = function () {
+        window.location.href = 'mailto:shield@liabilityliberators.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    };
+    if (!WEB3FORMS_KEY || WEB3FORMS_KEY === 'YOUR_ACCESS_KEY') { doFallback(); return; }
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            subject: subject,
+            from_name: 'Liability Liberators Website',
+            replyto: replyTo || '',
+            message: body
+        })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+        if (data && data.success) {
+            if (document.getElementById('wb-toast') && typeof showWbToast === 'function') {
+                showWbToast(successMsg || 'Submitted successfully.');
+            } else {
+                alert(successMsg || 'Submitted successfully. We will respond within 24 hours.');
+            }
+        } else { doFallback(); }
+    })
+    .catch(doFallback);
+}
+
 function submitApplication() {
     const name = document.getElementById('app-name').value.trim();
     const email = document.getElementById('app-email').value.trim();
@@ -1372,7 +1421,7 @@ function submitApplication() {
     body += 'Retained crisis counsel before: ' + counsel.value + '\n\n';
     body += 'Submitted: ' + new Date().toLocaleString();
     const subject = 'Application: ' + tier + ' - ' + name + ' (' + company + ')';
-    window.location.href = 'mailto:shield@liabilityliberators.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    submitToBackend(subject, body, email, 'Application received. We respond within 24 hours.');
     closeModal();
 }
 
@@ -1705,9 +1754,7 @@ function submitWorkbook() {
         if (val) body += '--- ' + id.toUpperCase().replace('-', ' ') + ' ---\n' + val + '\n\n';
     });
     const subject = 'Workbook Submission - ' + name + ' (' + (company || 'No Company') + ')';
-    const mailto = 'mailto:shield@liabilityliberators.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
-    window.location.href = mailto;
-    showWbToast('Opening email client...');
+    submitToBackend(subject, body, email, 'Workbook submitted. We will reply within 24 hours.');
 }
 
 window.addEventListener('DOMContentLoaded', loadFromLocal);
