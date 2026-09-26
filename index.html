@@ -1,0 +1,1471 @@
+html
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device width, initial scale=1.0" name="viewport"/>
+<title>Liability Liberators Revenue Recovery &amp; Financial Leakage Intelligence</title>
+<meta content="Liability Liberators identifies hidden revenue leakage across invoices, payments, contracts, pricing, credits, and customer accounts then turns those findings into a recovery plan. Revenue leakage audits and managed revenue recovery for mid market and enterprise B2B companies." name="description"/>
+<meta content="#f5f3ef" name="theme-color"/>
+<link href="https://liabilityliberators.com/" rel="canonical"/>
+<meta content="https://liabilityliberators.com/" property="og:url"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="https://liabilityliberators.com/og image.png" property="og:image"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Liability Liberators Revenue Recovery &amp; Financial Leakage Intelligence" property="og:image:alt"/>
+<meta content="https://liabilityliberators.com/og image.png" name="twitter:image"/>
+<meta content="Liability Liberators Find the money your business is already losing." name="twitter:title"/>
+<meta content="Revenue Recovery &amp; Financial Leakage Intelligence for mid market and enterprise B2B companies." name="twitter:description"/>
+<meta content="Liability Liberators Find the money your business is already losing." property="og:title"/>
+<meta content="Revenue Recovery &amp; Financial Leakage Intelligence for mid market and enterprise B2B companies." property="og:description"/>
+<meta content="website" property="og:type"/>
+<link href="/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#f5f3ef;
+  --panel:#ffffff;
+  --ink:#161513;
+  --ink-soft:#2a2823;
+  --muted:#5b564f;
+  --faint:rgba(22,21,19,.5);
+  --line:rgba(22,21,19,.12);
+  --line-strong:rgba(22,21,19,.3);
+  --surface:rgba(22,21,19,.03);
+  --serif:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --nav-h:72px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+::selection{background:var(--ink);color:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+img,svg{display:block;max-width:100%}
+:focus-visible{outline:1px solid var(--ink);outline-offset:3px}
+
+/* ---------- type ---------- */
+.eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--muted);display:flex;align-items:center;gap:14px;
+}
+.eyebrow::before{content:"";width:32px;height:1px;background:var(--line-strong)}
+.serif-i{font-family:var(--serif);font-style:italic;font-weight:400}
+
+/* ---------- layout ---------- */
+.wrap{width:100%;max-width:1280px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.section{position:relative;padding:clamp(96px,12vw,168px) 0}
+.hairlines{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hairlines span{position:absolute;top:0;bottom:0;width:1px;background:rgba(22,21,19,.05)}
+.hairlines span:nth-child(1){left:25%}
+.hairlines span:nth-child(2){left:50%}
+.hairlines span:nth-child(3){left:75%}
+.section-head{max-width:820px;margin-bottom:clamp(48px,6vw,88px)}
+.section-head h2{
+  font-size:clamp(2.1rem,4.6vw,3.9rem);font-weight:600;line-height:1.06;
+  letter-spacing:-.03em;margin:22px 0 20px;
+}
+.section-head p{color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:640px}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:17px 30px;border:1px solid transparent;border-radius:2px;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);
+  white-space:nowrap;
+}
+.btn .arr{transition:transform .35s var(--ease)}
+.btn:hover .arr{transform:translateX(4px)}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:#000}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--ink);background:rgba(22,21,19,.045)}
+.btn-sm{padding:12px 22px;font-size:12px}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.12s}
+.reveal[data-delay="2"]{transition-delay:.24s}
+.reveal[data-delay="3"]{transition-delay:.36s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+
+/* ---------- glass word ---------- */
+.glass-word{
+  position:absolute;z-index:0;pointer-events:none;user-select:none;
+  font-weight:700;font-size:clamp(5.5rem,19vw,19rem);line-height:.85;letter-spacing:-.02em;
+  color:rgba(22,21,19,.022);-webkit-text-stroke:1px rgba(22,21,19,.1);
+}
+.glass-word::before{
+  content:attr(data-text);position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(22,21,19,.11),rgba(22,21,19,.014) 55%,rgba(22,21,19,0));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ---------- logo ---------- */
+.logo{display:inline-flex;align-items:center;gap:12px}
+.logo .logo-mark{width:34px;height:34px;flex:0 0 auto;border-radius:6px}
+.logo .logo-text{
+  font-family:var(--serif);font-weight:400;font-size:20px;letter-spacing:.01em;
+  text-transform:none;color:var(--ink);line-height:1;white-space:nowrap;
+}
+.logo .logo-text em{font-style:italic;color:var(--muted)}
+
+/* ---------- navigation ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;height:var(--nav-h);
+  display:flex;align-items:center;
+  background:rgba(245,243,239,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .4s var(--ease),background .4s var(--ease);
+}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(245,243,239,.92)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.nav-links{display:flex;align-items:center;gap:clamp(20px,3vw,42px);list-style:none}
+.nav-links a{
+  font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  transition:color .3s var(--ease);position:relative;padding:6px 0;
+}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ink);transition:width .35s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.menu-btn{display:none;background:none;border:0;color:var(--ink);width:40px;height:40px;position:relative;z-index:120}
+.menu-btn span{display:block;width:22px;height:1.5px;background:var(--ink);margin:6px auto;transition:transform .4s var(--ease),opacity .3s}
+.menu-btn.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.menu-btn.open span:nth-child(2){opacity:0}
+.menu-btn.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.mobile-menu{
+  position:fixed;inset:0;z-index:110;background:rgba(245,243,239,.97);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  display:flex;flex-direction:column;justify-content:center;padding:0 clamp(24px,8vw,64px);
+  opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility .45s;
+}
+.mobile-menu.open{opacity:1;visibility:visible}
+.mobile-menu a{
+  font-size:clamp(1.7rem,7vw,2.6rem);font-weight:500;letter-spacing:-.02em;color:var(--muted);
+  padding:14px 0;border-bottom:1px solid var(--line);transition:color .3s,padding-left .35s var(--ease);
+}
+.mobile-menu a:hover{color:var(--ink);padding-left:12px}
+.mobile-menu .btn{margin-top:36px;justify-content:center}
+@media (max-width:900px){
+  .nav-links,.nav-cta .btn{display:none}
+  .menu-btn{display:block}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:calc(var(--nav-h) + 48px) 0 80px;overflow:hidden;
+  background:radial-gradient(1200px 600px at 75% 10%,rgba(22,21,19,.05),transparent 60%);
+}
+.hero .glass-word{bottom:-4%;right:-2%;will-change:transform}
+.hero-content{position:relative;z-index:2;max-width:900px}
+.hero h1{
+  font-size:clamp(2.7rem,6.8vw,6rem);font-weight:600;line-height:1.02;
+  letter-spacing:-.035em;margin:30px 0 30px;
+}
+.hero h1 .serif-i{color:var(--muted)}
+.hero-sub{color:var(--muted);font-size:clamp(1.02rem,1.5vw,1.22rem);max-width:600px;margin-bottom:44px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.hero-trust{
+  margin-top:34px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
+  display:flex;align-items:center;gap:12px;
+}
+.hero-trust::before{content:"";width:6px;height:6px;border:1px solid var(--line-strong);transform:rotate(45deg)}
+.hero-scroll{
+  position:absolute;bottom:32px;left:clamp(20px,4vw,48px);z-index:2;
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);
+  writing-mode:vertical-rl;display:flex;align-items:center;gap:14px;
+}
+.hero-scroll::after{content:"";width:1px;height:56px;background:linear-gradient(var(--line-strong),transparent);animation:drip 2.6s var(--ease) infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- leak visual (problem) ---------- */
+.problem{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.flow-panel{
+  position:relative;border:1px solid var(--line);background:var(--surface);
+  padding:clamp(28px,4vw,56px);margin-top:56px;overflow:hidden;
+}
+.flow-label{
+  position:absolute;top:18px;right:22px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--faint);display:flex;align-items:center;gap:10px;
+}
+.flow-label .pulse{width:6px;height:6px;border-radius:50%;background:var(--ink);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
+.leak-tag{
+  position:absolute;opacity:0;transform:translateY(10px);
+  transition:opacity 1.2s var(--ease) .9s,transform 1.2s var(--ease) .9s;
+  font-size:10px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;
+  padding:9px 16px;border:1px solid var(--line-strong);border-radius:2px;
+  color:var(--ink);background:rgba(255,255,255,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+}
+.leak-tag::before{content:"";position:absolute;left:50%;bottom:-21px;width:1px;height:21px;background:var(--line-strong)}
+.flow-panel.leak-active .leak-tag{opacity:1;transform:none}
+.problem-points{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:56px}
+.problem-point{background:var(--panel);padding:30px 28px}
+.problem-point h3{font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+.problem-point p{font-size:14px;color:var(--muted)}
+@media (max-width:800px){.problem-points{grid-template-columns:1fr}}
+
+/* ---------- cards (what we find) ---------- */
+.find-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.find-card{
+  background:var(--bg);padding:32px 28px 40px;position:relative;
+  transition:background .45s var(--ease);
+}
+.find-card:hover{background:var(--panel)}
+.find-card .idx{font-size:11px;letter-spacing:.2em;color:var(--faint);display:block;margin-bottom:44px}
+.find-card h3{font-size:16px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px}
+.find-card p{font-size:13.5px;color:var(--muted)}
+.find-card::after{
+  content:"";position:absolute;left:28px;bottom:24px;width:20px;height:1px;background:var(--line-strong);
+  transition:width .45s var(--ease),background .45s var(--ease);
+}
+.find-card:hover::after{width:44px;background:var(--ink)}
+@media (max-width:1000px){.find-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.find-grid{grid-template-columns:1fr}}
+
+/* ---------- interactive recovery map ---------- */
+.recovery-insight-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:26px 0 24px}
+.recovery-insight-card{padding:20px;border:1px solid var(--line);background:rgba(255,255,255,.55);min-width:0}
+.recovery-insight-label{display:block;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:12px}
+.recovery-insight-card strong{display:block;font-size:14px;line-height:1.4;font-weight:600;margin-bottom:8px}
+.recovery-insight-card p{font-size:12px;line-height:1.65;color:var(--muted)}
+@media(max-width:760px){.recovery-insight-grid{grid-template-columns:1fr;gap:9px}.recovery-insight-card{padding:16px}}
+.recovery-map{
+  position:relative;background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;
+}
+.recovery-map .glass-word{top:4%;right:-4%;will-change:transform}
+.recovery-shell{
+  position:relative;z-index:2;border:1px solid var(--line);background:rgba(22,21,19,.025);
+  display:grid;grid-template-columns:280px 1fr;min-height:560px;
+}
+.recovery-nav{border-right:1px solid var(--line);background:rgba(255,255,255,.48);padding:18px}
+.recovery-nav-label{font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--faint);padding:10px 10px 16px}
+.recovery-nav button{
+  width:100%;border:1px solid transparent;background:transparent;color:var(--muted);text-align:left;
+  padding:14px 12px;border-radius:2px;font:inherit;font-size:13px;display:flex;justify-content:space-between;gap:12px;
+  transition:background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease);
+}
+.recovery-nav button:hover{background:rgba(22,21,19,.04);color:var(--ink);transform:translateX(2px)}
+.recovery-nav button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.recovery-nav button .mini-value{font-size:11px;opacity:.7;white-space:nowrap}
+.recovery-display{padding:clamp(28px,4vw,52px);min-width:0}
+.recovery-display-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;margin-bottom:38px}
+.recovery-label{font-size:10px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--faint)}
+.recovery-total{font-size:clamp(2.6rem,5.4vw,4.8rem);font-weight:600;line-height:.98;letter-spacing:-.05em}
+.recovery-total-note{color:var(--muted);font-size:13px;margin-top:9px;max-width:360px}
+.recovery-detail{max-width:420px;text-align:right}
+.recovery-detail strong{display:block;font-size:14px;margin-bottom:7px}
+.recovery-detail span{display:block;color:var(--muted);font-size:13px;line-height:1.55}.recovery-detail .recovery-detail-action{margin-top:10px;color:var(--ink);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.recovery-bars{display:grid;gap:18px}
+.recovery-bar-row{display:grid;grid-template-columns:170px 1fr 92px;gap:16px;align-items:center}
+.recovery-bar-name{font-size:13px;font-weight:500}
+.recovery-bar-track{height:8px;background:rgba(22,21,19,.07);overflow:hidden}
+.recovery-bar-fill{height:100%;background:var(--ink);width:0;transition:width .8s var(--ease)}
+.recovery-bar-value{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}
+.recovery-foot{margin-top:32px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;align-items:center}
+.recovery-foot span{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--faint)}
+.recovery-status{display:inline-flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.recovery-status i{width:7px;height:7px;border:1px solid var(--line-strong);border-radius:50%;display:inline-block}
+@media (max-width:900px){
+  .recovery-shell{grid-template-columns:1fr}
+  .recovery-nav{border-right:0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+  .recovery-nav-label{grid-column:1/-1}
+}
+@media (max-width:620px){
+  .recovery-nav{grid-template-columns:1fr}
+  .recovery-display-top{display:block}
+  .recovery-detail{text-align:left;margin-top:22px}
+  .recovery-bar-row{grid-template-columns:1fr 82px;gap:8px 14px}
+  .recovery-bar-name{grid-column:1/-1}
+  .recovery-bar-track{grid-column:1}
+  .recovery-bar-value{grid-column:2;grid-row:2}
+}
+
+/* ---------- audit (core offer) ---------- */
+.audit{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.audit .glass-word{top:2%;left:-3%;will-change:transform}
+.audit-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,96px);align-items:start}
+.audit-price{font-size:clamp(2.6rem,5vw,4.4rem);font-weight:600;letter-spacing:-.04em;line-height:1;margin:26px 0 8px}
+.audit-price-note{color:var(--faint);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:36px}
+.audit-output{border:1px solid var(--line);background:var(--surface);padding:30px 30px 34px;margin-top:44px}
+.audit-output h4{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.audit-output ul{list-style:none}
+.audit-output li{
+  padding:12px 0 12px 30px;border-bottom:1px solid var(--line);font-size:14.5px;position:relative;color:var(--ink-soft);
+}
+.audit-output li:last-child{border-bottom:0}
+.audit-output li::before{content:"";position:absolute;left:2px;top:20px;width:12px;height:1px;background:var(--ink)}
+.steps{list-style:none;counter-reset:step}
+.steps li{
+  counter-increment:step;display:flex;gap:26px;padding:30px 0;border-bottom:1px solid var(--line);
+  transition:padding-left .4s var(--ease);
+}
+.steps li:hover{padding-left:10px}
+.steps li:last-child{border-bottom:0}
+.steps li::before{
+  content:"0" counter(step);font-size:12px;letter-spacing:.16em;color:var(--faint);padding-top:4px;min-width:34px;
+}
+.steps h3{font-size:17px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.steps p{font-size:14px;color:var(--muted)}
+@media (max-width:900px){.audit-grid{grid-template-columns:1fr}}
+
+/* ---------- managed recovery ---------- */
+.managed-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:center}
+.managed-price{
+  font-size:clamp(3.4rem,8vw,7rem);font-weight:600;letter-spacing:-.05em;line-height:1;
+}
+.managed-price small{font-size:.32em;font-weight:400;letter-spacing:-.01em;color:var(--muted);display:block;margin-top:14px}
+.managed-list{list-style:none;margin-top:34px}
+.managed-list li{
+  display:flex;justify-content:space-between;gap:24px;padding:20px 0;border-bottom:1px solid var(--line);
+  font-size:14.5px;
+}
+.managed-list li span:first-child{color:var(--muted)}
+@media (max-width:900px){.managed-grid{grid-template-columns:1fr}}
+
+/* ---------- why ---------- */
+.why{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.why-row{
+  display:grid;grid-template-columns:80px 1fr 1.4fr;gap:clamp(20px,4vw,56px);align-items:baseline;
+  padding:36px 0;border-bottom:1px solid var(--line);
+}
+.why-row:last-of-type{border-bottom:0}
+.why-row .n{font-size:12px;letter-spacing:.2em;color:var(--faint)}
+.why-row h3{font-size:clamp(1.2rem,2.2vw,1.7rem);font-weight:600;letter-spacing:-.02em}
+.why-row p{color:var(--muted);font-size:14.5px}
+@media (max-width:800px){.why-row{grid-template-columns:1fr;gap:10px}}
+
+/* ---------- how it works ---------- */
+.how-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);counter-reset:how}
+.how-step{background:var(--bg);padding:34px 24px 44px;position:relative;transition:background .45s var(--ease)}
+.how-step:hover{background:var(--panel)}
+.how-step::before{
+  counter-increment:how;content:"0" counter(how);
+  font-size:clamp(1.8rem,3vw,2.6rem);font-weight:600;letter-spacing:-.03em;color:transparent;
+  -webkit-text-stroke:1px rgba(22,21,19,.32);display:block;margin-bottom:56px;
+}
+.how-step h3{font-size:15px;font-weight:600;margin-bottom:8px}
+.how-step p{font-size:13px;color:var(--muted)}
+@media (max-width:1000px){.how-grid{grid-template-columns:repeat(2,1fr)}.how-step:last-child{grid-column:1/-1}}
+@media (max-width:520px){.how-grid{grid-template-columns:1fr}.how-step:last-child{grid-column:auto}.how-step::before{margin-bottom:28px}}
+
+/* ---------- industries ---------- */
+.ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.ind-card{background:var(--bg);padding:34px 26px 44px;transition:background .45s var(--ease)}
+.ind-card:hover{background:var(--panel)}
+.ind-card .glyph{font-size:22px;color:var(--faint);display:block;margin-bottom:52px;font-weight:300;letter-spacing:.1em}
+.ind-card h3{font-size:15.5px;font-weight:600;letter-spacing:-.01em;margin-bottom:8px}
+.ind-card p{font-size:13px;color:var(--muted)}
+@media (max-width:1000px){.ind-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.ind-grid{grid-template-columns:1fr}}
+
+/* ---------- economics ---------- */
+.econ{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.econ .glass-word{bottom:-10%;right:-4%;will-change:transform}
+.econ-math{
+  position:relative;z-index:2;display:flex;flex-wrap:wrap;align-items:baseline;gap:clamp(16px,3vw,40px);
+  font-size:clamp(1.5rem,3.6vw,3rem);font-weight:500;letter-spacing:-.02em;margin-top:56px;
+}
+.econ-math .op{color:var(--faint);font-weight:300}
+.econ-math .res{border:1px solid var(--line-strong);padding:14px 28px;border-radius:2px;background:rgba(22,21,19,.04)}
+.econ-note{position:relative;z-index:2;color:var(--faint);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-top:30px}
+
+/* ---------- vision ---------- */
+.vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.vision-cell{background:var(--bg);padding:clamp(32px,4vw,56px)}
+.vision-cell .tag{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:22px}
+.vision-cell h3{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:600;letter-spacing:-.02em;margin-bottom:14px}
+.vision-cell p{color:var(--muted);font-size:14.5px;max-width:440px}
+.vision-cell.dim{background:var(--panel)}
+@media (max-width:760px){.vision-grid{grid-template-columns:1fr}}
+
+/* ---------- faq ---------- */
+.faq-list{border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+  width:100%;background:none;border:0;color:var(--ink);text-align:left;
+  display:flex;justify-content:space-between;align-items:center;gap:28px;
+  padding:30px 4px;font-size:clamp(1.05rem,1.8vw,1.35rem);font-weight:500;letter-spacing:-.01em;
+  transition:padding-left .35s var(--ease);
+}
+.faq-q:hover{padding-left:14px}
+.faq-q .ico{
+  flex:0 0 auto;width:34px;height:34px;border:1px solid var(--line-strong);border-radius:50%;
+  display:grid;place-items:center;font-size:16px;font-weight:300;transition:transform .45s var(--ease),background .35s,color .35s;
+}
+.faq-item.open .faq-q .ico{transform:rotate(45deg);background:var(--ink);color:var(--bg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .55s var(--ease)}
+.faq-a p{color:var(--muted);font-size:15px;max-width:760px;padding:0 4px 32px}
+
+/* ---------- final cta ---------- */
+.final{
+  position:relative;overflow:hidden;text-align:center;
+  padding:clamp(130px,18vw,240px) 0;
+  background:radial-gradient(900px 500px at 50% 110%,rgba(22,21,19,.06),transparent 65%);
+}
+.final .glass-word{top:50%;left:50%;transform:translate(-50%,-50%);white-space:nowrap;will-change:transform}
+.final .wrap{position:relative;z-index:2}
+.final h2{font-size:clamp(2.4rem,5.6vw,4.8rem);font-weight:600;letter-spacing:-.035em;line-height:1.05;margin:26px 0 24px}
+.final p{color:var(--muted);max-width:560px;margin:0 auto 46px;font-size:clamp(1rem,1.4vw,1.15rem)}
+.final .hero-ctas{justify-content:center}
+
+/* ---------- footer ---------- */
+.footer{border-top:1px solid var(--line);padding:72px 0 40px;background:var(--panel)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:64px}
+.footer h5{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);margin-bottom:20px}
+.footer ul{list-style:none}
+.footer li{margin-bottom:12px}
+.footer a{color:var(--muted);font-size:14px;transition:color .3s}
+.footer a:hover{color:var(--ink)}
+.footer-brand p{color:var(--faint);font-size:13px;max-width:340px;margin-top:16px}
+.footer-social{display:flex;gap:12px;margin-top:22px}
+.footer-social a.soc{
+  width:38px;height:38px;border:1px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;color:var(--muted);
+  transition:color .3s,border-color .3s,transform .35s var(--ease);
+}
+.footer-social a.soc:hover{color:var(--ink);border-color:var(--line-strong);transform:translateY(-2px)}
+.disclaimer{border-top:1px solid var(--line);padding-top:32px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:baseline}
+.disclaimer p{color:rgba(22,21,19,.45);font-size:11.5px;max-width:720px;line-height:1.7}
+.disclaimer span{color:var(--faint);font-size:11.5px;letter-spacing:.08em}
+@media (max-width:800px){.footer-grid{grid-template-columns:1fr}}
+
+/* ---------- modal ---------- */
+.modal{
+  position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;
+  background:rgba(245,243,239,.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;
+}
+.modal.open{opacity:1;visibility:visible}
+.modal-panel{
+  width:100%;max-width:640px;max-height:88vh;overflow-y:auto;
+  background:#fff;border:1px solid var(--line-strong);border-radius:4px;
+  padding:clamp(28px,4vw,48px);position:relative;color:var(--ink);
+  transform:translateY(20px);transition:transform .45s var(--ease);
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.modal-panel::-webkit-scrollbar{width:0;height:0}
+.modal-panel::-webkit-scrollbar-thumb,.modal-panel::-webkit-scrollbar-track{background:transparent}
+
+.modal.open .modal-panel{transform:none}
+.modal-close{
+  position:absolute;top:18px;right:18px;width:38px;height:38px;border:1px solid var(--line);
+  border-radius:50%;background:none;color:var(--ink);font-size:16px;line-height:1;
+  transition:border-color .3s,transform .35s var(--ease);
+}
+.modal-close:hover{border-color:var(--ink);transform:rotate(90deg)}
+.modal-panel h3{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:600;letter-spacing:-.02em;margin:8px 0 6px}
+.modal-panel .sub{color:var(--faint);font-size:13px;margin-bottom:30px}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.field input,.field select,.field textarea{
+  width:100%;background:transparent;border:1px solid var(--line);border-radius:2px;
+  color:var(--ink);font-family:inherit;font-size:15px;padding:14px 16px;
+  transition:border-color .3s;
+}
+.field textarea{min-height:96px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ink)}
+.field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%235b564f' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.field select option{background:#fff;color:var(--ink)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width:560px){.field-row{grid-template-columns:1fr}}
+.form-note{font-size:11.5px;color:var(--faint);margin-top:18px;line-height:1.6}
+.form-success{display:none;text-align:center;padding:44px 0 24px}
+.form-success h4{font-size:1.4rem;font-weight:600;margin:18px 0 10px}
+.form-success p{color:var(--muted);font-size:14px;max-width:380px;margin:0 auto}
+.modal.legal .modal-panel{max-width:560px}
+.modal.legal h3{font-size:1.3rem;margin:14px 0 16px}
+.modal.legal p{color:var(--muted);font-size:13.5px;margin-bottom:14px}
+</style>
+<style>
+.dashline{stroke-dasharray:6 8;animation:dashmove 3.5s linear infinite}
+@keyframes dashmove{to{stroke-dashoffset:-56}}
+.flow-panel .droplet{transition:opacity .8s ease}
+.flow-panel.leak-active .droplet{opacity:1;animation:dropletFall 2s cubic-bezier(.22,.8,.24,1) .6s both}
+@keyframes dropletFall{
+  0%{transform:translateY(0);opacity:0}
+  25%{opacity:.95}
+  100%{transform:translateY(16px);opacity:0}
+}
+
+/* ---------- signature leak visual enhancement ---------- */
+.flow-panel{
+  background:
+    radial-gradient(900px 280px at 78% 48%,rgba(22,21,19,.06),transparent 58%),
+    linear-gradient(180deg,rgba(255,255,255,.62),rgba(22,21,19,.025));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.75);
+}
+.flow-stage{
+  position:relative;
+  min-height:300px;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  border:1px solid rgba(22,21,19,.07);
+  background:
+    linear-gradient(rgba(22,21,19,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(22,21,19,.035) 1px,transparent 1px),
+    rgba(255,255,255,.22);
+  background-size:48px 48px;
+}
+.flow-stage::before{
+  content:"";
+  position:absolute;
+  inset:14px;
+  border:1px solid rgba(22,21,19,.055);
+  pointer-events:none;
+}
+.flow-stage svg{width:100%;height:auto;position:relative;z-index:2;overflow:visible}
+.flow-stage .flow-primary{stroke:#161513;stroke-opacity:.5;stroke-width:1.2;fill:none}
+.flow-stage .flow-secondary{stroke:#161513;stroke-opacity:.14;stroke-width:1;fill:none;stroke-dasharray:2 9}
+.flow-stage .flow-gap{stroke:#161513;stroke-opacity:.1;stroke-width:1;fill:none;stroke-dasharray:2 11}
+.flow-stage .node-dot{fill:#161513}
+.flow-stage .node-ring{fill:none;stroke:#161513;stroke-opacity:.13;stroke-width:1}
+.flow-stage .leak-ring{fill:none;stroke:#161513;stroke-opacity:.22;stroke-width:1;transform-origin:50% 50%;animation:leakRing 2.4s var(--ease) infinite}
+.flow-stage .leak-core{fill:#161513;opacity:.9}
+.flow-stage .stream{fill:#161513;opacity:0}
+.flow-panel.leak-active .stream{animation:streamDrop 2.5s var(--ease) .65s infinite}
+.flow-panel.leak-active .leak-ring{animation:leakRing 2.4s var(--ease) infinite}
+@keyframes leakRing{0%,100%{transform:scale(.8);opacity:.15}50%{transform:scale(1.55);opacity:.55}}
+@keyframes streamDrop{0%{transform:translateY(0);opacity:0}18%{opacity:.75}70%{opacity:.28}100%{transform:translateY(34px);opacity:0}}
+.flow-micro-labels{
+  position:absolute;left:7%;right:7%;bottom:18px;z-index:3;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+}
+.flow-micro-label{
+  padding:9px 11px;border:1px solid rgba(22,21,19,.09);
+  background:rgba(255,255,255,.46);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  font-size:9px;letter-spacing:.17em;text-transform:uppercase;color:var(--faint);text-align:center;
+}
+.leak-card{
+  position:absolute;right:28px;top:28px;z-index:5;width:min(250px,42%);
+  padding:17px 17px 15px;border:1px solid rgba(22,21,19,.16);border-radius:3px;
+  background:rgba(255,255,255,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 20px 50px rgba(22,21,19,.06);
+  opacity:1;transform:none;
+  transition:opacity 1s var(--ease) .9s,transform 1s var(--ease) .9s;
+}
+.flow-panel.leak-active .leak-card{opacity:1;transform:none}
+.leak-card-kicker{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.leak-card-kicker::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 5px rgba(22,21,19,.05)}
+.leak-card h4{font-size:15px;line-height:1.18;margin:15px 0 7px;letter-spacing:-.01em}
+.leak-card p{font-size:11.5px;line-height:1.5;color:var(--muted);margin-bottom:13px}
+.leak-chip-row{display:flex;flex-wrap:wrap;gap:6px}
+.leak-chip{font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;padding:6px 7px;border:1px solid rgba(22,21,19,.1);color:var(--muted);background:rgba(245,243,239,.58)}
+.flow-note{margin-top:14px;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
+@media (max-width:700px){
+  .flow-stage{min-height:390px;padding-top:78px;padding-bottom:68px}
+  .leak-card{top:22px;right:22px;width:min(300px,calc(100% - 44px))}
+  .flow-micro-labels{left:5%;right:5%;bottom:14px}
+}
+@media (max-width:480px){
+  .flow-stage{min-height:340px}
+  .flow-micro-labels{grid-template-columns:1fr;gap:6px;bottom:10px}
+  .flow-micro-label{padding:7px 9px;font-size:8px}
+  .flow-note{font-size:9px;line-height:1.5;letter-spacing:.08em}
+}
+body.locked{overflow:hidden}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Liability Liberators",
+  "url":"https://liabilityliberators.com/",
+  "description":"Revenue Recovery & Financial Leakage Intelligence for qualified mid-market and enterprise B2B companies.",
+  "email":"shield@liabilityliberators.com",
+  "sameAs":["https://substack.com/@liabilityliberators"]
+}
+</script>
+</head>
+<body>
+<header class="nav" id="nav">
+<div class="wrap nav-inner">
+<a aria-label="Liability Liberators home" class="logo" href="#top">
+<svg aria-hidden="true" class="logo-mark" viewbox="0 0 40 40">
+<rect fill="#161513" height="40" rx="7" width="40"></rect>
+<rect fill="none" height="33.6" rx="4.5" stroke="#f5f3ef" stroke-opacity=".5" stroke-width="1" width="33.6" x="3.2" y="3.2"></rect>
+<text fill="#f5f3ef" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="bold" text-anchor="middle" x="20" y="27.8">LL</text>
+</svg>
+<span class="logo-text">Liability <em>Liberators</em></span>
+</a>
+<nav aria-label="Primary">
+<ul class="nav-links">
+<li><a href="#how">How It Works</a></li>
+<li><a href="#leakage">Revenue Leakage</a></li>
+<li><a href="#industries">Industries</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ul>
+</nav>
+<div class="nav-cta">
+<button class="btn btn-primary btn-sm" data-modal="audit">Request Assessment</button>
+<button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open menu" class="menu-btn" id="menuBtn">
+<span></span><span></span><span></span>
+</button>
+</div>
+</div>
+</header>
+<div aria-hidden="true" class="mobile-menu" id="mobileMenu">
+<a href="#how">How It Works</a>
+<a href="#leakage">Revenue Leakage</a>
+<a href="#industries">Industries</a>
+<a href="#about">About</a>
+<a href="#faq">FAQ</a>
+<button class="btn btn-primary" data-modal="audit">Request a Revenue Leakage Assessment</button>
+<a class="btn btn-ghost" href="https://calendly.com/shield-liabilityliberators/30min" rel="noopener noreferrer" target="_blank">Book a 30 Minute Call</a>
+</div>
+<main id="top">
+ ================= HERO ================= 
+<section aria-labelledby="hero-title" class="hero">
+<div aria-hidden="true" class="hairlines"><span></span><span></span><span></span></div>
+<div aria-hidden="true" class="glass-word" data-parallax="0.06" data-text="LEAKAGE">LEAKAGE</div>
+<div class="wrap">
+<div class="hero-content">
+<p class="eyebrow reveal">Revenue Recovery &amp; Financial Leakage Intelligence</p>
+<h1 class="reveal" data-delay="1" id="hero-title">Find the money your business is <span class="serif-i">already losing.</span></h1>
+<p class="hero-sub reveal" data-delay="2">Liability Liberators identifies hidden revenue leakage across invoices, payments, contracts, pricing, credits, and customer accounts then turns those findings into a recovery plan.</p>
+<div class="hero-ctas reveal" data-delay="3">
+<button class="btn btn-primary" data-modal="audit">Request a Revenue Leakage Assessment <span class="arr">→</span></button>
+<a class="btn btn-ghost" href="#how">See How It Works</a>
+</div>
+<p class="hero-trust reveal" data-delay="3">For qualified mid market and enterprise B2B companies</p>
+</div>
+</div>
+<p aria-hidden="true" class="hero-scroll">Scroll</p>
+</section>
+ ================= PROBLEM / THE LEAK ================= 
+<section aria-labelledby="leak-title" class="section problem" id="leakage">
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">The Problem</p>
+<h2 id="leak-title">Revenue can disappear without ever looking like a crisis.</h2>
+<p>Leakage rarely announces itself. It hides inside ordinary financial processes between the systems that are all working correctly, and the money that never quite arrives.</p>
+</div>
+<div class="flow-panel reveal" id="flowPanel">
+<p class="flow-label"><span class="pulse"></span>Revenue flow illustrative system view</p>
+<div class="flow-stage">
+<svg aria-label="Illustrative revenue flow from contract to invoice to payment to cash, with a visual leak signal between payment and cash." role="img" viewbox="0 0 1200 280">
+<path class="flow-primary dashline" d="M120 160H405"></path>
+<path class="flow-primary dashline" d="M455 160H700"></path>
+<path class="flow-primary dashline" d="M750 160H855"></path>
+<path class="flow-gap" d="M945 160H1080"></path>
+<path class="flow-secondary" d="M120 168H405"></path>
+<path class="flow-secondary" d="M455 168H700"></path>
+<path class="flow-secondary" d="M750 168H1080"></path>
+<g fill="#5b564f" font-family="Inter, sans-serif" font-size="12" letter-spacing="2.4" text-anchor="middle">
+<circle class="node-dot" cx="120" cy="160" r="4"></circle>
+<circle class="node-ring" cx="120" cy="160" r="12"></circle>
+<text x="120" y="126">CONTRACT</text>
+<circle class="node-dot" cx="430" cy="160" r="4"></circle>
+<circle class="node-ring" cx="430" cy="160" r="12"></circle>
+<text x="430" y="126">INVOICE</text>
+<circle class="node-dot" cx="725" cy="160" r="4"></circle>
+<circle class="node-ring" cx="725" cy="160" r="12"></circle>
+<text x="725" y="126">PAYMENT</text>
+<circle class="node-dot" cx="1120" cy="160" r="4"></circle>
+<circle class="node-ring" cx="1120" cy="160" r="12"></circle>
+<text x="1120" y="126">CASH</text>
+</g>
+<g aria-hidden="true">
+<circle class="leak-ring" cx="900" cy="160" r="10"></circle>
+<circle class="leak-core" cx="900" cy="160" r="4"></circle>
+<line stroke="#161513" stroke-dasharray="2 6" stroke-opacity=".3" stroke-width="1" x1="900" x2="900" y1="174" y2="224"></line>
+<circle class="stream" cx="900" cy="182" r="2"></circle>
+<circle class="stream" cx="900" cy="194" r="2" style="animation-delay:1s"></circle>
+<circle class="stream" cx="900" cy="206" r="2" style="animation-delay:1.35s"></circle>
+<text fill="#5b564f" font-family="Inter, sans-serif" font-size="9" font-weight="600" letter-spacing="2.2" text-anchor="middle" x="900" y="248">UNMATCHED VALUE</text>
+</g>
+</svg>
+<div aria-hidden="true" class="leak-card">
+<div class="leak-card-kicker"><span>Leak signal</span><span>Review</span></div>
+<h4>Value stops reconciling before it reaches cash.</h4>
+<p>An illustrative view of the kinds of gaps the investigation is designed to surface.</p>
+<div class="leak-chip-row"><span class="leak-chip">Underpayment</span><span class="leak-chip">Contract</span><span class="leak-chip">Pricing</span></div>
+</div>
+<div aria-hidden="true" class="flow-micro-labels">
+<span class="flow-micro-label">Expected value</span>
+<span class="flow-micro-label">Reconciled value</span>
+<span class="flow-micro-label">Unmatched value</span>
+</div>
+</div>
+<p class="flow-note">Illustrative visualization the investigation starts with your actual financial data.</p>
+</div>
+<div class="problem-points">
+<div class="problem-point reveal">
+<h3>Ordinary on the surface</h3>
+<p>Invoices go out. Payments arrive. Reports reconcile. Nothing looks broken which is exactly why the gaps persist for years.</p>
+</div>
+<div class="problem-point reveal" data-delay="1">
+<h3>Distributed across systems</h3>
+<p>Contracts live in one system, billing in another, payments in a third. Every handoff is a place where value can quietly fall through.</p>
+</div>
+<div class="problem-point reveal" data-delay="2">
+<h3>Too small to notice, too large to ignore</h3>
+<p>Individually, most discrepancies look trivial. In aggregate, they can represent a meaningful share of revenue you already earned.</p>
+</div>
+</div>
+</div>
+</section>
+ ================= WHAT WE FIND ================= 
+<section aria-labelledby="find-title" class="section">
+<div aria-hidden="true" class="hairlines"><span></span><span></span><span></span></div>
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">What We Find</p>
+<h2 id="find-title">Eight places revenue quietly goes missing.</h2>
+<p>Our analysis covers the full revenue cycle from contract terms to cash application looking for money that was earned, billed, or paid incorrectly, and never corrected.</p>
+</div>
+<div class="find-grid reveal" data-delay="1">
+<article class="find-card"><span class="idx">01</span><h3>Unpaid invoices</h3><p>Overdue receivables that were never systematically worked, escalated, or resolved.</p></article>
+<article class="find-card"><span class="idx">02</span><h3>Underpayments</h3><p>Customers paying less than invoiced short pays, partial remittances, and rounding gaps.</p></article>
+<article class="find-card"><span class="idx">03</span><h3>Billing discrepancies</h3><p>Invoices that don't match contracted terms, order quantities, or agreed rates.</p></article>
+<article class="find-card"><span class="idx">04</span><h3>Contract leakage</h3><p>Missed price escalations, unenforced terms, and entitlements nobody is tracking.</p></article>
+<article class="find-card"><span class="idx">05</span><h3>Missed charges</h3><p>Work delivered, services rendered, or usage accumulated that never made it onto an invoice.</p></article>
+<article class="find-card"><span class="idx">06</span><h3>Unapplied cash</h3><p>Payments received but never matched to open receivables, aging artificially on the books.</p></article>
+<article class="find-card"><span class="idx">07</span><h3>Credits &amp; deductions</h3><p>Duplicate credits, unresolved deductions, and write offs accepted without challenge.</p></article>
+<article class="find-card"><span class="idx">08</span><h3>Pricing discrepancies</h3><p>Customers billed at outdated or incorrect prices across SKUs, tiers, and contracts.</p></article>
+</div>
+</div>
+</section>
+ ================= INTERACTIVE RECOVERY MAP ================= 
+<section aria-labelledby="recovery-map-title" class="section recovery-map" id="recovery-map">
+<div aria-hidden="true" class="glass-word" data-parallax="-0.035" data-text="RECOVERY">RECOVERY</div>
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">Illustrative Recovery Map</p>
+<h2 id="recovery-map-title">See how the investigation turns into a recovery picture.</h2>
+<p>Explore a fictional example of how findings can be organized by category, value under review, and next action. This is an illustrative interface not a client result or projection.</p>
+</div>
+<div class="recovery-shell reveal" data-delay="1" id="recoveryMap">
+<div aria-label="Illustrative recovery categories" class="recovery-nav" role="group">
+<div class="recovery-nav-label">Select a category</div>
+<button aria-pressed="true" class="recovery-filter" data-key="all" type="button"><span>All opportunities</span><span class="mini-value">$1.188M</span></button>
+<button aria-pressed="false" class="recovery-filter" data-key="unpaid" type="button"><span>Unpaid invoices</span><span class="mini-value">$198K</span></button>
+<button aria-pressed="false" class="recovery-filter" data-key="underpayments" type="button"><span>Underpayments</span><span class="mini-value">$214K</span></button>
+<button aria-pressed="false" class="recovery-filter" data-key="billing" type="button"><span>Billing discrepancies</span><span class="mini-value">$112K</span></button>
+<button aria-pressed="false" class="recovery-filter" data-key="contracts" type="button"><span>Contract leakage</span><span class="mini-value">$187K</span></button>
+<button aria-pressed="false" class="recovery-filter" data-key="charges" type="button"><span>Missed charges</span><span class="mini-value">$163K</span></button>
+<button aria-pressed="false" class="recovery-filter" data-key="cash" type="button"><span>Unapplied cash</span><span class="mini-value">$91K</span></button>
+<button aria-pressed="false" class="recovery-filter" data-key="credits" type="button"><span>Credits &amp; deductions</span><span class="mini-value">$81K</span></button>
+<button aria-pressed="false" class="recovery-filter" data-key="pricing" type="button"><span>Pricing discrepancies</span><span class="mini-value">$142K</span></button>
+</div>
+<div class="recovery-display">
+<div class="recovery-display-top">
+<div>
+<p class="recovery-label">Illustrative value under review</p>
+<div class="recovery-total" id="recoveryTotal">$1,188,320</div>
+<p class="recovery-total-note" id="recoveryTotalNote">Combined value shown across the illustrative example below.</p>
+</div>
+<div aria-live="polite" class="recovery-detail">
+<strong id="recoveryDetailTitle">All opportunities</strong>
+<span id="recoveryDetailText">A fictional example of how a finance team could see the largest recovery conversations at a glance.</span><span class="recovery-detail-action" id="recoveryDetailAction">Next action: open the data review.</span>
+</div>
+</div>
+<div aria-live="polite" class="recovery-insight-grid">
+<article class="recovery-insight-card">
+<span class="recovery-insight-label">What to inspect</span>
+<strong id="recoveryEvidenceTitle">Invoice and payment records</strong>
+<p id="recoveryEvidenceText">Compare source records to find where amounts, terms, or payment status do not align.</p>
+</article>
+<article class="recovery-insight-card">
+<span class="recovery-insight-label">Example evidence</span>
+<strong id="recoveryExampleTitle">A transaction that needs review</strong>
+<p id="recoveryExampleText">A fictional example of the records an analyst might reconcile. No real customer data is shown.</p>
+</article>
+<article class="recovery-insight-card">
+<span class="recovery-insight-label">Possible next step</span>
+<strong id="recoveryStepTitle">Validate before pursuing</strong>
+<p id="recoveryStepText">Confirm the source documents, ownership, and whether the amount is actually recoverable.</p>
+</article>
+</div>
+<div class="recovery-bars" id="recoveryBars">
+<div class="recovery-bar-row" data-key="unpaid"><span class="recovery-bar-name">Unpaid invoices</span><span class="recovery-bar-track"><span class="recovery-bar-fill" style="--bar:92.5%"></span></span><span class="recovery-bar-value">$198,000</span></div>
+<div class="recovery-bar-row" data-key="underpayments"><span class="recovery-bar-name">Underpayments</span><span class="recovery-bar-track"><span class="recovery-bar-fill" style="--bar:100%"></span></span><span class="recovery-bar-value">$214,000</span></div>
+<div class="recovery-bar-row" data-key="billing"><span class="recovery-bar-name">Billing discrepancies</span><span class="recovery-bar-track"><span class="recovery-bar-fill" style="--bar:52.3%"></span></span><span class="recovery-bar-value">$112,000</span></div>
+<div class="recovery-bar-row" data-key="contracts"><span class="recovery-bar-name">Contract leakage</span><span class="recovery-bar-track"><span class="recovery-bar-fill" style="--bar:87.4%"></span></span><span class="recovery-bar-value">$187,000</span></div>
+<div class="recovery-bar-row" data-key="charges"><span class="recovery-bar-name">Missed charges</span><span class="recovery-bar-track"><span class="recovery-bar-fill" style="--bar:76.2%"></span></span><span class="recovery-bar-value">$163,000</span></div>
+<div class="recovery-bar-row" data-key="cash"><span class="recovery-bar-name">Unapplied cash</span><span class="recovery-bar-track"><span class="recovery-bar-fill" style="--bar:42.7%"></span></span><span class="recovery-bar-value">$91,320</span></div>
+<div class="recovery-bar-row" data-key="credits"><span class="recovery-bar-name">Credits &amp; deductions</span><span class="recovery-bar-track"><span class="recovery-bar-fill" style="--bar:37.9%"></span></span><span class="recovery-bar-value">$81,000</span></div>
+<div class="recovery-bar-row" data-key="pricing"><span class="recovery-bar-name">Pricing discrepancies</span><span class="recovery-bar-track"><span class="recovery-bar-fill" style="--bar:66.4%"></span></span><span class="recovery-bar-value">$142,000</span></div>
+</div>
+<div class="recovery-foot">
+<span>Illustrative only not a client result</span>
+<div class="recovery-status"><i aria-hidden="true"></i><span id="recoveryStatus">Analysis view</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+ ================= CORE OFFER: ASSESSMENT ================= 
+<section aria-labelledby="audit-title" class="section audit" id="audit">
+<div aria-hidden="true" class="glass-word" data-parallax="-0.04" data-text="AUDIT">AUDIT</div>
+<div class="wrap">
+<div class="audit-grid">
+<div class="reveal">
+<p class="eyebrow">The Core Offer</p>
+<h2 id="audit-title" style="font-size:clamp(2.1rem,4.6vw,3.9rem);font-weight:600;letter-spacing:-.03em;line-height:1.06;margin:22px 0 20px;">Revenue Leakage Assessment</h2>
+<p style="color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:560px;">A structured first look at your revenue environment. We learn how money moves through the business, determine whether a deeper analysis is warranted, and map the areas most likely to deserve recovery attention.</p>
+<p class="audit-price" style="font-size:clamp(2.3rem,4.7vw,4rem)">First step: clarity<span style="display:block;font-size:.26em;font-weight:400;color:var(--muted);letter-spacing:.02em;margin-top:14px;line-height:1.4">A focused conversation to determine whether deeper analysis is warranted.</span></p>
+<p class="audit-price-note">No rip and replace. No recovery amount is promised.</p>
+<button class="btn btn-primary" data-modal="audit">Request a Revenue Leakage Assessment <span class="arr">→</span></button>
+<div class="audit-output">
+<h4>A qualified assessment answers five questions</h4>
+<ul>
+<li>Where revenue may be leaking</li>
+<li>What data would be needed to investigate it</li>
+<li>Which areas may hold recoverable value</li>
+<li>Which issues deserve priority</li>
+<li>What the next step should be</li>
+</ul>
+</div>
+</div>
+<ol class="steps reveal" data-delay="1">
+<li><div><h3>Connect the relevant data</h3><p>Invoice, receivable, payment, customer, billing, and contract data from your existing systems.</p></div></li>
+<li><div><h3>Analyze the revenue cycle</h3><p>We trace how revenue moves from contract terms to cash application, end to end.</p></div></li>
+<li><div><h3>Identify anomalies and leakage</h3><p>Systematic detection of discrepancies, patterns, and failure points across the cycle.</p></div></li>
+<li><div><h3>Prioritize the largest opportunities</h3><p>Findings ranked by estimated recoverable value and effort required.</p></div></li>
+<li><div><h3>Produce a recovery map</h3><p>A concrete plan: what to pursue, in what order, and how to keep it from recurring.</p></div></li>
+</ol>
+</div>
+</div>
+</section>
+ ================= MANAGED RECOVERY ================= 
+<section aria-labelledby="managed-title" class="section" id="recovery">
+<div aria-hidden="true" class="hairlines"><span></span><span></span><span></span></div>
+<div class="wrap">
+<div class="managed-grid">
+<div class="reveal">
+<p class="eyebrow">Managed Recovery</p>
+<h2 id="managed-title" style="font-size:clamp(2.1rem,4.6vw,3.9rem);font-weight:600;letter-spacing:-.03em;line-height:1.06;margin:22px 0 24px;">Finding the leak is only the beginning.</h2>
+<p style="color:var(--muted);font-size:clamp(1rem,1.4vw,1.15rem);max-width:520px;">An audit tells you where the money is. Managed Revenue Recovery turns those findings into an organized, disciplined recovery operation run alongside your finance team, inside your existing environment.</p>
+</div>
+<div class="reveal" data-delay="1">
+<p class="managed-price">$10,000<small>per month, engagements start here</small></p>
+<ul class="managed-list">
+<li><span>Recovery execution</span><span>Systematic pursuit of prioritized recoverable revenue</span></li>
+<li><span>Dispute resolution support</span><span>Structured handling of customer disputes and deductions</span></li>
+<li><span>Process correction</span><span>Fixing the gaps so identified leakage stops recurring</span></li>
+<li><span>Reporting</span><span>Clear visibility into findings, actions, and recovered value</span></li>
+</ul>
+<p style="color:var(--faint);font-size:12.5px;margin-top:26px;letter-spacing:.04em;">Performance based structures may be discussed during scoping. Final pricing depends on company size, complexity, and scope.</p>
+</div>
+</div>
+</div>
+</section>
+ ================= WHY ================= 
+<section aria-labelledby="why-title" class="section why" id="why">
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">Why Liability Liberators</p>
+<h2 id="why-title">Existing systems process the money. We look for the money they miss.</h2>
+<p>Keep your ERP. Keep your accounting system. Keep your finance team. We investigate what is falling through the cracks between them.</p>
+</div>
+<div>
+<div class="why-row reveal"><span class="n">01</span><h3>Outcome focused</h3><p>Everything is organized around recoverable value not dashboards, not activity metrics. If a finding can't lead to action, it isn't prioritized.</p></div>
+<div class="why-row reveal"><span class="n">02</span><h3>Data driven</h3><p>Analysis is built on your actual transactional data. Every finding is traceable to specific invoices, payments, contracts, and accounts.</p></div>
+<div class="why-row reveal"><span class="n">03</span><h3>High touch</h3><p>Senior attention on complex B2B revenue environments. This is a managed operation, not a self serve tool you are left to configure alone.</p></div>
+<div class="why-row reveal"><span class="n">04</span><h3>Designed around existing systems</h3><p>We work with your ERP, accounting, billing, and payment infrastructure. No rip and replace. No disruption to your finance stack.</p></div>
+<div class="why-row reveal"><span class="n">05</span><h3>Built for complex B2B revenue</h3><p>Contractual billing, recurring revenue, high invoice volume, enterprise customers the environments where leakage is hardest to see.</p></div>
+</div>
+</div>
+</section>
+ ================= HOW IT WORKS ================= 
+<section aria-labelledby="how-title" class="section" id="how">
+<div aria-hidden="true" class="hairlines"><span></span><span></span><span></span></div>
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">How It Works</p>
+<h2 id="how-title">Find the gap. Quantify it. Recover it.</h2>
+<p>A disciplined five step engagement, from first data connection to ongoing monitoring.</p>
+</div>
+<div class="how-grid reveal" data-delay="1">
+<div class="how-step"><h3>Diagnose</h3><p>Map your revenue cycle and connect the relevant financial data.</p></div>
+<div class="how-step"><h3>Quantify</h3><p>Identify leakage and estimate what is recoverable, issue by issue.</p></div>
+<div class="how-step"><h3>Prioritize</h3><p>Rank opportunities by recoverable value, effort, and likelihood of success.</p></div>
+<div class="how-step"><h3>Recover</h3><p>Execute the recovery plan billing corrections, disputes, collections support.</p></div>
+<div class="how-step"><h3>Monitor</h3><p>Watch for recurrence and convert findings into durable process fixes.</p></div>
+</div>
+</div>
+</section>
+ ================= INDUSTRIES ================= 
+<section aria-labelledby="ind-title" class="section" id="industries">
+<div aria-hidden="true" class="hairlines"><span></span><span></span><span></span></div>
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">Who It’s For</p>
+<h2 id="ind-title">Complex revenue environments. Meaningful transaction volume.</h2>
+<p>We work with mid market and enterprise B2B companies roughly $20M to $500M+ in annual revenue where invoice volume and contractual complexity make leakage material.</p>
+</div>
+<div class="ind-grid reveal" data-delay="1">
+<div class="ind-card"><span class="glyph">›</span><h3>SaaS</h3><p>Recurring billing failures, tier mismatches, and unbilled usage across large customer bases.</p></div>
+<div class="ind-card"><span class="glyph">›</span><h3>Manufacturing</h3><p>Price lists, contract terms, and deductions that drift out of alignment across thousands of SKUs.</p></div>
+<div class="ind-card"><span class="glyph">›</span><h3>Distribution</h3><p>Thin margins where small per invoice discrepancies compound across very high volume.</p></div>
+<div class="ind-card"><span class="glyph">›</span><h3>Logistics</h3><p>Accessorial charges, fuel and rate escalations, and disputes buried in complex freight billing.</p></div>
+<div class="ind-card"><span class="glyph">›</span><h3>Business Services</h3><p>Unbilled time, scope that outgrew the contract, and receivables that age quietly.</p></div>
+<div class="ind-card"><span class="glyph">›</span><h3>Technology Services</h3><p>Milestones, change orders, and recurring contracts that never quite reconcile with invoicing.</p></div>
+<div class="ind-card"><span class="glyph">›</span><h3>Healthcare Organizations</h3><p>Layered payer relationships, adjustments, and remittances that resist straightforward reconciliation.</p></div>
+<div class="ind-card"><span class="glyph">›</span><h3>Other Complex B2B</h3><p>Any business with meaningful invoice volume and multiple revenue systems if leakage can hide there, we can look.</p></div>
+</div>
+</div>
+</section>
+ ================= ECONOMICS ================= 
+<section aria-labelledby="econ-title" class="section econ">
+<div aria-hidden="true" class="glass-word" data-parallax="0.05" data-text="$">$</div>
+<div class="wrap">
+<div class="section-head reveal" style="margin-bottom:0">
+<p class="eyebrow">The Economic Logic</p>
+<h2 id="econ-title">Small percentages become large numbers at scale.</h2>
+<p>If your company processes $50M in annual revenue, even a 1% gap in what is earned versus what is collected represents half a million dollars. The arithmetic is simple the leakage is what is hard to see.</p>
+</div>
+<div aria-label="Illustration: 50 million dollars in annual revenue, times 1 percent gap, equals 500,000 dollars at risk." class="econ-math reveal" data-delay="1">
+<span>$50M revenue</span><span class="op">×</span><span>1% gap</span><span class="op">=</span><span class="res">$500,000 at risk</span>
+</div>
+<p class="econ-note reveal" data-delay="2">Illustrative arithmetic, not a projection of your results. Every engagement begins with an audit of your actual data.</p>
+</div>
+</section>
+ ================= VISION ================= 
+<section aria-labelledby="vision-title" class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">Where This Is Going</p>
+<h2 id="vision-title">Today, a managed recovery operation. Tomorrow, a system.</h2>
+</div>
+<div class="vision-grid reveal" data-delay="1">
+<div class="vision-cell">
+<span class="tag">Today</span>
+<h3>Managed revenue recovery.</h3>
+<p>A high touch engagement: data analysis, human expertise, automation, and AI assisted analysis working on your real revenue cycle spreadsheets, scripts, and your existing systems, applied with discipline.</p>
+</div>
+<div class="vision-cell dim">
+<span class="tag">Tomorrow</span>
+<h3>Revenue Recovery OS.</h3>
+<p>Every recovery engagement teaches us something. Repeated leakage patterns become proprietary intelligence, and that intelligence becomes software. The platform is the destination not the starting point.</p>
+</div>
+</div>
+</div>
+</section>
+ ================= ABOUT ================= 
+<section aria-labelledby="about-title" class="section why" id="about">
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">About</p>
+<h2 id="about-title">A revenue recovery company built for financial clarity.</h2>
+</div>
+<div style="max-width:760px">
+<p class="reveal" style="color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);margin-bottom:28px;">Liability Liberators is a founder led revenue recovery company focused on one problem: finding financial leakage hidden inside complex B2B operations.</p>
+<p class="reveal" data-delay="1" style="color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);margin-bottom:28px;">The premise is straightforward. Most companies already have the systems, the finance team, and the reporting they need to run their business. What they don't have is someone whose only job is to stand between contract and cash and ask a harder question: <span class="serif-i" style="color:var(--ink)">is all of it arriving?</span></p>
+<p class="reveal" data-delay="2" style="color:var(--muted);font-size:clamp(1rem,1.5vw,1.18rem);">Our approach combines systems thinking, data analysis, and disciplined recovery execution. We measure ourselves on measurable outcomes findings tied to real transactions, prioritized by recoverable value, pursued until they are resolved or written down with a reason. As patterns repeat across engagements, they become the intelligence behind what we are building next: Revenue Recovery OS.</p>
+</div>
+</div>
+</section>
+ ================= FAQ ================= 
+<section aria-labelledby="faq-title" class="section" id="faq">
+<div aria-hidden="true" class="hairlines"><span></span><span></span><span></span></div>
+<div class="wrap">
+<div class="section-head reveal">
+<p class="eyebrow">FAQ</p>
+<h2 id="faq-title">Questions a CFO would ask.</h2>
+</div>
+<div class="faq-list reveal" data-delay="1">
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q">What is revenue leakage?<span class="ico">+</span></button>
+<div class="faq-a"><p>Revenue your business has already earned or should have earned under its own contracts and pricing that is lost through gaps in the revenue cycle: unpaid invoices, underpayments, billing discrepancies, missed charges, unapplied cash, unresolved deductions, and similar issues. It is rarely a single large failure. It is the accumulation of small gaps that no single system is designed to catch.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q">How is this different from a collections agency?<span class="ico">+</span></button>
+<div class="faq-a"><p>Collections agencies pursue money that is already known to be overdue. We start earlier and go wider: analyzing the entire revenue cycle to find leakage that may never have appeared on any aging report underpayments, pricing mismatches, missed charges, contract leakage, unapplied cash. Recovery is one part of the work. Detection and prevention are the rest.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q">Do we need to replace our accounting software or ERP?<span class="ico">+</span></button>
+<div class="faq-a"><p>No. The service is designed to work with your existing financial systems and processes. We connect to the relevant data, analyze it, and operate alongside your finance team no rip and replace, no migration, no new system for your team to learn.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q">What data do you need?<span class="ico">+</span></button>
+<div class="faq-a"><p>Depending on scope, we may request relevant invoice, receivable, payment, customer, billing, contract, and related financial data typically exports from the systems you already use. Exact requirements are defined during scoping, and all data is handled confidentially.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q">How is our data handled?<span class="ico">+</span></button>
+<div class="faq-a"><p>We request only the information needed for the agreed scope. Initial reviews can work from controlled exports, and any deeper data exchange or access is defined during scoping and governed by the engagement terms. We do not sell submitted information or use it for third party marketing.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q">How much does it cost?<span class="ico">+</span></button>
+<div class="faq-a"><p>Managed engagements start at $10,000/month. Final pricing depends on company size, complexity, scope, data environment, and expected workload. Performance based structures may be discussed during the sales conversation. The logic is simple: if meaningful recoverable revenue exists inside the business, the economics should justify the engagement.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q">Do you guarantee recovery?<span class="ico">+</span></button>
+<div class="faq-a"><p>No. We do not guarantee specific recovery amounts. What we commit to is rigorous analysis: every finding tied to real transactions, quantified to the extent the data allows, and prioritized by recoverable value. Specific recovery commitments would only ever appear in a written engagement never in marketing.</p></div>
+</div>
+<div class="faq-item">
+<button aria-expanded="false" class="faq-q">Who is this for?<span class="ico">+</span></button>
+<div class="faq-a"><p>Qualified mid market and enterprise B2B companies roughly $20M to $500M+ in annual revenue with meaningful transaction volume, recurring or contractual billing, and enough financial complexity for leakage to be material. The typical sponsor is a CFO, Controller, VP Finance, Chief Accounting Officer, or Head of Revenue Operations.</p></div>
+</div>
+</div>
+</div>
+</section>
+ ================= FINAL CTA ================= 
+<section aria-labelledby="final-title" class="final">
+<div aria-hidden="true" class="glass-word" data-parallax="0.04" data-text="RECOVER">RECOVER</div>
+<div class="wrap">
+<p class="eyebrow reveal" style="justify-content:center">Your business already made the money</p>
+<h2 class="reveal" data-delay="1" id="final-title">Stop guessing where revenue disappears.</h2>
+<p class="reveal" data-delay="2">A confidential Revenue Leakage Assessment is the first step: understand the revenue environment, identify where leakage may be hiding, and determine whether a deeper recovery engagement makes economic sense.</p>
+<div class="hero-ctas reveal" data-delay="3">
+<button class="btn btn-primary" data-modal="audit">Request a Revenue Leakage Assessment <span class="arr">→</span></button>
+<a class="btn btn-ghost" href="https://calendly.com/shield-liabilityliberators/30min" rel="noopener noreferrer" target="_blank">Book a 30 Minute Call</a>
+</div>
+</div>
+</section>
+</main>
+ ================= FOOTER ================= 
+<footer class="footer">
+<div class="wrap">
+<div class="footer-grid">
+<div class="footer-brand">
+<a aria-label="Liability Liberators back to top" class="logo" href="#top">
+<svg aria-hidden="true" class="logo-mark" viewbox="0 0 40 40">
+<rect fill="#161513" height="40" rx="7" width="40"></rect>
+<rect fill="none" height="33.6" rx="4.5" stroke="#f5f3ef" stroke-opacity=".5" stroke-width="1" width="33.6" x="3.2" y="3.2"></rect>
+<text fill="#f5f3ef" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-weight="bold" text-anchor="middle" x="20" y="27.8">LL</text>
+</svg>
+<span class="logo-text">Liability <em>Liberators</em></span>
+</a>
+<p>Revenue Recovery &amp; Financial Leakage Intelligence. We find money your business has already earned but isn’t collecting, billing, retaining, or recovering.</p>
+<div class="footer-social">
+<a aria-label="Liability Liberators on Substack" class="soc" href="https://substack.com/@liabilityliberators" rel="noopener noreferrer" target="_blank" title="Substack">
+<svg aria-hidden="true" fill="currentColor" height="16" viewbox="0 0 24 24" width="16"><path d="M5 3h14v2.25H5zM5 7h14v2.25H5zM5 11h9.2c2.1 0 3.8 1.5 3.8 3.5V21l-6-3.8L6 21V11z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h5>Navigate</h5>
+<ul>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#leakage">Revenue Leakage</a></li>
+<li><a href="#industries">Industries</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#faq">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h5>Engage</h5>
+<ul>
+<li><button class="btn btn-ghost btn-sm" data-modal="audit" style="text-transform:none;letter-spacing:0;font-weight:500">Request Assessment</button></li>
+<li><a href="mailto:shield@liabilityliberators.com">shield@liabilityliberators.com</a></li>
+<li><a href="https://calendly.com/shield-liabilityliberators/30min" rel="noopener noreferrer" target="_blank">Book a 30 minute call</a></li>
+<li><a data-modal-legal="privacy" href="#">Privacy Policy</a></li>
+<li><a data-modal-legal="terms" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="disclaimer">
+<p>Liability Liberators provides revenue analysis and recovery operations. Our services do not constitute legal, accounting, tax, audit, or other licensed professional advice; consult the appropriate licensed professionals where applicable. No specific recovery amounts are guaranteed unless expressly stated in a written engagement. © <span id="year">2026</span> Liability Liberators. All rights reserved.</p>
+<span>liabilityliberators.com</span>
+</div>
+</div>
+</footer>
+ ================= AUDIT MODAL ================= 
+<div aria-labelledby="auditModalTitle" aria-modal="true" class="modal" id="auditModal" role="dialog">
+<div class="modal-panel">
+<button aria-label="Close dialog" class="modal-close" data-close="">×</button>
+<div id="auditFormView">
+<p class="eyebrow" style="margin-bottom:14px">Confidential Assessment</p>
+<h3 id="auditModalTitle">Request a Revenue Leakage Assessment</h3>
+<p class="sub">For qualified mid market and enterprise B2B companies. The assessment is the first step toward determining whether deeper revenue recovery work is warranted.</p>
+<form action="https://api.web3forms.com/submit" id="auditForm" method="POST">
+<input name="access_key" type="hidden" value="b886a2df-32ac-4365-b9b5-4a7aac9a7977"/>
+<input name="subject" type="hidden" value="Revenue Leakage Assessment Request"/>
+<input name="from_name" type="hidden" value="Liability Liberators Website"/>
+<input name="replyto" type="hidden" value=""/>
+<div class="field-row">
+<div class="field"><label for="f-name">Full name</label><input autocomplete="name" id="f-name" name="name" placeholder="Your name" required="" type="text"/></div>
+<div class="field"><label for="f-email">Business email</label><input autocomplete="email" id="f-email" name="email" placeholder="you@company.com" required="" type="email"/></div>
+</div>
+<div class="field-row">
+<div class="field"><label for="f-company">Company</label><input autocomplete="organization" id="f-company" name="company" placeholder="Company name" required="" type="text"/></div>
+<div class="field"><label for="f-title">Your role</label><input autocomplete="organization-title" id="f-title" name="title" placeholder="CFO, VP Finance, Controller…" required="" type="text"/></div>
+</div>
+<div class="field">
+<label for="f-revenue">Approximate annual revenue</label>
+<select id="f-revenue" name="revenue" required="">
+<option disabled="" selected="" value="">Select a range</option>
+<option>$20M $50M</option>
+<option>$50M $100M</option>
+<option>$100M $250M</option>
+<option>$250M $500M</option>
+<option>$500M+</option>
+</select>
+</div>
+<div class="field">
+<label for="f-trigger">What prompted the review?</label>
+<select id="f-trigger" name="trigger">
+<option selected="" value="">Select the closest fit</option>
+<option>We suspect revenue is being lost somewhere in the cycle</option>
+<option>Receivables, deductions, or disputes are growing</option>
+<option>Pricing or contract terms may not be fully enforced</option>
+<option>We are preparing for a finance transformation or diligence event</option>
+<option>We want an independent look at our revenue cycle</option>
+<option>Other</option>
+</select>
+</div>
+<div class="field"><label for="f-env">How does revenue move through your business?</label><textarea id="f-env" name="environment" placeholder="ERP, billing platform, CRM, payment systems, invoice volume, recurring vs. usage-based billing…"></textarea></div>
+<div class="field"><label for="f-concern">Where do you suspect value may be slipping?</label><textarea id="f-concern" name="concern" placeholder="Optional — underpayments, credits, missed charges, pricing, collections, contract leakage, unapplied cash…"></textarea></div>
+<div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+<label for="f-website">Website</label>
+<input autocomplete="off" id="f-website" name="website" tabindex="-1" type="text"/>
+</div>
+<button class="btn btn-primary" id="auditSubmit" style="width:100%;justify-content:center;margin-top:8px" type="submit">Submit Request <span class="arr">→</span></button>
+<p aria-live="polite" class="form-note" id="formStatus" role="status">Your information is confidential and used only to evaluate and respond to your request.</p>
+</form>
+</div>
+<div class="form-success" id="auditSuccess">
+<svg aria-hidden="true" height="52" style="margin:0 auto" viewbox="0 0 52 52" width="52"><circle cx="26" cy="26" fill="none" r="25" stroke="#161513" stroke-opacity=".3"></circle><path d="M16 27l7 7 13-14" fill="none" stroke="#161513" stroke-width="1.5"></path></svg>
+<h4>Request received.</h4>
+<p>Thank you. Your request has been received. Book a 30 minute conversation now so we can understand your revenue environment and determine the right next step.</p>
+<a class="btn btn-primary" href="https://calendly.com/shield-liabilityliberators/30min" rel="noopener noreferrer" style="margin-top:28px" target="_blank">Book a 30 Minute Call <span class="arr">→</span></a>
+</div>
+</div>
+</div>
+ ================= LEGAL MODALS ================= 
+<div aria-labelledby="legalTitle" aria-modal="true" class="modal legal" id="legalModal" role="dialog">
+<div class="modal-panel">
+<button aria-label="Close dialog" class="modal-close" data-close="">×</button>
+<h3 id="legalTitle">Privacy Policy</h3>
+<div id="legalBody"></div>
+</div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- footer year ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- nav scroll state ---------- */
+  var nav = document.getElementById("nav");
+  function onScrollNav(){ nav.classList.toggle("scrolled", window.scrollY > 24); }
+  window.addEventListener("scroll", onScrollNav, {passive:true});
+  onScrollNav();
+
+  /* ---------- mobile menu ---------- */
+  var menuBtn = document.getElementById("menuBtn");
+  var mobileMenu = document.getElementById("mobileMenu");
+  function setMenu(open){
+    menuBtn.classList.toggle("open", open);
+    mobileMenu.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", String(open));
+    mobileMenu.setAttribute("aria-hidden", String(!open));
+    document.body.classList.toggle("locked", open);
+  }
+  menuBtn.addEventListener("click", function(){ setMenu(!mobileMenu.classList.contains("open")); });
+  mobileMenu.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){ setMenu(false); });
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && !reduceMotion){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("visible"); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add("visible"); });
+  }
+
+  /* ---------- leak activation ---------- */
+  var flowPanel = document.getElementById("flowPanel");
+  if(flowPanel && "IntersectionObserver" in window){
+    var leakIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          setTimeout(function(){ flowPanel.classList.add("leak-active"); }, 500);
+          leakIO.unobserve(flowPanel);
+        }
+      });
+    }, {threshold:.08, rootMargin:"0px 0px 80px 0px"});
+    leakIO.observe(flowPanel);
+  } else if(flowPanel){
+    flowPanel.classList.add("leak-active");
+  }
+
+  /* ---------- glass word parallax ---------- */
+  var words = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+  if(words.length && !reduceMotion){
+    var ticking = false;
+    function parallax(){
+      var vh = window.innerHeight;
+      words.forEach(function(el){
+        var r = el.getBoundingClientRect();
+        if(r.bottom < -200 || r.top > vh + 200) return;
+        var speed = parseFloat(el.getAttribute("data-parallax")) || 0;
+        var offset = (r.top + r.height/2 - vh/2) * speed;
+        if(el.closest(".final")){
+          el.style.transform = "translate(-50%, calc(-50% + " + offset.toFixed(1) + "px))";
+        } else {
+          el.style.transform = "translateY(" + offset.toFixed(1) + "px)";
+        }
+      });
+      ticking = false;
+    }
+    window.addEventListener("scroll", function(){
+      if(!ticking){ window.requestAnimationFrame(parallax); ticking = true; }
+    }, {passive:true});
+    parallax();
+  }
+
+  /* ---------- interactive recovery map ---------- */
+  var recoveryMap = document.getElementById("recoveryMap");
+  if(recoveryMap){
+    var recoveryData = {
+      all:{total:"$1,188,320", note:"Combined illustrative value shown across the eight categories below.", title:"All opportunities", text:"A fictional example of how a finance team could see the largest recovery conversations at a glance.", status:"Analysis view", nextAction:"Open the data review.", evidenceTitle:"Revenue cycle records", evidenceText:"Review invoice, contract, billing, payment, credit, and customer records together.", exampleTitle:"Several types of mismatch", exampleText:"Illustrative exceptions across billing, collections, pricing, and cash application. Figures are fictional.", stepTitle:"Validate, then prioritize", stepText:"Confirm each exception against source documents, estimate effort, and agree on ownership."},
+      unpaid:{total:"$198,000", note:"Illustrative value associated with unpaid invoices.", title:"Unpaid invoices", text:"Overdue receivables that may require systematic review, escalation, or resolution.", evidenceTitle:"Open receivables and collection history", evidenceText:"Compare the relevant records and trace the difference to its source.", exampleTitle:"Invoice aging, payment history, and customer correspondence", exampleText:"A fictional illustration of a record that may need review, not a confirmed finding.", stepTitle:"Confirm balances and identify the right escalation path", stepText:"Validate the documents and confirm whether the difference is legitimate and actionable.", status:"Category selected", nextAction:"Trace the highest-value transactions."},
+      underpayments:{total:"$214,000", note:"Illustrative value associated with underpayments.", title:"Underpayments", text:"Short pays, partial remittances, and other invoice-to-cash differences that merit transaction-level review.", evidenceTitle:"Invoice lines, remittance advice, and contract terms", evidenceText:"Compare the relevant records and trace the difference to its source.", exampleTitle:"A payment that is lower than the amount billed", exampleText:"A fictional illustration of a record that may need review, not a confirmed finding.", stepTitle:"Match each short payment to the invoice and agreed terms", stepText:"Validate the documents and confirm whether the difference is legitimate and actionable.", status:"Category selected", nextAction:"Trace short pays to source invoices and terms."},
+      billing:{total:"$112,000", note:"Illustrative value associated with billing discrepancies.", title:"Billing discrepancies", text:"Differences between invoices and contracted terms, order quantities, or agreed rates.", evidenceTitle:"Invoices, order details, and approved rates", evidenceText:"Compare the relevant records and trace the difference to its source.", exampleTitle:"A billed amount that differs from the documented rate or quantity", exampleText:"A fictional illustration of a record that may need review, not a confirmed finding.", stepTitle:"Reconcile the source order, terms, and invoice calculation", stepText:"Validate the documents and confirm whether the difference is legitimate and actionable.", status:"Category selected", nextAction:"Reconcile invoice logic against source terms."},
+      contracts:{total:"$187,000", note:"Illustrative value associated with contract leakage.", title:"Contract leakage", text:"An example of where contractual terms, escalations, or entitlements may not align with billing activity.", evidenceTitle:"Signed agreements, amendments, and billing schedules", evidenceText:"Compare the relevant records and trace the difference to its source.", exampleTitle:"An approved increase or entitlement not reflected in billing", exampleText:"A fictional illustration of a record that may need review, not a confirmed finding.", stepTitle:"Verify the effective date and calculate the supported difference", stepText:"Validate the documents and confirm whether the difference is legitimate and actionable.", status:"Category selected", nextAction:"Compare contracted entitlements with billed activity."},
+      charges:{total:"$163,000", note:"Illustrative value associated with missed charges.", title:"Missed charges", text:"Services, usage, accessorials, or other billable activity that may not have reached an invoice.", evidenceTitle:"Service records, usage logs, and billing events", evidenceText:"Compare the relevant records and trace the difference to its source.", exampleTitle:"A delivered service or recorded usage with no matching invoice line", exampleText:"A fictional illustration of a record that may need review, not a confirmed finding.", stepTitle:"Confirm billable delivery and check whether an invoice was issued", stepText:"Validate the documents and confirm whether the difference is legitimate and actionable.", status:"Category selected", nextAction:"Match delivered work or usage to billing events."},
+      cash:{total:"$91,320", note:"Illustrative value associated with unapplied cash.", title:"Unapplied cash", text:"Payments that may have been received but not properly matched to the underlying receivable.", evidenceTitle:"Bank receipts, remittance details, and open invoices", evidenceText:"Compare the relevant records and trace the difference to its source.", exampleTitle:"A received payment that remains unmatched to a customer balance", exampleText:"A fictional illustration of a record that may need review, not a confirmed finding.", stepTitle:"Match remittance references and correct the cash application", stepText:"Validate the documents and confirm whether the difference is legitimate and actionable.", status:"Category selected", nextAction:"Match remittances to open receivables."},
+      credits:{total:"$81,000", note:"Illustrative value associated with credits and deductions.", title:"Credits & deductions", text:"Duplicate credits, unresolved deductions, and write-offs that may warrant investigation.", evidenceTitle:"Credit notes, deduction codes, and approval records", evidenceText:"Compare the relevant records and trace the difference to its source.", exampleTitle:"A credit or deduction without clear supporting documentation", exampleText:"A fictional illustration of a record that may need review, not a confirmed finding.", stepTitle:"Validate the reason, approval, and resolution status", stepText:"Validate the documents and confirm whether the difference is legitimate and actionable.", status:"Category selected", nextAction:"Validate deductions, credits, and write-off reasons."},
+      pricing:{total:"$142,000", note:"Illustrative value associated with pricing discrepancies.", title:"Pricing discrepancies", text:"Differences between contracted, approved, or expected pricing and what appears in billing records.", evidenceTitle:"Price lists, contract rates, and invoice line items", evidenceText:"Compare the relevant records and trace the difference to its source.", exampleTitle:"A billed rate that differs from the approved price", exampleText:"A fictional illustration of a record that may need review, not a confirmed finding.", stepTitle:"Confirm the applicable rate, date, and affected invoices", stepText:"Validate the documents and confirm whether the difference is legitimate and actionable.", status:"Category selected", nextAction:"Compare billed rates with approved pricing."}
+    };
+    var totalEl = document.getElementById("recoveryTotal");
+    var noteEl = document.getElementById("recoveryTotalNote");
+    var titleEl = document.getElementById("recoveryDetailTitle");
+    var textEl = document.getElementById("recoveryDetailText");
+    var actionEl = document.getElementById("recoveryDetailAction");
+    var statusEl = document.getElementById("recoveryStatus");
+    var evidenceTitleEl = document.getElementById("recoveryEvidenceTitle");
+    var evidenceTextEl = document.getElementById("recoveryEvidenceText");
+    var exampleTitleEl = document.getElementById("recoveryExampleTitle");
+    var exampleTextEl = document.getElementById("recoveryExampleText");
+    var stepTitleEl = document.getElementById("recoveryStepTitle");
+    var stepTextEl = document.getElementById("recoveryStepText");
+    var filters = recoveryMap.querySelectorAll(".recovery-filter");
+    var rows = recoveryMap.querySelectorAll(".recovery-bar-row");
+
+    function setRecoveryView(key){
+      var d = recoveryData[key] || recoveryData.all;
+      totalEl.textContent = d.total;
+      noteEl.textContent = d.note;
+      titleEl.textContent = d.title;
+      textEl.textContent = d.text;
+      if(actionEl) actionEl.textContent = "Next action: " + (d.nextAction || "review the data");
+      statusEl.textContent = d.status;
+      if(evidenceTitleEl) evidenceTitleEl.textContent = d.evidenceTitle || "Source records";
+      if(evidenceTextEl) evidenceTextEl.textContent = d.evidenceText || "Review the relevant source records.";
+      if(exampleTitleEl) exampleTitleEl.textContent = d.exampleTitle || "Example evidence";
+      if(exampleTextEl) exampleTextEl.textContent = d.exampleText || "Illustrative example only.";
+      if(stepTitleEl) stepTitleEl.textContent = d.stepTitle || "Validate before acting";
+      if(stepTextEl) stepTextEl.textContent = d.stepText || "Confirm the facts and agree on the next action.";
+      filters.forEach(function(btn){
+        var active = btn.getAttribute("data-key") === key;
+        btn.setAttribute("aria-pressed", String(active));
+      });
+      rows.forEach(function(row){
+        var rowKey = row.getAttribute("data-key");
+        var fill = row.querySelector(".recovery-bar-fill");
+        if(key === "all"){
+          row.style.opacity = "1";
+          fill.style.width = "var(--bar)";
+        } else {
+          var active = rowKey === key;
+          row.style.opacity = active ? "1" : ".32";
+          fill.style.width = active ? "var(--bar)" : "0%";
+        }
+      });
+    }
+    filters.forEach(function(btn){
+      btn.addEventListener("click", function(){ setRecoveryView(btn.getAttribute("data-key")); });
+    });
+    setRecoveryView("all");
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  document.querySelectorAll(".faq-item").forEach(function(item){
+    var q = item.querySelector(".faq-q");
+    var a = item.querySelector(".faq-a");
+    q.addEventListener("click", function(){
+      var isOpen = item.classList.contains("open");
+      document.querySelectorAll(".faq-item.open").forEach(function(other){
+        other.classList.remove("open");
+        other.querySelector(".faq-q").setAttribute("aria-expanded","false");
+        other.querySelector(".faq-a").style.maxHeight = "0px";
+      });
+      if(!isOpen){
+        item.classList.add("open");
+        q.setAttribute("aria-expanded","true");
+        a.style.maxHeight = a.scrollHeight + "px";
+      }
+    });
+  });
+
+  /* ---------- modals ---------- */
+  var auditModal = document.getElementById("auditModal");
+  var legalModal = document.getElementById("legalModal");
+  var lastFocus = null;
+
+  function openModal(m){
+    lastFocus = document.activeElement;
+    m.classList.add("open");
+    document.body.classList.add("locked");
+    var c = m.querySelector(".modal-close");
+    if(c) c.focus();
+  }
+  function closeModal(m){
+    m.classList.remove("open");
+    document.body.classList.remove("locked");
+    if(lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('[data-modal="audit"]').forEach(function(btn){
+    btn.addEventListener("click", function(){
+      setMenu(false);
+      document.getElementById("auditFormView").style.display = "";
+      document.getElementById("auditSuccess").style.display = "none";
+      openModal(auditModal);
+    });
+  });
+
+  var legalContent = {
+    privacy: {
+      title: "Privacy Policy",
+      body: "<p>Information submitted through this website is used solely to evaluate and respond to your inquiry. We do not sell, rent, or share your information with third parties for marketing purposes. Any financial data shared during an engagement is handled confidentially under the terms of the engagement agreement.</p><p>Questions about data handling may be directed to <a href=\"mailto:shield@liabilityliberators.com\" style=\"text-decoration:underline\">shield@liabilityliberators.com</a>.</p>"
+    },
+    terms: {
+      title: "Terms of Service",
+      body: "<p>This website is provided for informational purposes. Nothing on this site constitutes legal, accounting, tax, audit, or other licensed professional advice, nor a guarantee of specific recovery results. Service engagements are governed by individually negotiated written agreements.</p><p>No specific recovery amounts are promised or implied unless expressly stated in a written engagement signed by both parties.</p>"
+    }
+  };
+
+  document.querySelectorAll("[data-modal-legal]").forEach(function(link){
+    link.addEventListener("click", function(e){
+      e.preventDefault();
+      var key = link.getAttribute("data-modal-legal");
+      document.getElementById("legalTitle").textContent = legalContent[key].title;
+      document.getElementById("legalBody").innerHTML = legalContent[key].body;
+      openModal(legalModal);
+    });
+  });
+
+  document.querySelectorAll(".modal").forEach(function(m){
+    m.addEventListener("click", function(e){ if(e.target === m) closeModal(m); });
+    m.querySelectorAll("[data-close]").forEach(function(b){
+      b.addEventListener("click", function(){ closeModal(m); });
+    });
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape"){
+      document.querySelectorAll(".modal.open").forEach(function(m){ closeModal(m); });
+      if(mobileMenu.classList.contains("open")) setMenu(false);
+    }
+  });
+
+  /* ---------- audit form / Web3Forms ---------- */
+  var WEB3FORMS_KEY = "b886a2df-32ac-4365-b9b5-4a7aac9a7977";
+  var form = document.getElementById("auditForm");
+  var submitBtn = document.getElementById("auditSubmit");
+  var formStatus = document.getElementById("formStatus");
+
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+
+    /* Basic honeypot spam protection. */
+    if(document.getElementById("f-website").value.trim() !== "") return;
+
+    var name = document.getElementById("f-name").value.trim();
+    var email = document.getElementById("f-email").value.trim();
+    var company = document.getElementById("f-company").value.trim();
+    var title = document.getElementById("f-title").value.trim();
+    var revenue = document.getElementById("f-revenue").value;
+    var environment = document.getElementById("f-env").value.trim();
+    var concern = document.getElementById("f-concern").value.trim();
+
+    var message = [
+      "Revenue Leakage Assessment Request",
+      "",
+      "Name: " + name,
+      "Work email: " + email,
+      "Company: " + company,
+      "Job title: " + title,
+      "Company revenue range: " + revenue,
+      "Review trigger: " + (document.getElementById("f-trigger").value || "Not specified"),
+      "",
+      "Revenue / AR environment:",
+      environment || "Not provided",
+      "",
+      "Current concern:",
+      concern || "Not provided"
+    ].join("\n");
+
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = "0.6";
+    submitBtn.style.pointerEvents = "none";
+    formStatus.textContent = "Sending your request…";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: "Revenue Leakage Assessment Request — " + company,
+        from_name: "Liability Liberators Website",
+        replyto: email,
+        email: email,
+        name: name,
+        message: message
+      })
+    })
+    .then(function(response){
+      return response.json().then(function(data){ return {ok: response.ok, data: data}; });
+    })
+    .then(function(result){
+      if(result.ok && result.data && result.data.success){
+        document.getElementById("auditFormView").style.display = "none";
+        document.getElementById("auditSuccess").style.display = "block";
+        form.reset();
+        formStatus.textContent = "Your information is confidential and used only to evaluate and respond to your request.";
+      } else {
+        throw new Error((result.data && result.data.message) || "Submission failed");
+      }
+    })
+    .catch(function(){
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = "1";
+      submitBtn.style.pointerEvents = "auto";
+      formStatus.textContent = "We couldn't send your request right now. Please email shield@liabilityliberators.com directly.";
+    });
+  });
+})();
+</script>
+</body>
+</html>
