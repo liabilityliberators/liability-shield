@@ -694,6 +694,114 @@ body.locked{overflow:hidden}
 .flow-stage .leak-ring{stroke-opacity:.42!important}
 .flow-micro-label{color:#5b564f!important;background:rgba(255,255,255,.72)!important}
 </style>
+
+<style id="mobile-glass-fit-v2">
+/* Mobile glass-word refinement: keep every watermark fully readable without changing desktop composition. */
+@media (max-width:760px){
+  .glass-word{
+    width:max-content !important;
+    max-width:none !important;
+    overflow:visible !important;
+    white-space:nowrap !important;
+    left:50% !important;
+    right:auto !important;
+    font-size:clamp(3.35rem,16vw,6.25rem) !important;
+    line-height:.82 !important;
+    letter-spacing:-.035em !important;
+    color:rgba(22,21,19,.038) !important;
+    -webkit-text-stroke:1px rgba(22,21,19,.16) !important;
+    text-shadow:0 1px 0 rgba(255,255,255,.7),0 10px 26px rgba(22,21,19,.035) !important;
+    transform:translateX(-50%) !important;
+  }
+
+  .glass-word::before{
+    width:100% !important;
+    height:100% !important;
+    white-space:nowrap !important;
+    background:linear-gradient(180deg,rgba(22,21,19,.15),rgba(22,21,19,.035) 56%,rgba(22,21,19,.008)) !important;
+  }
+
+  /* Keep parallax words centered on touch screens so scroll transforms cannot clip them. */
+  .glass-word[data-parallax]{transform:translateX(-50%) !important;}
+
+  .hero > .glass-word{
+    bottom:7% !important;
+    top:auto !important;
+  }
+  .problem > .glass-word.watermark-problem{
+    top:6% !important;
+    bottom:auto !important;
+  }
+  .find-section > .glass-word.watermark-find{
+    top:13% !important;
+    bottom:auto !important;
+  }
+  .recovery-map > .glass-word{
+    top:3% !important;
+    bottom:auto !important;
+  }
+  .audit > .glass-word{
+    top:2% !important;
+    bottom:auto !important;
+  }
+  .managed-section > .glass-word.watermark-managed{
+    bottom:1% !important;
+    top:auto !important;
+  }
+  .why > .glass-word.watermark-why{
+    top:7% !important;
+    bottom:auto !important;
+  }
+  .how-section > .glass-word.watermark-how{
+    bottom:1% !important;
+    top:auto !important;
+  }
+  .industry-section > .glass-word.watermark-industry{
+    top:7% !important;
+    bottom:auto !important;
+  }
+  .econ > .glass-word{
+    bottom:4% !important;
+    top:auto !important;
+    left:76% !important;
+    font-size:clamp(4rem,20vw,7rem) !important;
+  }
+  .vision-section > .glass-word.watermark-vision{
+    bottom:1% !important;
+    top:auto !important;
+  }
+  .about-section > .glass-word.watermark-about{
+    top:6% !important;
+    bottom:auto !important;
+    font-size:clamp(4.5rem,19vw,7rem) !important;
+  }
+  .faq-section > .glass-word.watermark-faq{
+    top:2% !important;
+    bottom:auto !important;
+    font-size:clamp(4.5rem,20vw,7rem) !important;
+  }
+  .final > .glass-word{
+    top:50% !important;
+    bottom:auto !important;
+    left:50% !important;
+    font-size:clamp(3.35rem,16vw,6.25rem) !important;
+    transform:translate(-50%,-50%) !important;
+  }
+}
+
+@media (max-width:420px){
+  .glass-word{
+    font-size:clamp(3rem,15.5vw,5.25rem) !important;
+  }
+  .glass-word[data-text="?"]{
+    font-size:clamp(4rem,23vw,7rem) !important;
+  }
+  .glass-word[data-text="∞"]{
+    font-size:clamp(5rem,27vw,8rem) !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <header class="nav" id="nav">
