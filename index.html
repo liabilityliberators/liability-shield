@@ -79,6 +79,7 @@ section{scroll-margin-top:88px;position:relative}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:-7px;height:2px;width:0;background:var(--coral);border-radius:2px;transition:.3s}
 .nav-links a:hover{color:var(--ink)}
 .nav-links a:hover::after{width:100%}
+button.btn-nav,.btn-nav{font-family:inherit;border:0;cursor:pointer;text-align:center}
 .btn-nav{padding:11px 18px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:13px;box-shadow:0 8px 24px rgba(21,21,26,.15);transition:.25s}
 .btn-nav:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(21,21,26,.22)}
 .menu-btn{display:none;width:40px;height:40px;border:1px solid var(--inkline);background:rgba(255,255,255,.38);border-radius:12px;align-items:center;justify-content:center}
@@ -90,7 +91,7 @@ section{scroll-margin-top:88px;position:relative}
 .mobile-menu{position:fixed;top:69px;left:0;right:0;z-index:170;background:rgba(246,240,223,.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--inkline);padding:18px 20px 24px;display:grid;gap:6px;transform:translateY(-115%);opacity:0;transition:.35s ease;pointer-events:none;box-shadow:0 20px 50px rgba(49,38,18,.12)}
 .mobile-menu.open{transform:translateY(0);opacity:1;pointer-events:auto}
 .mobile-menu a{font-size:20px;font-weight:700;letter-spacing:-.02em;padding:11px 4px;border-bottom:1px solid var(--inkline-soft)}
-.mobile-menu .mm-cta{border:0;color:var(--violet);padding-top:16px}
+.mobile-menu .mm-cta{border:0;color:var(--violet);padding-top:16px;cursor:pointer;background:none;font:inherit;text-align:left;width:100%}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:15px 24px;font-size:14px;font-weight:700;transition:transform .25s,box-shadow .25s,background .25s,color .25s;position:relative;overflow:hidden}
@@ -219,6 +220,15 @@ footer{background:#1a1731;color:#fff;padding:54px 0 34px}.foot{display:flex;just
 /* privacy modal */
 .modal{position:fixed;inset:0;z-index:400;background:rgba(25,21,18,.56);backdrop-filter:blur(14px);display:grid;place-items:center;padding:18px;opacity:0;pointer-events:none;transition:.3s}.modal.open{opacity:1;pointer-events:auto}.modal-card{width:min(920px,100%);height:min(84svh,900px);background:#fffaf0;border:1px solid rgba(255,255,255,.75);border-radius:28px;box-shadow:0 30px 100px rgba(20,10,0,.25);display:flex;flex-direction:column;overflow:hidden;transform:translateY(20px) scale(.98);transition:.35s}.modal.open .modal-card{transform:none}.modal-head{padding:22px 26px;border-bottom:1px solid var(--inkline);display:flex;justify-content:space-between;gap:20px;align-items:center;position:sticky;top:0;background:rgba(255,250,240,.96);backdrop-filter:blur(10px)}.modal-head h3{font-size:25px;letter-spacing:-.03em}.modal-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--inkline);background:#f4ead7;color:var(--ink);display:grid;place-items:center;font-size:20px}.privacy-content{overflow:auto;padding:28px 30px 40px;color:#57535b}.privacy-content h4{font-size:17px;color:var(--ink);margin:24px 0 8px}.privacy-content p,.privacy-content li{font-size:14px;line-height:1.75}.privacy-content ul{padding-left:20px;margin:8px 0}.privacy-meta{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
 
+.audit-modal-card{width:min(1080px,100%);height:min(90svh,960px);background:#fffaf0;border:1px solid rgba(255,255,255,.8);border-radius:30px;box-shadow:0 30px 100px rgba(20,10,0,.28);display:flex;flex-direction:column;overflow:hidden;transform:translateY(22px) scale(.985);transition:.35s}.modal.open .audit-modal-card{transform:none}
+.audit-modal-head{padding:24px 28px;border-bottom:1px solid var(--inkline);display:flex;justify-content:space-between;gap:22px;align-items:flex-start;background:rgba(255,250,240,.97);backdrop-filter:blur(10px)}
+.audit-modal-head h3{font-size:32px;letter-spacing:-.04em;margin-top:5px}.audit-modal-head p{color:var(--muted);font-size:14px;margin-top:6px;max-width:62ch}.audit-modal-body{overflow:auto;padding:28px}
+.audit-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}.audit-field{margin:0}.audit-field.full{grid-column:1/-1}.audit-field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}.audit-field input,.audit-field select,.audit-field textarea{width:100%;border:1px solid var(--inkline);background:#fcf6e9;color:var(--ink);border-radius:14px;padding:13px 14px;outline:none;transition:.25s}.audit-field input:focus,.audit-field select:focus,.audit-field textarea:focus{border-color:rgba(111,64,255,.56);box-shadow:0 0 0 4px rgba(111,64,255,.08)}.audit-field textarea{min-height:112px;resize:vertical}
+.audit-note{padding:14px 16px;border-radius:16px;background:#efe5cd;border:1px solid var(--inkline);color:#5f5a62;font-size:12px;line-height:1.6}.audit-note strong{color:var(--ink)}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.choice{position:relative}.choice input{position:absolute;opacity:0;pointer-events:none}.choice label{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--inkline);border-radius:12px;background:#fcf6e9;color:#4f4a53;font-size:13px;cursor:pointer;transition:.2s}.choice label::before{content:"";width:15px;height:15px;border:1px solid #aaa3a0;border-radius:4px;flex:none;background:#fffaf0}.choice input:checked + label{border-color:rgba(111,64,255,.45);background:rgba(111,64,255,.07);color:var(--ink)}.choice input:checked + label::before{background:var(--violet);border-color:var(--violet);box-shadow:inset 0 0 0 3px #fffaf0}
+.audit-form-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:20px;padding-top:20px;border-top:1px solid var(--inkline)}.audit-submit{min-width:220px}.audit-status{min-height:22px;font-family:var(--mono);font-size:12px}.audit-status.ok{color:#267257}.audit-status.err{color:#b33b34}.audit-success{display:none;padding:36px 10px 20px;text-align:center}.audit-success.show{display:block}.audit-success .success-mark{width:70px;height:70px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;background:var(--violet);color:#fff;font-size:30px;box-shadow:0 15px 38px rgba(111,64,255,.24)}.audit-success h4{font-size:30px;letter-spacing:-.04em}.audit-success p{color:var(--muted);max-width:54ch;margin:10px auto 22px}
+@media (max-width:760px){.audit-form-grid{grid-template-columns:1fr}.audit-field.full{grid-column:auto}.choice-grid{grid-template-columns:1fr}.audit-modal-head{padding:20px}.audit-modal-head h3{font-size:27px}.audit-modal-body{padding:20px}.audit-form-footer{align-items:stretch}.audit-submit{width:100%}}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.75,.2,1)}.reveal.in{opacity:1;transform:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
 .hero .reveal{opacity:1;transform:none}
@@ -242,11 +252,11 @@ footer{background:#1a1731;color:#fff;padding:54px 0 34px}.foot{display:flex;just
   <nav class="nav-links" aria-label="Primary navigation">
     <a href="#problem">The Problem</a><a href="#hunt">What We Find</a><a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
   </nav>
-  <a href="#contact" class="btn-nav">Book the Audit</a>
+  <button type="button" class="btn-nav audit-open">Book the Audit</button>
   <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span></button>
 </header>
 <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
-  <a href="#problem">The Problem</a><a href="#hunt">What We Find</a><a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a href="#contact" class="mm-cta">Book the Audit</a>
+  <a href="#problem">The Problem</a><a href="#hunt">What We Find</a><a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><button type="button" class="mm-cta audit-open">Book the Audit</button>
 </nav>
 
 <main>
@@ -259,7 +269,7 @@ footer{background:#1a1731;color:#fff;padding:54px 0 34px}.foot{display:flex;just
         <h1><span class="ink">Find the profit</span><span class="paint">you are already losing.</span></h1>
         <p class="hero-lede">Every business has money hiding in plain sight. We look for <strong>failed payments, underbilling, pricing gaps, excess spend, overdue cash and missed revenue</strong> and turn the leaks into a clear recovery plan.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary">Book the $2,500 Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+          <button type="button" class="btn btn-primary audit-open">Book the $2,500 Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
           <a href="#problem" class="btn btn-soft">See what leaks</a>
         </div>
         <div class="hero-note"><span><i></i>Fixed fee $2,500</span><span><i></i>Recovery based on verified value</span><span><i></i>Evidence first</span></div>
@@ -347,7 +357,7 @@ footer{background:#1a1731;color:#fff;padding:54px 0 34px}.foot{display:flex;just
         <span class="price-label">Profit Leak Audit</span><h3>Find where the money is going.</h3><div class="price-amount">$2,500</div><p class="price-sub">A focused forensic review of your revenue, billing, contracts and recurring spend, ending in a working session around what is worth recovering.</p>
         <ul class="price-list"><li><span class="check">✓</span><span>Review across the business areas most likely to hide leakage</span></li><li><span class="check">✓</span><span>Meaningful leaks sized in dollars and ranked by recoverability</span></li><li><span class="check">✓</span><span>A clear sequence for what to close first</span></li><li><span class="check">✓</span><span>Working session to walk through the findings</span></li></ul>
         <div class="fee-box"><strong>Fixed fee</strong><span>$2,500 one time. The findings belong to you.</span></div>
-        <a href="#contact" class="btn" style="background:var(--lime);color:#1b2030;margin-top:20px">Book the Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+        <button type="button" class="btn audit-open" style="background:var(--lime);color:#1b2030;margin-top:20px">Book the Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
       </article>
       <article class="price-card recovery reveal delay-1">
         <span class="price-label">Recovery Engagement</span><h3>Turn verified leaks into cash.</h3><div class="price-amount">10 to 25%</div><p class="price-sub">After the audit, we can execute agreed recovery work and charge around value that is actually verified.</p>
@@ -408,6 +418,59 @@ footer{background:#1a1731;color:#fff;padding:54px 0 34px}.foot{display:flex;just
     <div class="foot-base"><span>© 2026 LIABILITY LIBERATORS</span><span>LIABILITYLIBERATORS.COM</span></div>
   </div>
 </footer>
+
+
+<div class="modal" id="audit-modal" role="dialog" aria-modal="true" aria-labelledby="audit-title">
+  <div class="audit-modal-card">
+    <div class="audit-modal-head">
+      <div>
+        <span class="privacy-meta">Profit Leak Audit · $2,500</span>
+        <h3 id="audit-title">Start the conversation.</h3>
+        <p>This application helps us understand the business before we decide whether the audit makes sense. No files, passwords or payment details are requested here.</p>
+      </div>
+      <button class="modal-close audit-close" type="button" aria-label="Close audit application">×</button>
+    </div>
+    <div class="audit-modal-body">
+      <form id="audit-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="b886a2df-32ac-4369-b9b5-4a7aac9a7977">
+        <input type="hidden" name="subject" value="Profit Leak Audit Application — Liability Liberators">
+        <input type="hidden" name="form_type" value="Profit Leak Audit Application">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+        <div id="audit-form-fields">
+          <div class="audit-form-grid">
+            <div class="audit-field"><label for="audit-name">Full name *</label><input id="audit-name" name="name" type="text" autocomplete="name" required placeholder="Your full name"></div>
+            <div class="audit-field"><label for="audit-email">Work email *</label><input id="audit-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
+            <div class="audit-field"><label for="audit-company">Company *</label><input id="audit-company" name="company" type="text" autocomplete="organization" required placeholder="Company name"></div>
+            <div class="audit-field"><label for="audit-role">Your role *</label><input id="audit-role" name="role" type="text" autocomplete="organization-title" required placeholder="Founder, CFO, COO, etc."></div>
+            <div class="audit-field"><label for="audit-country">Phone country *</label><select id="audit-country" name="phone_country" required><option value="" selected disabled>Select country</option><option value="United Kingdom +44">🇬🇧 United Kingdom +44</option><option value="United States +1">🇺🇸 United States +1</option><option value="Canada +1">🇨🇦 Canada +1</option><option value="Argentina +54">🇦🇷 Argentina +54</option><option value="France +33">🇫🇷 France +33</option></select></div>
+            <div class="audit-field"><label for="audit-phone">Phone number *</label><input id="audit-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="Your number"></div>
+            <div class="audit-field full"><label for="audit-website">Company website</label><input id="audit-website" name="company_website" type="url" autocomplete="url" placeholder="https://company.com"></div>
+            <div class="audit-field full"><label>Where do you suspect profit is leaking?</label><div class="choice-grid">
+              <div class="choice"><input id="leak-revenue" type="checkbox" name="suspected_leaks[]" value="Revenue not collected"><label for="leak-revenue">Revenue not collected</label></div>
+              <div class="choice"><input id="leak-billing" type="checkbox" name="suspected_leaks[]" value="Underbilling or pricing gaps"><label for="leak-billing">Underbilling or pricing gaps</label></div>
+              <div class="choice"><input id="leak-costs" type="checkbox" name="suspected_leaks[]" value="Unnecessary costs"><label for="leak-costs">Unnecessary costs</label></div>
+              <div class="choice"><input id="leak-suppliers" type="checkbox" name="suspected_leaks[]" value="Supplier or contract leakage"><label for="leak-suppliers">Supplier or contract leakage</label></div>
+              <div class="choice"><input id="leak-customers" type="checkbox" name="suspected_leaks[]" value="Dormant customer revenue"><label for="leak-customers">Dormant customer revenue</label></div>
+              <div class="choice"><input id="leak-other" type="checkbox" name="suspected_leaks[]" value="Something else"><label for="leak-other">Something else</label></div>
+            </div></div>
+            <div class="audit-field full"><label for="audit-why">What made you look into this now? *</label><textarea id="audit-why" name="why_now" required placeholder="Tell us what changed, what concerns you, or what you want to understand."></textarea></div>
+            <div class="audit-field full"><label for="audit-outcome">What would make the audit clearly worthwhile for you? *</label><textarea id="audit-outcome" name="desired_outcome" required placeholder="For example: identify the biggest profit leaks, understand where cash is being lost, or build a clear recovery priority list."></textarea></div>
+            <div class="audit-field"><label for="audit-contact-pref">Preferred contact</label><select id="audit-contact-pref" name="preferred_contact"><option value="Either email or phone">Either email or phone</option><option value="Email">Email</option><option value="Phone">Phone</option></select></div>
+            <div class="audit-field"><label for="audit-timing">When are you looking to start?</label><select id="audit-timing" name="timing"><option value="As soon as practical">As soon as practical</option><option value="Within 30 days">Within 30 days</option><option value="Exploring for later">Exploring for later</option></select></div>
+          </div>
+          <div class="audit-note" style="margin-top:18px"><strong>What happens next:</strong> we review your answers, decide whether the $2,500 audit is appropriate, and reply with the next step. This application does not charge you or commit you to an engagement.</div>
+          <div class="audit-form-footer"><p class="audit-status" id="audit-status" role="status" aria-live="polite"></p><button type="submit" class="btn btn-primary audit-submit">Submit Audit Application <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button></div>
+        </div>
+      </form>
+      <div class="audit-success" id="audit-success" aria-live="polite">
+        <div class="success-mark">✓</div>
+        <h4>Application received.</h4>
+        <p>Thank you. We will review the details and reply within one business day with a clear view on whether the Profit Leak Audit is the right next step.</p>
+        <button type="button" class="btn btn-ink audit-close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
   <div class="modal-card">
@@ -500,11 +563,29 @@ footer{background:#1a1731;color:#fff;padding:54px 0 34px}.foot{display:flex;just
 
   document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{if(mobileMenu.classList.contains('open'))closeMenu()}));
 
+
+  const auditModal=document.getElementById('audit-modal'), auditForm=document.getElementById('audit-form'), auditStatus=document.getElementById('audit-status'), auditFields=document.getElementById('audit-form-fields'), auditSuccess=document.getElementById('audit-success');
+  function openAudit(){closeMenu();auditModal.classList.add('open');document.body.classList.add('modal-open');setTimeout(()=>document.getElementById('audit-name').focus(),80)}
+  function closeAudit(){auditModal.classList.remove('open');document.body.classList.remove('modal-open');if(auditSuccess.classList.contains('show')){auditSuccess.classList.remove('show');auditFields.style.display='';auditForm.reset();auditStatus.textContent='';auditStatus.className='audit-status'}}
+  document.querySelectorAll('.audit-open').forEach(btn=>btn.addEventListener('click',openAudit));
+  document.querySelectorAll('.audit-close').forEach(btn=>btn.addEventListener('click',closeAudit));
+  auditModal.addEventListener('click',e=>{if(e.target===auditModal)closeAudit()});
+  auditForm.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!auditForm.checkValidity()){auditForm.reportValidity();return}
+    auditStatus.className='audit-status';auditStatus.textContent='Sending your application…';
+    const data=new FormData(auditForm);
+    fetch(auditForm.action,{method:'POST',body:data,headers:{Accept:'application/json'}})
+      .then(r=>r.json())
+      .then(json=>{if(json && json.success){auditStatus.textContent='';auditFields.style.display='none';auditSuccess.classList.add('show');auditForm.reset()}else{throw new Error('Application failed')}})
+      .catch(()=>{auditStatus.className='audit-status err';auditStatus.textContent='We could not send that application. Please try again in a moment.'});
+  });
+
   window.openPrivacy=function(){document.getElementById('privacy-modal').classList.add('open');document.body.classList.add('modal-open');document.querySelector('.modal-close').focus();};
   window.closePrivacy=function(){document.getElementById('privacy-modal').classList.remove('open');document.body.classList.remove('modal-open');};
   document.querySelectorAll('.privacy-open').forEach(btn=>btn.addEventListener('click',openPrivacy));
   document.getElementById('privacy-modal').addEventListener('click',e=>{if(e.target.id==='privacy-modal')closePrivacy();});
-  document.addEventListener('keydown',e=>{if(e.key==='Escape' && document.getElementById('privacy-modal').classList.contains('open'))closePrivacy();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(document.getElementById('audit-modal').classList.contains('open'))closeAudit(); if(document.getElementById('privacy-modal').classList.contains('open'))closePrivacy();}});
 })();
 </script>
 </body>
