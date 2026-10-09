@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liability Liberators | Find the Profit You Are Already Losing</title>
+<meta name="description" content="Liability Liberators finds revenue leakage, billing gaps, excess spend, payment failures and other hidden profit leaks, then helps you recover the value. Profit Leak Audit: $2,500.">
+<meta name="theme-color" content="#f6f0df">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%0A%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2236%22%20height%3D%2236%22%20rx%3D%2211%22%20fill%3D%22%2324164c%22%2F%3E%0A%3Cpath%20d%3D%22M11%2011v13c0%203%201.7%205%205%205h8%22%20fill%3D%22none%22%20stroke%3D%22%23b9ef4a%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Ccircle%20cx%3D%2228%22%20cy%3D%2229%22%20r%3D%223%22%20fill%3D%22%23ff5b52%22%2F%3E%0A%3C%2Fsvg%3E">
+<link rel="shortcut icon" href="data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2040%2040%22%3E%0A%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2236%22%20height%3D%2236%22%20rx%3D%2211%22%20fill%3D%22%2324164c%22%2F%3E%0A%3Cpath%20d%3D%22M11%2011v13c0%203%201.7%205%205%205h8%22%20fill%3D%22none%22%20stroke%3D%22%23b9ef4a%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%2F%3E%0A%3Ccircle%20cx%3D%2228%22%20cy%3D%2229%22%20r%3D%223%22%20fill%3D%22%23ff5b52%22%2F%3E%0A%3C%2Fsvg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Liability Liberators">
+<meta property="og:title" content="Liability Liberators | Find the Profit You Are Already Losing">
+<meta property="og:description" content="A forensic Profit Leak Audit for businesses that want to keep more of the money they already generate.">
+<meta property="og:url" content="https://liabilityliberators.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f6f0df;
+  --paper2:#efe5cd;
+  --cream:#fffaf0;
+  --ink:#15151a;
+  --muted:#605e66;
+  --soft:#8c877f;
+  --inkline:rgba(21,21,26,.13);
+  --inkline-soft:rgba(21,21,26,.08);
+  --violet:#6f40ff;
+  --violet-deep:#4b2db8;
+  --cyan:#18c8c8;
+  --coral:#ff5b52;
+  --gold:#ffb52e;
+  --lime:#b9ef4a;
+  --shadow:0 20px 70px rgba(50,39,18,.12);
+  --max:1200px;
+  --radius:26px;
+  --sans:"DM Sans",system-ui,sans-serif;
+  --serif:"DM Serif Display",Georgia,serif;
+  --mono:"Space Mono",ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body.modal-open{overflow:hidden}
+::selection{background:var(--violet);color:#fff}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+section{scroll-margin-top:88px;position:relative}
+
+/* painterly surface */
+.noise{position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.04;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
+.orb.a{width:360px;height:360px;background:radial-gradient(circle,rgba(111,64,255,.32),transparent 66%);top:-80px;right:-60px}
+.orb.b{width:320px;height:320px;background:radial-gradient(circle,rgba(24,200,200,.26),transparent 65%);bottom:-90px;left:-100px}
+.brush{position:absolute;pointer-events:none;opacity:.9}
+
+/* progress */
+#progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--violet),var(--coral),var(--gold),var(--cyan));z-index:200}
+
+/* nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:180;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(18px,4vw,46px);transition:.35s ease;background:rgba(246,240,223,.74);backdrop-filter:blur(10px);border-bottom:1px solid rgba(21,21,26,.04)}
+.nav.scrolled{padding-top:11px;padding-bottom:11px;background:rgba(246,240,223,.92);border-bottom-color:var(--inkline-soft);box-shadow:0 10px 30px rgba(49,38,18,.05)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.brand small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--soft);margin-top:2px;font-weight:400}
+.brand-mark{width:36px;height:36px;flex:none}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:13px;font-weight:600;color:#56525a}
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-7px;height:2px;width:0;background:var(--coral);border-radius:2px;transition:.3s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{width:100%}
+button.btn-nav,.btn-nav{font-family:inherit;border:0;cursor:pointer;text-align:center}
+.btn-nav{padding:11px 18px;border-radius:999px;background:var(--ink);color:#fff;font-weight:700;font-size:13px;box-shadow:0 8px 24px rgba(21,21,26,.15);transition:.25s}
+.btn-nav:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(21,21,26,.22)}
+.menu-btn{display:none;width:40px;height:40px;border:1px solid var(--inkline);background:rgba(255,255,255,.38);border-radius:12px;align-items:center;justify-content:center}
+.menu-btn span,.menu-btn span::before,.menu-btn span::after{display:block;width:18px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+.menu-btn span{position:relative}
+.menu-btn span::before,.menu-btn span::after{content:"";position:absolute;left:0}
+.menu-btn span::before{top:-6px}.menu-btn span::after{top:6px}
+.menu-btn.open span{background:transparent}.menu-btn.open span::before{transform:translateY(6px) rotate(45deg)}.menu-btn.open span::after{transform:translateY(-6px) rotate(-45deg)}
+.mobile-menu{position:fixed;top:69px;left:0;right:0;z-index:170;background:rgba(246,240,223,.98);backdrop-filter:blur(16px);border-bottom:1px solid var(--inkline);padding:18px 20px 24px;display:grid;gap:6px;transform:translateY(-115%);opacity:0;transition:.35s ease;pointer-events:none;box-shadow:0 20px 50px rgba(49,38,18,.12)}
+.mobile-menu.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.mobile-menu a{font-size:20px;font-weight:700;letter-spacing:-.02em;padding:11px 4px;border-bottom:1px solid var(--inkline-soft)}
+.mobile-menu .mm-cta{border:0;color:var(--violet);padding-top:16px;cursor:pointer;background:none;font:inherit;text-align:left;width:100%}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:15px 24px;font-size:14px;font-weight:700;transition:transform .25s,box-shadow .25s,background .25s,color .25s;position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 48%,transparent 66%);transform:translateX(-120%);transition:transform .7s}
+.btn:hover::after{transform:translateX(120%)}
+.btn-primary{background:var(--violet);color:#fff;box-shadow:0 14px 36px rgba(111,64,255,.25)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(111,64,255,.34)}
+.btn-ink{background:var(--ink);color:#fff;box-shadow:0 12px 30px rgba(21,21,26,.16)}
+.btn-ink:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(21,21,26,.22)}
+.btn-soft{background:rgba(255,255,255,.64);color:var(--ink);border:1px solid var(--inkline)}
+.btn-soft:hover{transform:translateY(-3px);border-color:rgba(111,64,255,.32);color:var(--violet)}
+.btn svg{transition:.25s}.btn:hover svg{transform:translateX(4px)}
+
+/* layout */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(20px,5vw,52px)}
+.section{padding:clamp(90px,10vw,150px) 0}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--violet);margin-bottom:19px}
+.kicker::before{content:"";width:28px;height:4px;border-radius:10px;background:linear-gradient(90deg,var(--violet),var(--coral));transform:rotate(-2deg)}
+h2{font-size:clamp(36px,5vw,68px);line-height:1.02;letter-spacing:-.04em;max-width:13ch}
+h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--violet)}
+.section-intro{color:var(--muted);max-width:56ch;margin-top:18px}
+
+/* hero */
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;background:linear-gradient(180deg,#f6f0df 0%,#f7efde 55%,#e8f1df 100%);padding:130px 0 60px}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(30px,5vw,70px);align-items:center}
+.hero-copy{position:relative;z-index:3}
+.hero h1{font-size:clamp(52px,7.7vw,108px);line-height:.94;letter-spacing:-.055em;max-width:10.5ch}
+.hero h1 .ink{display:block}.hero h1 .paint{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--violet)}
+.hero-lede{max-width:56ch;color:#55515a;font-size:clamp(17px,1.5vw,20px);margin-top:28px}
+.hero-lede strong{color:var(--ink)}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero-note{display:flex;flex-wrap:wrap;gap:14px 20px;margin-top:22px;font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--soft)}
+.hero-note span{display:flex;align-items:center;gap:7px}.hero-note i{width:7px;height:7px;border-radius:50%;background:var(--coral);display:inline-block}
+.hero-art{min-height:560px;position:relative;display:flex;align-items:center;justify-content:center}
+.art-frame{width:min(600px,100%);aspect-ratio:1/1;position:relative;filter:drop-shadow(0 30px 60px rgba(78,59,21,.15))}
+.art-bg{position:absolute;inset:0;border-radius:32% 24% 30% 20%;transform:rotate(-5deg);background:linear-gradient(135deg,#24164c 0%,#5732bb 42%,#1cc9c8 100%);overflow:hidden}
+.art-bg::before{content:"";position:absolute;inset:-20%;background:conic-gradient(from 140deg,transparent 0 24%,rgba(255,255,255,.12) 27% 31%,transparent 34% 57%,rgba(255,255,255,.14) 60% 63%,transparent 67% 100%);animation:spinSlow 18s linear infinite}
+.art-bg::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 55% 30%,rgba(255,255,255,.22),transparent 26%),radial-gradient(circle at 26% 75%,rgba(255,91,82,.32),transparent 28%)}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+.paint-stroke{position:absolute;left:8%;top:14%;width:75%;height:18%;background:linear-gradient(90deg,var(--coral),var(--gold),var(--coral));border-radius:45% 15% 55% 20%;transform:rotate(-11deg);filter:blur(.2px);opacity:.95;mix-blend-mode:screen;animation:brushFloat 6s ease-in-out infinite}
+.paint-stroke.two{left:16%;top:65%;width:66%;height:10%;background:linear-gradient(90deg,var(--lime),var(--cyan),var(--violet));transform:rotate(7deg);animation-delay:-2s}
+@keyframes brushFloat{0%,100%{transform:rotate(-11deg) translate3d(0,0,0)}50%{transform:rotate(-8deg) translate3d(10px,-9px,0)}}
+.paint-stroke.two{animation-name:brushFloatTwo}
+@keyframes brushFloatTwo{0%,100%{transform:rotate(7deg) translate3d(0,0,0)}50%{transform:rotate(10deg) translate3d(-7px,8px,0)}}
+.flow-card{position:absolute;left:8%;bottom:11%;width:58%;padding:24px;border-radius:24px;background:rgba(255,250,240,.92);border:1px solid rgba(255,255,255,.68);box-shadow:0 20px 40px rgba(30,19,7,.16);backdrop-filter:blur(8px);animation:cardFloat 6s ease-in-out infinite}
+@keyframes cardFloat{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-11px) rotate(0deg)}}
+.flow-top{display:flex;justify-content:space-between;gap:12px;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--soft)}
+.flow-number{font-size:42px;line-height:1;font-weight:700;letter-spacing:-.04em;margin-top:10px}.flow-number span{color:var(--violet)}
+.flow-line{height:10px;border-radius:20px;background:#e3dbc9;margin-top:16px;overflow:hidden}.flow-line i{display:block;width:68%;height:100%;background:linear-gradient(90deg,var(--violet),var(--coral),var(--gold));border-radius:20px;animation:barPulse 3.4s ease-in-out infinite}
+@keyframes barPulse{0%,100%{width:63%}50%{width:74%}}
+.leak-dot{position:absolute;width:34px;height:34px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 9px rgba(255,91,82,.12);animation:leakPulse 2.6s ease-in-out infinite}
+.leak-dot.one{top:29%;right:18%}.leak-dot.two{top:46%;right:9%;width:22px;height:22px;background:var(--gold);animation-delay:-1.1s}.leak-dot.three{top:61%;left:13%;width:27px;height:27px;background:var(--lime);animation-delay:-1.8s}
+@keyframes leakPulse{0%,100%{transform:scale(1) translateY(0);opacity:.95}50%{transform:scale(1.18) translateY(-8px);opacity:1}}
+.scribble{position:absolute;width:120px;height:90px;border:4px solid rgba(255,250,240,.72);border-right:0;border-bottom:0;border-radius:55% 0 0 0;transform:rotate(-18deg);right:3%;top:10%;opacity:.7;animation:sway 7s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(-11deg) translateY(8px)}}
+.hero-footer{margin-top:54px;border-top:1px solid rgba(21,21,26,.12);padding-top:16px;display:flex;justify-content:space-between;gap:20px;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.scroller{display:flex;align-items:center;gap:9px}.scroller b{display:block;width:34px;height:2px;background:var(--coral);animation:scroller 1.8s ease-in-out infinite}@keyframes scroller{50%{width:52px}}
+
+/* problem */
+.problem{background:var(--cream)}
+.problem-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(35px,6vw,90px);align-items:center}
+.problem-copy p{color:var(--muted);margin-top:20px;max-width:54ch}.problem-copy strong{color:var(--ink)}
+.leak-map{position:relative;min-height:520px;border-radius:34px;background:linear-gradient(150deg,#fff8e9 0%,#e9dfcb 100%);border:1px solid var(--inkline);overflow:hidden;box-shadow:var(--shadow)}
+.leak-map::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(21,21,26,.035) 0 2px,transparent 2px 14px);opacity:.6}
+.canvas-label{position:absolute;left:28px;top:24px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.money-river{position:absolute;left:7%;right:7%;top:29%;height:140px;border-radius:60% 45% 60% 40%;background:linear-gradient(90deg,var(--violet),#7e5bff 36%,var(--cyan) 100%);filter:saturate(1.05);transform:rotate(-2deg);box-shadow:0 16px 35px rgba(76,52,174,.18)}
+.money-river::before,.money-river::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.14)}
+.money-river::before{width:180px;height:34px;left:14%;top:33px}.money-river::after{width:110px;height:20px;right:14%;top:60px}
+.river-label{position:absolute;left:22px;top:26px;color:#fff;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.keep-pool{position:absolute;right:11%;bottom:11%;width:50%;height:130px;border-radius:55% 45% 55% 45%;background:linear-gradient(135deg,var(--lime),#d7ff85);transform:rotate(4deg);box-shadow:0 18px 35px rgba(95,123,20,.18)}
+.keep-pool span{position:absolute;left:26px;top:35px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2d3913}
+.leak-stream{position:absolute;width:230px;height:170px;border-left:10px solid var(--coral);border-bottom:10px solid var(--coral);border-radius:0 0 0 90%;transform:rotate(12deg);right:7%;top:44%;opacity:.88}
+.leak-stream.two{width:150px;height:120px;border-color:var(--gold);left:10%;top:49%;transform:rotate(-20deg)}
+.drop{position:absolute;width:18px;height:18px;border-radius:50%;background:var(--coral);box-shadow:0 8px 20px rgba(255,91,82,.28);animation:drop 2.8s ease-in-out infinite}.drop.d1{right:21%;top:46%}.drop.d2{right:28%;top:53%;width:12px;height:12px;background:var(--gold);animation-delay:-1s}.drop.d3{left:26%;top:51%;width:14px;height:14px;background:var(--coral);animation-delay:-1.9s}@keyframes drop{0%,100%{transform:translateY(0)}50%{transform:translateY(14px) scale(.86)}}
+.problem-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}.tag{padding:8px 12px;border:1px solid var(--inkline);border-radius:999px;background:rgba(255,255,255,.44);font-family:var(--mono);font-size:10px;letter-spacing:.05em;color:#6a6560}
+
+/* hunt */
+.hunt{background:linear-gradient(180deg,#eef2e1 0%,#e2eee1 100%)}
+.hunt-head{display:flex;justify-content:space-between;gap:30px;align-items:flex-end;margin-bottom:58px}.hunt-head h2{max-width:14ch}.hunt-head p{max-width:42ch;color:var(--muted)}
+.hunt-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.hunt-card{background:rgba(255,250,240,.72);border:1px solid var(--inkline-soft);border-radius:24px;padding:30px;min-height:250px;position:relative;overflow:hidden;transition:.4s;box-shadow:0 8px 24px rgba(66,54,24,.06)}
+.hunt-card:hover{transform:translateY(-8px) rotate(.2deg);box-shadow:0 24px 48px rgba(66,54,24,.12);border-color:rgba(111,64,255,.22)}
+.hunt-card::after{content:"";position:absolute;width:100px;height:100px;right:-24px;bottom:-24px;border-radius:50%;background:radial-gradient(circle,var(--coral),transparent 70%);opacity:.18}
+.hunt-icon{width:54px;height:54px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:#fff9ec;border:1px solid var(--inkline);margin-bottom:20px;color:var(--violet)}
+.hunt-card:nth-child(2) .hunt-icon{color:var(--coral)}.hunt-card:nth-child(3) .hunt-icon{color:var(--cyan)}.hunt-card:nth-child(4) .hunt-icon{color:#a07700}
+.hunt-card h3{font-size:24px;letter-spacing:-.025em;margin-bottom:10px}.hunt-card p{font-size:15px;color:var(--muted);max-width:36ch}
+
+/* process */
+.process{background:var(--paper)}
+.process-top{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:56px}.process-top p{color:var(--muted);max-width:48ch}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--inkline);border:1px solid var(--inkline);border-radius:26px;overflow:hidden}
+.step{background:rgba(255,255,255,.46);padding:32px 25px 34px;min-height:300px;position:relative;transition:.35s}.step:hover{background:#fffaf0}.step::before{content:"";position:absolute;left:0;top:0;width:100%;height:5px;background:linear-gradient(90deg,var(--violet),var(--coral));transform:scaleX(.2);transform-origin:left;transition:.45s}.step:hover::before{transform:scaleX(1)}
+.step-mark{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;font-family:var(--mono);font-size:11px;font-weight:700;margin-bottom:28px}
+.step h3{font-size:19px;margin-bottom:10px;letter-spacing:-.015em}.step p{font-size:14px;color:var(--muted)}
+.step small{display:block;margin-top:24px;color:var(--soft);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+
+/* proof strip */
+.proof{background:#1a1731;color:#fff;overflow:hidden}
+.proof::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(24,200,200,.18),transparent 26%),radial-gradient(circle at 80% 70%,rgba(255,91,82,.17),transparent 28%)}
+.proof-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.proof h2{max-width:13ch}.proof h2 em{color:var(--lime)}.proof p{color:rgba(255,255,255,.72);max-width:51ch}.proof-quote{padding:25px 0 0;border-top:1px solid rgba(255,255,255,.18);margin-top:26px;font-size:13px;letter-spacing:.02em;color:rgba(255,255,255,.55)}
+.signal{position:relative;height:340px;display:grid;place-items:center}.signal-core{width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:grid;place-items:center;position:relative;background:radial-gradient(circle,#43327e 0 34%,rgba(67,50,126,.35) 35% 55%,transparent 56%)}.signal-core strong{font-size:28px;letter-spacing:-.04em}.signal-core span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.55);text-transform:uppercase;text-align:center;margin-top:5px}.ring{position:absolute;border:1px solid rgba(255,255,255,.18);border-radius:50%;animation:ringPulse 3.6s ease-in-out infinite}.ring.r1{width:230px;height:230px}.ring.r2{width:300px;height:300px;animation-delay:-1.2s}.ring.r3{width:340px;height:340px;animation-delay:-2.2s}@keyframes ringPulse{0%,100%{transform:scale(.96);opacity:.55}50%{transform:scale(1.02);opacity:1}}
+
+/* pricing */
+.pricing{background:#f8f1df}
+.price-head{display:flex;justify-content:space-between;gap:30px;align-items:flex-end;margin-bottom:50px}.price-head p{max-width:45ch;color:var(--muted)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.price-card{border-radius:28px;padding:38px;position:relative;overflow:hidden;min-height:540px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.price-card.audit{background:#24164c;color:#fff}.price-card.audit::before{content:"";position:absolute;width:340px;height:340px;right:-110px;top:-100px;border-radius:50%;background:radial-gradient(circle,rgba(24,200,200,.48),transparent 68%)}
+.price-card.recovery{background:#fffaf0;border:1px solid var(--inkline)}
+.price-card.recovery::before{content:"";position:absolute;width:300px;height:300px;right:-100px;top:-90px;border-radius:50%;background:radial-gradient(circle,rgba(255,181,46,.27),transparent 68%)}
+.price-label{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;font-weight:700;opacity:.72}.price-card.audit .price-label{color:var(--lime)}.price-card.recovery .price-label{color:#a06f00}
+.price-card h3{font-size:30px;letter-spacing:-.03em;margin-top:14px;position:relative}.price-amount{font-size:clamp(52px,6vw,86px);font-weight:700;line-height:.95;letter-spacing:-.06em;margin-top:25px;position:relative}.price-card.audit .price-amount{color:var(--lime)}.price-card.recovery .price-amount{color:var(--coral)}
+.price-sub{margin-top:13px;max-width:43ch;position:relative}.price-card.audit .price-sub{color:rgba(255,255,255,.72)}.price-card.recovery .price-sub{color:var(--muted)}
+.price-list{list-style:none;display:grid;gap:12px;margin:28px 0 32px;position:relative}.price-list li{display:flex;gap:10px;align-items:flex-start;font-size:14px}.price-card.audit .price-list li{color:rgba(255,255,255,.83)}.price-card.recovery .price-list li{color:#54515a}.check{width:19px;height:19px;border-radius:50%;display:grid;place-items:center;flex:none;margin-top:1px}.price-card.audit .check{background:rgba(185,239,74,.14);color:var(--lime)}.price-card.recovery .check{background:rgba(255,91,82,.1);color:var(--coral)}
+.fee-box{margin-top:auto;padding:18px;border-radius:18px;position:relative}.price-card.audit .fee-box{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.68)}.price-card.recovery .fee-box{background:#f0e6d1;border:1px solid var(--inkline);color:#5e5a62}.fee-box strong{display:block;font-size:13px;margin-bottom:4px}.fee-box span{font-size:12px}.price-card .btn{margin-top:20px}
+
+/* faq */
+.faq{background:var(--cream)}.faq-wrap{max-width:900px;margin:0 auto}.faq-item{border-top:1px solid var(--inkline)}.faq-item:last-child{border-bottom:1px solid var(--inkline)}.faq-q{width:100%;padding:24px 4px;background:none;border:0;display:flex;align-items:center;justify-content:space-between;text-align:left;gap:20px;color:var(--ink);font-size:18px;font-weight:700}.faq-q:hover{color:var(--violet)}.faq-icon{width:32px;height:32px;border-radius:50%;border:1px solid var(--inkline);display:grid;place-items:center;position:relative;flex:none;transition:.3s}.faq-icon::before,.faq-icon::after{content:"";position:absolute;background:currentColor;border-radius:2px}.faq-icon::before{width:11px;height:2px}.faq-icon::after{width:2px;height:11px;transition:.3s}.faq-item.open .faq-icon{background:var(--violet);color:#fff;border-color:var(--violet)}.faq-item.open .faq-icon::after{transform:scaleY(0)}.faq-a{max-height:0;overflow:hidden;transition:max-height .45s ease}.faq-a p{color:var(--muted);font-size:15px;padding:0 40px 26px 4px;max-width:70ch}.inline-link{color:var(--violet);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;background:none;border:0;padding:0;font-weight:700}
+
+/* contact */
+.contact{background:linear-gradient(180deg,#e6efd7 0%,#eff2df 100%)}.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start}.contact-copy p{color:var(--muted);max-width:44ch;margin-top:18px}.contact-badge{margin-top:26px;display:inline-flex;align-items:center;gap:9px;padding:9px 12px;border-radius:999px;background:rgba(255,250,240,.7);border:1px solid var(--inkline);font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase}.contact-badge i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(24,200,200,.11)}
+.form-shell{background:#fffaf0;border:1px solid var(--inkline);border-radius:28px;padding:34px;box-shadow:var(--shadow)}.field{margin-bottom:16px}.field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}.field input,.field select,.field textarea{width:100%;border:1px solid var(--inkline);background:#fcf6e9;color:var(--ink);border-radius:14px;padding:13px 15px;outline:none;transition:.25s;min-height:49px}.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(111,64,255,.56);box-shadow:0 0 0 4px rgba(111,64,255,.08)}.field select{appearance:auto}.field textarea{min-height:120px;resize:vertical}.form-note{margin-top:13px;color:var(--soft);font-size:12px;line-height:1.55}.form-status{min-height:24px;margin-top:13px;font-family:var(--mono);font-size:12px}.form-status.ok{color:#267257}.form-status.err{color:#b33b34}.hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}.playbook-points{list-style:none;margin-top:22px;display:grid;gap:11px;max-width:42ch}.playbook-points li{display:flex;gap:10px;align-items:flex-start;color:#514d57;font-size:14px}.playbook-points li::before{content:'+';display:grid;place-items:center;flex:none;width:22px;height:22px;border-radius:50%;background:var(--lime);color:var(--ink);font-weight:800;font-size:14px;margin-top:1px}.contact-badge{margin-top:26px}.lead-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 15px}.lead-form-grid .field.full{grid-column:1/-1}.form-title{font-size:20px;letter-spacing:-.03em;margin-bottom:6px}.form-subtitle{color:var(--muted);font-size:13px;margin-bottom:20px}.playbook-success{padding:12px 0 4px}.playbook-success[hidden]{display:none!important}.playbook-success .success-mark{width:54px;height:54px;border-radius:18px;background:var(--lime);display:grid;place-items:center;color:var(--ink);font-size:26px;font-weight:800;margin-bottom:20px;transform:rotate(-4deg)}.playbook-success h3{font-size:27px;letter-spacing:-.04em;margin-bottom:8px}.playbook-success p{color:var(--muted);margin-bottom:22px;max-width:48ch}.playbook-success .btn{margin-bottom:12px}.text-button{display:block;background:none;border:0;color:var(--violet);text-decoration:underline;text-underline-offset:3px;font-size:13px;margin-top:10px}.contact-proof{display:flex;gap:8px;align-items:center;margin-top:20px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.09em;font-size:9px;color:var(--soft)}.contact-proof svg{flex:none}
+
+/* footer */
+footer{background:#1a1731;color:#fff;padding:54px 0 34px}.foot{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;flex-wrap:wrap}.foot-brand{display:flex;align-items:center;gap:10px;font-weight:700}.foot-brand small{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.15em;color:rgba(255,255,255,.42);margin-top:3px}.foot-links{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.foot-links a{color:rgba(255,255,255,.64);font-size:13px;padding:7px 9px;border-radius:10px;transition:.25s}.foot-links a:hover{color:#fff;background:rgba(255,255,255,.08)}.soc{width:40px;height:40px;border:1px solid rgba(255,255,255,.15)!important;border-radius:50%;display:inline-flex!important;align-items:center;justify-content:center;padding:0!important}.soc:hover{background:var(--violet)!important;border-color:var(--violet)!important;transform:translateY(-2px)}.foot-base{margin-top:36px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:rgba(255,255,255,.4);font-family:var(--mono);font-size:10px;letter-spacing:.08em}
+
+/* privacy modal */
+.modal{position:fixed;inset:0;z-index:400;background:rgba(25,21,18,.56);backdrop-filter:blur(14px);display:grid;place-items:center;padding:18px;opacity:0;pointer-events:none;transition:.3s}.modal.open{opacity:1;pointer-events:auto}.modal-card{width:min(920px,100%);height:min(84svh,900px);background:#fffaf0;border:1px solid rgba(255,255,255,.75);border-radius:28px;box-shadow:0 30px 100px rgba(20,10,0,.25);display:flex;flex-direction:column;overflow:hidden;transform:translateY(20px) scale(.98);transition:.35s}.modal.open .modal-card{transform:none}.modal-head{padding:22px 26px;border-bottom:1px solid var(--inkline);display:flex;justify-content:space-between;gap:20px;align-items:center;position:sticky;top:0;background:rgba(255,250,240,.96);backdrop-filter:blur(10px)}.modal-head h3{font-size:25px;letter-spacing:-.03em}.modal-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--inkline);background:#f4ead7;color:var(--ink);display:grid;place-items:center;font-size:20px}.privacy-content{overflow:auto;padding:28px 30px 40px;color:#57535b}.privacy-content h4{font-size:17px;color:var(--ink);margin:24px 0 8px}.privacy-content p,.privacy-content li{font-size:14px;line-height:1.75}.privacy-content ul{padding-left:20px;margin:8px 0}.privacy-meta{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+
+.audit-modal-card{width:min(1080px,100%);height:min(90svh,960px);background:#fffaf0;border:1px solid rgba(255,255,255,.8);border-radius:30px;box-shadow:0 30px 100px rgba(20,10,0,.28);display:flex;flex-direction:column;overflow:hidden;transform:translateY(22px) scale(.985);transition:.35s}.modal.open .audit-modal-card{transform:none}
+.audit-modal-head{padding:24px 28px;border-bottom:1px solid var(--inkline);display:flex;justify-content:space-between;gap:22px;align-items:flex-start;background:rgba(255,250,240,.97);backdrop-filter:blur(10px)}
+.audit-modal-head h3{font-size:32px;letter-spacing:-.04em;margin-top:5px}.audit-modal-head p{color:var(--muted);font-size:14px;margin-top:6px;max-width:62ch}.audit-modal-body{overflow:auto;padding:28px}
+.audit-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 20px}.audit-field{margin:0}.audit-field.full{grid-column:1/-1}.audit-field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}.audit-field input,.audit-field select,.audit-field textarea{width:100%;border:1px solid var(--inkline);background:#fcf6e9;color:var(--ink);border-radius:14px;padding:13px 14px;outline:none;transition:.25s}.audit-field input:focus,.audit-field select:focus,.audit-field textarea:focus{border-color:rgba(111,64,255,.56);box-shadow:0 0 0 4px rgba(111,64,255,.08)}.audit-field textarea{min-height:112px;resize:vertical}
+.audit-note{padding:14px 16px;border-radius:16px;background:#efe5cd;border:1px solid var(--inkline);color:#5f5a62;font-size:12px;line-height:1.6}.audit-note strong{color:var(--ink)}
+.choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.choice{position:relative}.choice input{position:absolute;opacity:0;pointer-events:none}.choice label{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--inkline);border-radius:12px;background:#fcf6e9;color:#4f4a53;font-size:13px;cursor:pointer;transition:.2s}.choice label::before{content:"";width:15px;height:15px;border:1px solid #aaa3a0;border-radius:4px;flex:none;background:#fffaf0}.choice input:checked + label{border-color:rgba(111,64,255,.45);background:rgba(111,64,255,.07);color:var(--ink)}.choice input:checked + label::before{background:var(--violet);border-color:var(--violet);box-shadow:inset 0 0 0 3px #fffaf0}
+.audit-form-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:20px;padding-top:20px;border-top:1px solid var(--inkline)}.audit-submit{min-width:220px}.audit-status{min-height:22px;font-family:var(--mono);font-size:12px}.audit-status.ok{color:#267257}.audit-status.err{color:#b33b34}.audit-success{display:none;padding:36px 10px 20px;text-align:center}.audit-success.show{display:block}.audit-success .success-mark{width:70px;height:70px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;background:var(--violet);color:#fff;font-size:30px;box-shadow:0 15px 38px rgba(111,64,255,.24)}.audit-success h4{font-size:30px;letter-spacing:-.04em}.audit-success p{color:var(--muted);max-width:54ch;margin:10px auto 22px}
+@media (max-width:760px){.audit-form-grid{grid-template-columns:1fr}.audit-field.full{grid-column:auto}.choice-grid{grid-template-columns:1fr}.audit-modal-head{padding:20px}.audit-modal-head h3{font-size:27px}.audit-modal-body{padding:20px}.audit-form-footer{align-items:stretch}.audit-submit{width:100%}}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.75,.2,1)}.reveal.in{opacity:1;transform:none}.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+.hero .reveal{opacity:1;transform:none}
+
+@media (max-width:1020px){.nav-links,.btn-nav{display:none}.menu-btn{display:flex}.hero-grid,.problem-grid,.proof-grid,.contact-grid{grid-template-columns:1fr}.hero-art{min-height:500px}.art-frame{max-width:620px}.hunt-head,.price-head{display:grid;grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.proof{padding-top:100px}.signal{height:300px}}
+@media (max-width:680px){body{font-size:16px}.hero{padding-top:105px}.hero h1{font-size:clamp(46px,13vw,72px)}.hero-art{min-height:390px;margin-top:15px}.flow-card{width:68%;padding:18px}.flow-number{font-size:31px}.leak-map{min-height:430px}.money-river{top:31%}.keep-pool{width:57%;height:108px}.steps,.hunt-grid,.price-grid{grid-template-columns:1fr}.step{min-height:0}.price-card{min-height:0;padding:28px}.price-amount{font-size:60px}.modal-card{height:90svh}.modal-head{padding:18px 20px}.privacy-content{padding:22px 20px 32px}.hero-footer{align-items:flex-start;flex-direction:column}.cta-row .btn,.hero-actions .btn{width:100%}.foot{flex-direction:column}.foot-links{width:100%}.foot-links a{font-size:12px}.mobile-menu a{font-size:18px}.form-shell{padding:24px}.lead-form-grid{grid-template-columns:1fr}.lead-form-grid .field.full{grid-column:auto}.playbook-points li{font-size:13px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="progress"></div><div class="noise" aria-hidden="true"></div>
+<header class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Liability Liberators home">
+    <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <rect x="2" y="2" width="36" height="36" rx="11" fill="#24164c"/>
+      <path d="M11 11v13c0 3 1.7 5 5 5h8" stroke="#b9ef4a" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="28" cy="29" r="3" fill="#ff5b52"><animate attributeName="cy" values="25;30;25" dur="2.2s" repeatCount="indefinite"/></circle>
+    </svg>
+    <span>Liability Liberators<small>PROFIT INFRASTRUCTURE</small></span>
+  </a>
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="#problem">The Problem</a><a href="#hunt">What We Find</a><a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+  </nav>
+  <button type="button" class="btn-nav audit-open">Book the Audit</button>
+  <button class="menu-btn" id="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span></button>
+</header>
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+  <a href="#problem">The Problem</a><a href="#hunt">What We Find</a><a href="#process">Process</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><button type="button" class="mm-cta audit-open">Book the Audit</button>
+</nav>
+
+<main>
+<section class="hero" id="top">
+  <span class="orb a"></span><span class="orb b"></span>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="kicker">Profit Leak Audit</span>
+        <h1><span class="ink">Find the profit</span><span class="paint">you are already losing.</span></h1>
+        <p class="hero-lede">Every business has money hiding in plain sight. We look for <strong>failed payments, underbilling, pricing gaps, excess spend, overdue cash and missed revenue</strong> and turn the leaks into a clear recovery plan.</p>
+        <div class="hero-actions">
+          <button type="button" class="btn btn-primary audit-open">Book the $2,500 Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+          <a href="#problem" class="btn btn-soft">See what leaks</a>
+        </div>
+        <div class="hero-note"><span><i></i>Fixed fee $2,500</span><span><i></i>Recovery based on verified value</span><span><i></i>Evidence first</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-frame">
+          <div class="art-bg"></div><div class="paint-stroke"></div><div class="paint-stroke two"></div>
+          <div class="scribble"></div>
+          <div class="leak-dot one"></div><div class="leak-dot two"></div><div class="leak-dot three"></div>
+          <div class="flow-card">
+            <div class="flow-top"><span>Revenue flow</span><span>What stays</span></div>
+            <div class="flow-number">68% <span>kept</span></div>
+            <div class="flow-line"><i></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-footer"><span>Liability Liberators</span><span class="scroller">Scroll to see the leaks <b></b></span></div>
+  </div>
+</section>
+
+<section class="section problem" id="problem">
+  <div class="wrap">
+    <div class="problem-grid">
+      <div class="reveal">
+        <span class="kicker">The Problem</span>
+        <h2>Profit rarely vanishes. <em>It leaks.</em></h2>
+        <p class="section-intro">A business can have strong sales and still leave meaningful money behind. The losses are usually scattered across small operational decisions that nobody owns.</p>
+        <div class="problem-copy">
+          <p>One failed payment gets forgotten. A customer stays on an old price. A supplier bills above the agreed rate. A team keeps paying for software nobody needs. A completed piece of work never makes it onto an invoice.</p>
+          <p><strong>Each leak feels too small to chase.</strong> Together, they change the profit you actually keep.</p>
+        </div>
+        <div class="problem-tags"><span class="tag">Failed payments</span><span class="tag">Underbilling</span><span class="tag">Pricing gaps</span><span class="tag">Supplier overcharges</span><span class="tag">Overdue cash</span><span class="tag">Dormant revenue</span><span class="tag">Contract leakage</span><span class="tag">Recurring waste</span></div>
+      </div>
+      <div class="leak-map reveal delay-1">
+        <div class="canvas-label">Where the money goes</div>
+        <div class="money-river"><span class="river-label">Revenue created</span></div>
+        <div class="leak-stream"></div><div class="leak-stream two"></div>
+        <span class="drop d1"></span><span class="drop d2"></span><span class="drop d3"></span>
+        <div class="keep-pool"><span>Profit kept</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hunt" id="hunt">
+  <div class="wrap">
+    <div class="hunt-head reveal">
+      <div><span class="kicker">What We Find</span><h2>We look where <em>money slips.</em></h2></div>
+      <p>Not a generic business review. We follow the trail from what should happen to what actually happened.</p>
+    </div>
+    <div class="hunt-grid">
+      <article class="hunt-card reveal"><div class="hunt-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M4 5h16M4 12h16M4 19h16"/></svg></div><h3>Revenue that walks away</h3><p>Failed payments, dormant customers, missed renewals and opportunities that were never followed through.</p></article>
+      <article class="hunt-card reveal delay-1"><div class="hunt-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M6 3h12v18H6zM9 7h6M9 11h6M9 15h3"/></svg></div><h3>Billing that misses the mark</h3><p>Price drift, unbilled work, change orders, discounts that never reset and usage that never gets charged.</p></article>
+      <article class="hunt-card reveal delay-2"><div class="hunt-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 7h14M7 4h10M8 10h8M5 16h14M9 13h6M7 20h10"/></svg></div><h3>Contracts nobody enforces</h3><p>Supplier overcharges, weak renewal controls, scope creep and terms that quietly cost more than they should.</p></article>
+      <article class="hunt-card reveal delay-3"><div class="hunt-icon"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3v18M6 8h8a4 4 0 0 1 0 8H7"/></svg></div><h3>Spend that keeps bleeding</h3><p>Unused tools, duplicate vendors, excess recurring spend, inefficient purchasing and routine write offs.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section process" id="process">
+  <div class="wrap">
+    <div class="process-top reveal"><div><span class="kicker">The Process</span><h2>Evidence in. <em>Clarity out.</em></h2></div><p>We keep the engagement focused. You give us access to the systems that matter, we follow the money, and you get a dollar sized view of the leaks worth acting on.</p></div>
+    <div class="steps">
+      <article class="step reveal"><span class="step-mark">A</span><h3>Access</h3><p>We set a short scope and review the information needed across billing, accounting, contracts and recurring spend.</p><small>Kickoff</small></article>
+      <article class="step reveal delay-1"><span class="step-mark">B</span><h3>Trace</h3><p>We compare what was agreed against what was charged, collected and paid, line by line where it matters.</p><small>Analysis</small></article>
+      <article class="step reveal delay-2"><span class="step-mark">C</span><h3>Size</h3><p>Each meaningful leak is put into dollars and ranked by evidence, recoverability and the effort needed to close it.</p><small>Findings</small></article>
+      <article class="step reveal delay-3"><span class="step-mark">D</span><h3>Recover</h3><p>You receive the findings even if you stop there. Recovery work is a separate engagement if you choose to move ahead.</p><small>Optional</small></article>
+    </div>
+  </div>
+</section>
+
+<section class="section proof">
+  <div class="wrap proof-grid">
+    <div class="reveal"><span class="kicker" style="color:var(--lime)">The Standard</span><h2>We would rather show the leak than <em>sell you a story.</em></h2><p style="margin-top:18px">A result is useful only when it can be explained, evidenced and acted on. That is the standard we use for every finding.</p><p class="proof-quote">No inflated estimates. No mystery score. No pressure to continue after the audit.</p></div>
+    <div class="signal reveal delay-1" aria-hidden="true"><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="signal-core"><div><strong>VALUE</strong><span>verified before it counts</span></div></div></div>
+  </div>
+</section>
+
+<section class="section pricing" id="pricing">
+  <div class="wrap">
+    <div class="price-head reveal"><div><span class="kicker">Pricing</span><h2>Two clear offers. <em>No fog.</em></h2></div><p>The audit stands on its own. Recovery is separate, optional and priced around verified value.</p></div>
+    <div class="price-grid">
+      <article class="price-card audit reveal">
+        <span class="price-label">Profit Leak Audit</span><h3>Find where the money is going.</h3><div class="price-amount">$2,500</div><p class="price-sub">A focused forensic review of your revenue, billing, contracts and recurring spend, ending in a working session around what is worth recovering.</p>
+        <ul class="price-list"><li><span class="check">✓</span><span>Review across the business areas most likely to hide leakage</span></li><li><span class="check">✓</span><span>Meaningful leaks sized in dollars and ranked by recoverability</span></li><li><span class="check">✓</span><span>A clear sequence for what to close first</span></li><li><span class="check">✓</span><span>Working session to walk through the findings</span></li></ul>
+        <div class="fee-box"><strong>Fixed fee</strong><span>$2,500 one time. The findings belong to you.</span></div>
+        <button type="button" class="btn audit-open" style="background:var(--lime);color:#1b2030;margin-top:20px">Book the Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+      </article>
+      <article class="price-card recovery reveal delay-1">
+        <span class="price-label">Recovery Engagement</span><h3>Turn verified leaks into cash.</h3><div class="price-amount">10 to 25%</div><p class="price-sub">After the audit, we can execute agreed recovery work and charge around value that is actually verified.</p>
+        <ul class="price-list"><li><span class="check">✓</span><span>Fixed implementation fee where hands on work is required</span></li><li><span class="check">✓</span><span>10 to 25% of verified recovered value or savings</span></li><li><span class="check">✓</span><span>You approve the actions before recovery work begins</span></li><li><span class="check">✓</span><span>Clear documentation of what was recovered and why it counts</span></li></ul>
+        <div class="fee-box"><strong>Separate engagement</strong><span>Agreed after the audit. No percentage is charged on projections.</span></div>
+        <button type="button" class="btn btn-ink audit-open">Start with the Audit <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section faq" id="faq">
+  <div class="wrap faq-wrap">
+    <div class="reveal" style="margin-bottom:44px"><span class="kicker">FAQ</span><h2>Good questions deserve <em>straight answers.</em></h2></div>
+    <div class="faq-list">
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">What is the Profit Leak Audit?<span class="faq-icon"></span></button><div class="faq-a"><p>It is a focused review of where money can be leaking between what your business intended to charge or collect and what actually happened. The work can cover revenue, billing, collections, contracts and recurring spend. You receive findings with dollar values and a practical sequence for what to address.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">How is this different from an accountant or auditor?<span class="faq-icon"></span></button><div class="faq-a"><p>Accounting and audit work is essential for accurate records and controls. Our question is different: <strong>where is the economic value falling short of what the business should have realized?</strong> We look for the gap and quantify it so management can decide what is worth fixing.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">What do you need from us?<span class="faq-icon"></span></button><div class="faq-a"><p>We keep the request focused. Depending on the business, that can include read only access to billing or accounting systems, selected contracts, payment information, recurring spend and a short set of context from your team. We do not ask for access that is not relevant to the scope.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">How long does the audit take?<span class="faq-icon"></span></button><div class="faq-a"><p>The target is around two weeks from kickoff to the findings session. Timing can vary with the complexity of the business and the speed of data access. We will tell you the expected timeline before work begins.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">How does the recovery fee work?<span class="faq-icon"></span></button><div class="faq-a"><p>Recovery is a separate engagement. Where hands on implementation is required, a fixed implementation fee may apply. The performance component is generally 10 to 25% of value that is actually verified as recovered or saved. The agreed method is documented before recovery work begins.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">Do you guarantee a savings amount?<span class="faq-icon"></span></button><div class="faq-a"><p>No. A savings figure should come from evidence, not a promise. We commit to the work and the quality of the findings. We do not manufacture a result to make the audit look impressive.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">What happens to our data?<span class="faq-icon"></span></button><div class="faq-a"><p>We use information provided for the purpose of the engagement, keep access as limited as practical and do not sell client data. Our detailed approach is explained in the <button class="inline-link privacy-open">Privacy Policy</button>.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q" aria-expanded="false">Is the audit right for every business?<span class="faq-icon"></span></button><div class="faq-a"><p>Not necessarily. The audit is most useful where enough transactions, customers, invoices, contracts or recurring spend exist for leakage to hide inside normal activity. If we believe the economics do not make sense for your business, we will tell you.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-copy reveal">
+      <span class="kicker">Free Self Audit Playbook</span>
+      <h2>Audit your own business. <em>Find the leaks.</em></h2>
+      <p>Get the free Profit Leak Self Audit Playbook and work through the same core questions we use to help businesses spot hidden gaps. Use it to inspect your numbers, estimate possible impact and decide what deserves attention first.</p>
+      <ul class="playbook-points">
+        <li>A guided review of five common profit leak areas</li>
+        <li>Simple calculations and a worksheet to record findings</li>
+        <li>A seven day action plan to prioritize what to check next</li>
+      </ul>
+      <span class="contact-badge"><i></i>Free guide · Instant download after submission</span>
+      <div class="contact-proof" aria-label="Privacy reassurance">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5 13 3.4v4.1c0 3.1-2.1 5.4-5 7-2.9-1.6-5-3.9-5-7V3.4L8 1.5Z" stroke="currentColor" stroke-width="1.4"/><path d="m5.5 7.8 1.7 1.7 3.5-3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        No files, passwords or payment details required
+      </div>
+    </div>
+    <div class="form-shell reveal delay-1">
+      <div id="playbook-form-view">
+        <h3 class="form-title">Get your free playbook</h3>
+        <p class="form-subtitle">Tell us a little about the business. The download appears here when your details are submitted.</p>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="b886a2df-32ac-4365-b9b5-4a7aac9a7977">
+          <input type="hidden" name="subject" value="Free Profit Leak Self Audit Playbook Request">
+          <input type="hidden" name="form_type" value="Free Profit Leak Self Audit Playbook">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="lead-form-grid">
+            <div class="field"><label for="playbook-name">Full name *</label><input id="playbook-name" name="name" type="text" autocomplete="name" required placeholder="Your name"></div>
+            <div class="field"><label for="playbook-email">Work email *</label><input id="playbook-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
+            <div class="field"><label for="playbook-company">Company *</label><input id="playbook-company" name="company" type="text" autocomplete="organization" required placeholder="Company name"></div>
+            <div class="field"><label for="playbook-role">Your role <span style="letter-spacing:0;text-transform:none">(optional)</span></label><select id="playbook-role" name="role"><option value="" selected>Select role</option><option>Founder / Owner</option><option>Executive / Leadership</option><option>Finance</option><option>Operations</option><option>Commercial / Sales</option><option>Other</option></select></div>
+            <div class="field full"><label for="playbook-focus">What would you like to inspect first? <span style="letter-spacing:0;text-transform:none">(optional)</span></label><select id="playbook-focus" name="primary_audit_focus"><option value="" selected>Choose an area</option><option>Revenue that is not collected</option><option>Billing and pricing gaps</option><option>Supplier and contract costs</option><option>Recurring spend and waste</option><option>Customer retention and repeat revenue</option><option>Not sure yet</option></select></div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="playbook-submit" style="width:100%;margin-top:2px">Get the free playbook <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M2.5 13.5h11"/></svg></button>
+          <p class="form-note">We use these details to provide the requested resource and respond to your request. This form does not subscribe you to a newsletter. Please do not submit files, passwords, financial account credentials or payment information.</p>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div class="playbook-success" id="playbook-success" hidden role="status" aria-live="polite">
+        <div class="success-mark" aria-hidden="true">✓</div>
+        <span class="kicker">You are all set</span>
+        <h3>Your playbook is ready.</h3>
+        <p>Thanks for requesting the guide. Download it now and use the checklist, leak register and seven day plan to audit your own business.</p>
+        <a class="btn btn-primary" href="profit-leak-self-audit-playbook.pdf" download>Download the free playbook <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M2.5 13.5h11"/></svg></a>
+        <button class="text-button" type="button" id="playbook-again">Submit another response</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand"><svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="11" fill="#6f40ff"/><path d="M11 11v13c0 3 1.7 5 5 5h8" stroke="#b9ef4a" stroke-width="3" stroke-linecap="round"/></svg><span>Liability Liberators<small>FIND THE LEAK. RECOVER THE VALUE.</small></span></div>
+      <div class="foot-links">
+        <a class="soc" href="https://www.linkedin.com/in/liability-liberators" aria-label="Liability Liberators on LinkedIn" title="Liability Liberators on LinkedIn"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 8.5H3.5V20h3.44V8.5zM5.22 4A2 2 0 1 0 5.22 8a2 2 0 0 0 0-4zM20.5 13.4c0-3.47-1.85-5.1-4.32-5.1-1.99 0-2.88 1.09-3.38 1.85V8.5H9.36V20h3.44v-5.7c0-1.5.28-2.94 2.14-2.94 1.83 0 1.86 1.71 1.86 3.04V20h3.44v-6.6z"/></svg></a>
+        <a class="soc" href="https://substack.com/@liabilityliberators" aria-label="Liability Liberators on Substack" title="Liability Liberators on Substack"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v2H4V4zm0 4h16v2H4V8zm0 4h16v2H4v-2zm0 4 8 4 8-4V4H4v16z"/></svg></a>
+        <a href="#pricing">Pricing</a><a href="#faq">FAQ</a><button class="inline-link" style="color:rgba(255,255,255,.64);font-size:13px" onclick="openPrivacy()">Privacy Policy</button>
+      </div>
+    </div>
+    <div class="foot-base"><span>© 2026 LIABILITY LIBERATORS</span><span>LIABILITYLIBERATORS.COM</span></div>
+  </div>
+</footer>
+
+
+<div class="modal" id="audit-modal" role="dialog" aria-modal="true" aria-labelledby="audit-title">
+  <div class="audit-modal-card">
+    <div class="audit-modal-head">
+      <div>
+        <span class="privacy-meta">Profit Leak Audit · $2,500</span>
+        <h3 id="audit-title">Start the conversation.</h3>
+        <p>This application helps us understand the business before we decide whether the audit makes sense. No files, passwords or payment details are requested here.</p>
+      </div>
+      <button class="modal-close audit-close" type="button" aria-label="Close audit application">×</button>
+    </div>
+    <div class="audit-modal-body">
+      <form id="audit-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="b886a2df-32ac-4369-b9b5-4a7aac9a7977">
+        <input type="hidden" name="subject" value="Profit Leak Audit Application — Liability Liberators">
+        <input type="hidden" name="form_type" value="Profit Leak Audit Application">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+        <div id="audit-form-fields">
+          <div class="audit-form-grid">
+            <div class="audit-field"><label for="audit-name">Full name *</label><input id="audit-name" name="name" type="text" autocomplete="name" required placeholder="Your full name"></div>
+            <div class="audit-field"><label for="audit-email">Work email *</label><input id="audit-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
+            <div class="audit-field"><label for="audit-company">Company *</label><input id="audit-company" name="company" type="text" autocomplete="organization" required placeholder="Company name"></div>
+            <div class="audit-field"><label for="audit-role">Your role *</label><input id="audit-role" name="role" type="text" autocomplete="organization-title" required placeholder="Founder, CFO, COO, etc."></div>
+            <div class="audit-field"><label for="audit-country">Phone country *</label><select id="audit-country" name="phone_country" required><option value="" selected disabled>Select country</option><option value="United Kingdom +44">🇬🇧 United Kingdom +44</option><option value="United States +1">🇺🇸 United States +1</option><option value="Canada +1">🇨🇦 Canada +1</option><option value="Argentina +54">🇦🇷 Argentina +54</option><option value="France +33">🇫🇷 France +33</option></select></div>
+            <div class="audit-field"><label for="audit-phone">Phone number *</label><input id="audit-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="Your number"></div>
+            <div class="audit-field full"><label for="audit-website">Company website</label><input id="audit-website" name="company_website" type="url" autocomplete="url" placeholder="https://company.com"></div>
+            <div class="audit-field full"><label>Where do you suspect profit is leaking?</label><div class="choice-grid">
+              <div class="choice"><input id="leak-revenue" type="checkbox" name="suspected_leaks[]" value="Revenue not collected"><label for="leak-revenue">Revenue not collected</label></div>
+              <div class="choice"><input id="leak-billing" type="checkbox" name="suspected_leaks[]" value="Underbilling or pricing gaps"><label for="leak-billing">Underbilling or pricing gaps</label></div>
+              <div class="choice"><input id="leak-costs" type="checkbox" name="suspected_leaks[]" value="Unnecessary costs"><label for="leak-costs">Unnecessary costs</label></div>
+              <div class="choice"><input id="leak-suppliers" type="checkbox" name="suspected_leaks[]" value="Supplier or contract leakage"><label for="leak-suppliers">Supplier or contract leakage</label></div>
+              <div class="choice"><input id="leak-customers" type="checkbox" name="suspected_leaks[]" value="Dormant customer revenue"><label for="leak-customers">Dormant customer revenue</label></div>
+              <div class="choice"><input id="leak-other" type="checkbox" name="suspected_leaks[]" value="Something else"><label for="leak-other">Something else</label></div>
+            </div></div>
+            <div class="audit-field full"><label for="audit-why">What made you look into this now? *</label><textarea id="audit-why" name="why_now" required placeholder="Tell us what changed, what concerns you, or what you want to understand."></textarea></div>
+            <div class="audit-field full"><label for="audit-outcome">What would make the audit clearly worthwhile for you? *</label><textarea id="audit-outcome" name="desired_outcome" required placeholder="For example: identify the biggest profit leaks, understand where cash is being lost, or build a clear recovery priority list."></textarea></div>
+            <div class="audit-field"><label for="audit-contact-pref">Preferred contact</label><select id="audit-contact-pref" name="preferred_contact"><option value="Either email or phone">Either email or phone</option><option value="Email">Email</option><option value="Phone">Phone</option></select></div>
+            <div class="audit-field"><label for="audit-timing">When are you looking to start?</label><select id="audit-timing" name="timing"><option value="As soon as practical">As soon as practical</option><option value="Within 30 days">Within 30 days</option><option value="Exploring for later">Exploring for later</option></select></div>
+          </div>
+          <div class="audit-note" style="margin-top:18px"><strong>What happens next:</strong> we review your answers, decide whether the $2,500 audit is appropriate, and reply with the next step. This application does not charge you or commit you to an engagement.</div>
+          <div class="audit-form-footer"><p class="audit-status" id="audit-status" role="status" aria-live="polite"></p><button type="submit" class="btn btn-primary audit-submit">Submit Audit Application <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></button></div>
+        </div>
+      </form>
+      <div class="audit-success" id="audit-success" aria-live="polite">
+        <div class="success-mark">✓</div>
+        <h4>Application received.</h4>
+        <p>Thank you. We will review the details and reply within one business day with a clear view on whether the Profit Leak Audit is the right next step.</p>
+        <button type="button" class="btn btn-ink audit-close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-title">
+  <div class="modal-card">
+    <div class="modal-head"><div><span class="privacy-meta">Last updated October 7, 2026</span><h3 id="privacy-title">Privacy Policy</h3></div><button class="modal-close" type="button" onclick="closePrivacy()" aria-label="Close privacy policy">×</button></div>
+    <div class="privacy-content">
+      <p>Liability Liberators respects the privacy of the people and businesses who contact us, engage us and use this website. This Privacy Policy explains what information we may receive through the Liability Liberators website, how we use it, the circumstances in which it may be shared, how we approach security and retention, and the choices available to you.</p>
+      <h4>Information you provide</h4>
+      <p>When you use the free Profit Leak Self Audit Playbook form, we receive your name, business email address and company name, plus any optional role or audit focus you choose to provide. After a successful submission, the requested playbook becomes available for download on the page. We use these details to provide the resource, understand the context of the request and respond if follow up is appropriate. Submitting the form does not automatically subscribe you to a newsletter. Please do not submit files, customer records, passwords, private authentication credentials, bank details or payment information through the form.</p>
+      <h4>Information collected through an engagement</h4>
+      <p>If you become a client, the information required for the engagement can be broader than the public contact form. Depending on the scope, this can include business records, invoices, contracts, pricing information, payment information, recurring spend data, customer or supplier records and other financial or operational information that you choose to make available. We use such information only to perform the agreed services, communicate with you, prepare findings, support recovery work you have approved, and protect our legal and contractual interests.</p>
+      <h4>How we use information</h4>
+      <ul><li>To provide a resource that you explicitly request, including the free self audit playbook.</li><li>To respond to enquiries and schedule conversations.</li><li>To assess whether our services are appropriate for your business.</li><li>To deliver and improve an agreed audit or recovery engagement.</li><li>To communicate about active work, billing, security or changes to our services.</li><li>To prevent fraud, abuse, unauthorized access and other security incidents.</li><li>To comply with applicable legal, regulatory or contractual obligations.</li></ul>
+      <h4>Web3Forms and service providers</h4>
+      <p>Contact form submissions are routed through Web3Forms so that Liability Liberators can receive and respond to enquiries. We may also use other carefully selected service providers for hosting, email, analytics, security, document handling or similar business functions. Where a provider processes information for us, we expect it to handle the information only for the relevant purpose and to maintain appropriate safeguards.</p>
+      <h4>We do not sell your personal information</h4>
+      <p>Liability Liberators does not sell, rent or trade personal information for money. We do not use information submitted through the website to build advertising profiles for unrelated third parties. We may share information when necessary to provide a requested service, comply with law, enforce an agreement, protect the rights or safety of our business or another person, or complete a corporate transaction such as a merger, acquisition or sale of assets.</p>
+      <h4>Data minimization and access control</h4>
+      <p>For client work, we aim to request only the information needed for the scope. Where technically practical, access should be read only until a client specifically authorizes an action required for recovery work. Information is handled by people who need it for the engagement or for legitimate business administration, and access is restricted according to those responsibilities.</p>
+      <h4>Retention</h4>
+      <p>We keep information for as long as it is reasonably necessary for the purpose for which it was collected, to maintain business and tax records, to resolve disputes, or to satisfy legal and contractual requirements. For audit working materials, our standard aim is to remove working copies within 30 days after the engagement closes unless the client asks us to retain them longer or a longer period is reasonably required by law or an agreed record keeping obligation.</p>
+      <h4>Security</h4>
+      <p>We use reasonable administrative, technical and organizational measures designed to protect information against unauthorized access, alteration, disclosure or destruction. No internet transmission or storage system can be guaranteed to be completely secure. If we become aware of a security incident that materially affects information under our control, we will take appropriate steps to investigate, contain and communicate the issue as required by applicable law and our contractual commitments.</p>
+      <h4>Cookies and similar technologies</h4>
+      <p>This website is designed to function without advertising cookies. Basic technical information may be processed by hosting or security providers as part of delivering the site. If we introduce analytics, personalization or other technologies that materially change how information is collected, we will update this policy and, where appropriate, provide additional controls or notices.</p>
+      <h4>Your choices and rights</h4>
+      <p>Depending on where you live and the laws that apply to you, you may have rights to request access to personal information, correction of inaccurate information, deletion, restriction of certain processing, objection to certain processing, or a copy of information you have provided. You may also withdraw consent where processing depends on consent. These rights are subject to applicable legal exceptions. To make a request, contact us using the details provided on this website and include enough information for us to understand the request.</p>
+      <h4>International processing</h4>
+      <p>Liability Liberators may work with service providers or team members located in countries different from the country in which a client or website visitor is located. Where information is transferred internationally, we take reasonable steps to use lawful transfer mechanisms and appropriate safeguards where they are required.</p>
+      <h4>Third party links</h4>
+      <p>This site may link to external profiles such as LinkedIn and Substack. Once you leave Liability Liberators for another website, the privacy practices of that destination apply. We encourage you to review the privacy notice of any external service before providing personal information there.</p>
+      <h4>Children</h4>
+      <p>Our services and website are intended for businesses and adults. We do not knowingly collect personal information from children for the purpose of operating this business.</p>
+      <h4>Changes to this policy</h4>
+      <p>We may update this Privacy Policy when our services, technology, legal obligations or privacy practices change. The updated version will be posted on this website with a revised effective date. Material changes will be communicated in a way that is appropriate to the nature of the change when required.</p>
+      <h4>Contact</h4>
+      <p>Questions about this policy or a privacy request can be submitted through the contact form on this website. We aim to respond within a reasonable period appropriate to the request and the requirements that apply.</p>
+      <p style="margin-top:26px"><strong>Important note:</strong> This policy is intended to describe the website and service practices of Liability Liberators in plain language. It is not a substitute for legal advice and may be supplemented by client contracts, data processing terms or other notices where required.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const nav = document.getElementById('nav');
+  const progress = document.getElementById('progress');
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function updateScroll(){
+    const y = window.scrollY || document.documentElement.scrollTop;
+    nav.classList.toggle('scrolled', y > 24);
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (total > 0 ? (y / total) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateScroll, {passive:true}); updateScroll();
+
+  function closeMenu(){mobileMenu.classList.remove('open');menuBtn.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}
+  menuBtn.addEventListener('click',()=>{
+    const open = !mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open',open); menuBtn.classList.toggle('open',open); menuBtn.setAttribute('aria-expanded',open?'true':'false');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduceMotion){
+    const io = new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.1,rootMargin:'0px 0px -35px 0px'});
+    revealEls.forEach(el=>io.observe(el));
+  } else revealEls.forEach(el=>el.classList.add('in'));
+
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const q=item.querySelector('.faq-q'),a=item.querySelector('.faq-a');
+    q.addEventListener('click',()=>{
+      const open=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(other=>{other.classList.remove('open');other.querySelector('.faq-q').setAttribute('aria-expanded','false');other.querySelector('.faq-a').style.maxHeight=null});
+      if(!open){item.classList.add('open');q.setAttribute('aria-expanded','true');a.style.maxHeight=a.scrollHeight+'px';}
+    });
+  });
+
+  const form=document.getElementById('contact-form'),status=document.getElementById('form-status');
+  const playbookFormView=document.getElementById('playbook-form-view');
+  const playbookSuccess=document.getElementById('playbook-success');
+  const playbookSubmit=document.getElementById('playbook-submit');
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
+    status.className='form-status'; status.textContent='Preparing your playbook…';
+    playbookSubmit.disabled=true; playbookSubmit.style.opacity='.72';
+    const data=new FormData(form);
+    fetch(form.action,{method:'POST',body:data,headers:{Accept:'application/json'}})
+      .then(r=>{if(!r.ok) throw new Error('Form request failed');return r.json();})
+      .then(json=>{
+        if(json && json.success){
+          form.reset();
+          playbookFormView.hidden=true;
+          playbookSuccess.hidden=false;
+          status.textContent='';
+          playbookSuccess.scrollIntoView({behavior:reduceMotion?'auto':'smooth',block:'nearest'});
+        }else{throw new Error('Form submission failed');}
+      })
+      .catch(()=>{
+        status.className='form-status err';
+        status.textContent='We could not submit your details. Please check your connection and try again.';
+      })
+      .finally(()=>{playbookSubmit.disabled=false;playbookSubmit.style.opacity='';});
+  });
+  document.getElementById('playbook-again').addEventListener('click',()=>{
+    playbookSuccess.hidden=true;playbookFormView.hidden=false;status.textContent='';status.className='form-status';
+    document.getElementById('playbook-name').focus();
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',()=>{if(mobileMenu.classList.contains('open'))closeMenu()}));
+
+
+  const auditModal=document.getElementById('audit-modal'), auditForm=document.getElementById('audit-form'), auditStatus=document.getElementById('audit-status'), auditFields=document.getElementById('audit-form-fields'), auditSuccess=document.getElementById('audit-success');
+  function openAudit(){closeMenu();auditModal.classList.add('open');document.body.classList.add('modal-open');setTimeout(()=>document.getElementById('audit-name').focus(),80)}
+  function closeAudit(){auditModal.classList.remove('open');document.body.classList.remove('modal-open');if(auditSuccess.classList.contains('show')){auditSuccess.classList.remove('show');auditFields.style.display='';auditForm.reset();auditStatus.textContent='';auditStatus.className='audit-status'}}
+  document.querySelectorAll('.audit-open').forEach(btn=>btn.addEventListener('click',openAudit));
+  document.querySelectorAll('.audit-close').forEach(btn=>btn.addEventListener('click',closeAudit));
+  auditModal.addEventListener('click',e=>{if(e.target===auditModal)closeAudit()});
+  auditForm.addEventListener('submit',e=>{
+    e.preventDefault();
+    if(!auditForm.checkValidity()){auditForm.reportValidity();return}
+    auditStatus.className='audit-status';auditStatus.textContent='Sending your application…';
+    const data=new FormData(auditForm);
+    fetch(auditForm.action,{method:'POST',body:data,headers:{Accept:'application/json'}})
+      .then(r=>r.json())
+      .then(json=>{if(json && json.success){auditStatus.textContent='';auditFields.style.display='none';auditSuccess.classList.add('show');auditForm.reset()}else{throw new Error('Application failed')}})
+      .catch(()=>{auditStatus.className='audit-status err';auditStatus.textContent='We could not send that application. Please try again in a moment.'});
+  });
+
+  window.openPrivacy=function(){document.getElementById('privacy-modal').classList.add('open');document.body.classList.add('modal-open');document.querySelector('.modal-close').focus();};
+  window.closePrivacy=function(){document.getElementById('privacy-modal').classList.remove('open');document.body.classList.remove('modal-open');};
+  document.querySelectorAll('.privacy-open').forEach(btn=>btn.addEventListener('click',openPrivacy));
+  document.getElementById('privacy-modal').addEventListener('click',e=>{if(e.target.id==='privacy-modal')closePrivacy();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(document.getElementById('audit-modal').classList.contains('open'))closeAudit(); if(document.getElementById('privacy-modal').classList.contains('open'))closePrivacy();}});
+})();
+</script>
+</body>
+</html>
