@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#171b21">
+<title>Liability Liberators — Document Studio</title>
+<style>
+:root{
+  --ink:#171b21; --ink2:#232932; --paper:#f4f2ec; --card:#fff;
+  --line:#e3ded4; --amber:#b98a2e; --amber-soft:#fdf8ec; --muted:#6b7280;
+  --ok:#2e7d4f; --field:#fbfaf7; --danger:#a04444;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;font-size:14px;line-height:1.5}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{background:var(--ink);color:#fff;padding:13px 22px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;position:sticky;top:0;z-index:50;box-shadow:0 3px 14px rgba(0,0,0,.12)}
+.brand{font-family:Georgia,serif;font-style:italic;font-size:19px;color:var(--amber);white-space:nowrap}
+.brand small{font-style:normal;font-family:inherit;font-size:10px;color:#c9cdd4;letter-spacing:1.5px;text-transform:uppercase;margin-left:8px}
+.tabs{display:flex;gap:6px}
+.tabs button{background:transparent;color:#cfd4db;border:1px solid #3a414c;border-radius:6px;padding:7px 15px;font-size:13px}
+.tabs button.active{background:var(--amber);border-color:var(--amber);color:#fff;font-weight:650}
+.hdr-actions{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{background:var(--amber);color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:13px;font-weight:650;transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.btn.ghost{background:transparent;border:1px solid #56606d;color:#e1e5ea;font-weight:450}
+.btn.light{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.danger{background:transparent;border:1px solid #8a4a4a;color:#e8a0a0;font-weight:450}
+.app{display:grid;grid-template-columns:370px minmax(0,1fr);gap:20px;padding:20px;max-width:1500px;margin:0 auto;align-items:start}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;align-self:start;position:sticky;top:78px;max-height:calc(100vh - 98px);overflow-y:auto;scrollbar-width:thin}
+.panel h3{background:var(--ink);color:#fff;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:12px 16px;font-weight:650;position:sticky;top:0;z-index:2}
+.panel .body{padding:15px}
+.fgroup{border:1px solid var(--line);border-radius:8px;margin-bottom:13px;overflow:hidden}
+.fgroup>summary{background:var(--field);padding:10px 13px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink2);cursor:pointer;list-style:none;user-select:none}
+.fgroup>summary::-webkit-details-marker{display:none}
+.fgroup>summary::before{content:"▸ ";color:var(--amber)}
+.fgroup[open]>summary::before{content:"▾ "}
+.fgroup .inner{padding:11px 13px}
+label{display:block;font-size:10.5px;color:var(--muted);margin:9px 0 4px;text-transform:uppercase;letter-spacing:.55px;font-weight:650}
+input,select,textarea{width:100%;padding:8px 9px;border:1px solid var(--line);border-radius:6px;background:var(--field);font-size:12.5px;color:var(--ink);min-width:0}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(185,138,46,.55);outline-offset:0;border-color:var(--amber)}
+textarea{resize:vertical;min-height:62px;line-height:1.45}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.dynrow{border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:9px;background:var(--field)}
+.dynhead{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:5px}
+.dynhead strong{font-size:11px;letter-spacing:.4px;color:var(--ink2)}
+.rm{background:transparent;border:0;color:var(--danger);font-size:18px;line-height:1;padding:0 4px}
+.addrow{width:100%;background:transparent;border:1px dashed var(--amber);color:#986d1f;border-radius:6px;padding:8px;font-size:12px;font-weight:600;margin-top:2px}
+.addrow:hover{background:var(--amber-soft)}
+.clientbar{display:flex;gap:8px;margin-bottom:13px}
+.clientbar select{flex:1}
+.hint{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.5}
+.microcopy{font-size:11px;color:var(--muted);line-height:1.5;margin-top:7px}
+.rule{height:1px;background:var(--line);margin:13px 0}
+.save-row{display:flex;gap:8px;margin-top:15px;border-top:1px solid var(--line);padding-top:13px}
+.save-row input{flex:1}
+#saveStatus{font-size:10.5px;color:var(--muted);margin-top:6px;min-height:15px}
+.readiness{border:1px solid var(--line);border-radius:8px;padding:11px 12px;background:#fff;margin:12px 0 14px}
+.readiness-top{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:11px;font-weight:700}
+.readiness-track{height:6px;border-radius:20px;background:#eeeae2;margin:8px 0;overflow:hidden}
+.readiness-fill{height:100%;width:0;background:var(--amber);border-radius:20px;transition:width .2s}
+.readiness ul{padding-left:17px;color:var(--muted);font-size:10.5px}
+.readiness li{margin:2px 0}
+.good{color:var(--ok)!important}
+.preview-wrap{display:flex;justify-content:center;min-width:0}
+#sheet{background:#fff;width:850px;max-width:100%;box-shadow:0 2px 20px rgba(0,0,0,.10);border-radius:4px;overflow:hidden;min-height:800px}
+.band{background:var(--ink);color:#fff;padding:29px 42px;display:flex;justify-content:space-between;align-items:flex-start;gap:22px}
+.brand-d{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:24px;color:var(--amber)}
+.brand-d small{display:block;font-style:normal;font-family:inherit;font-size:10px;color:#c9cdd4;letter-spacing:1.5px;text-transform:uppercase;margin-top:4px}
+.doc-title{text-align:right}
+.doc-title h1{font-family:Georgia,serif;font-weight:normal;font-size:22px;letter-spacing:2px}
+.doc-title .doc-ref{color:var(--amber);font-size:12px;margin-top:4px;letter-spacing:.5px}
+.meta-d{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px;padding:27px 42px 9px}
+.meta-d h4{font-size:9.5px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin-bottom:5px}
+.meta-d p{white-space:pre-line;font-size:12.5px;overflow-wrap:anywhere}
+#sheet table{width:calc(100% - 84px);margin:22px 42px;border-collapse:collapse;table-layout:auto}
+#sheet th{background:var(--ink);color:#fff;text-align:left;font-size:9.5px;text-transform:uppercase;letter-spacing:1px;padding:9px 10px}
+#sheet td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;font-size:11.5px;overflow-wrap:anywhere}
+#sheet td.num,#sheet th.num{text-align:right;white-space:nowrap}
+.totals{margin:0 42px 8px auto;width:275px}
+.totals div{display:flex;justify-content:space-between;gap:15px;padding:7px 10px;font-size:12px}
+.totals .grand{background:var(--ink);color:#fff;font-weight:650;border-radius:6px;margin-top:5px}
+.totals .grand span:last-child{color:var(--amber)}
+.pay{padding:18px 20px;margin:18px 42px 0;background:#fbfaf7;border:1px solid var(--line);border-radius:8px}
+.pay h4{font-size:9.5px;text-transform:uppercase;letter-spacing:1.4px;color:var(--muted);margin-bottom:7px}
+.addr{font-family:"SF Mono",Consolas,monospace;font-size:11px;background:#fff;border:1px dashed var(--amber);border-radius:6px;padding:9px 10px;word-break:break-all}
+.pay .note{font-size:11px;color:var(--muted);margin-top:7px}
+.foot-d{padding:25px 42px 32px;font-size:10.5px;color:var(--muted)}
+.foot-d p+p{margin-top:6px}
+/* premium invoice layout */
+.invoice-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;padding:23px 42px 0}
+.invoice-intro .eyebrow{font-size:9px;letter-spacing:1.45px;text-transform:uppercase;color:var(--muted);font-weight:750}
+.invoice-intro .client-name{font-family:Georgia,serif;font-size:19px;line-height:1.25;margin-top:5px;color:var(--ink)}
+.invoice-state{border:1px solid var(--line);border-radius:99px;padding:6px 10px;font-size:9px;letter-spacing:1.2px;font-weight:750;color:#80601f;background:#fbf7ed;white-space:nowrap}
+.invoice-bottom{display:grid;grid-template-columns:minmax(0,1fr) 275px;gap:20px;align-items:start;margin:0 42px 8px}
+.invoice-terms{padding:12px 0;color:var(--muted)}
+.invoice-terms h4{font-size:9px;text-transform:uppercase;letter-spacing:1.2px;color:var(--ink2);margin:0 0 4px}
+.invoice-terms p{font-size:10.5px;white-space:pre-line;margin:0 0 12px;line-height:1.55}
+.invoice-total-box{border:1px solid var(--line);border-radius:8px;padding:9px 0;background:#fff}
+.invoice-total-box .totals{width:auto;margin:0 8px}
+.invoice-total-box .grand{padding:12px 11px}
+.invoice-total-box .balance-label{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;margin:0 11px 4px}
+.pay .pay-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}
+.pay .pay-heading h4{margin-bottom:0}
+.pay .network-tag{font-size:8.5px;font-weight:750;letter-spacing:.5px;color:#80601f;background:#f5ecd8;border-radius:99px;padding:4px 8px}
+.pay .addr{user-select:all;-webkit-user-select:all;font-size:11.5px;line-height:1.5;padding:11px 12px}
+.pay .payment-warning{font-size:10px;color:#805a16;margin-top:8px;line-height:1.5}
+.invoice-foot-grid{display:flex;justify-content:space-between;gap:16px;align-items:flex-end}
+.invoice-foot-grid .foot-ref{font-size:9px;color:var(--muted);text-align:right;white-space:nowrap}
+.email-actions{border:1px solid var(--line);border-radius:8px;background:#fbfaf7;padding:12px;margin-top:13px}
+.email-actions .action-title{font-size:10px;text-transform:uppercase;letter-spacing:1.15px;font-weight:750;color:var(--ink2);margin-bottom:5px}
+.email-actions .action-copy{font-size:10.5px;color:var(--muted);line-height:1.5;margin-bottom:9px}
+.email-actions .action-buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.email-actions .action-buttons .btn{padding:8px 9px;font-size:11px}
+.email-actions .action-buttons .full{grid-column:1/-1}
+.email-actions .email-boundary{font-size:9.5px;color:var(--muted);margin-top:8px;line-height:1.45}
+
+.zoho-connection{border:1px solid #ded8cc;border-radius:7px;background:#fff;padding:10px;margin-top:10px}
+.sender-lock{display:flex;flex-direction:column;gap:2px;padding:9px 10px;background:var(--ink);color:#fff;border-radius:6px;margin-bottom:9px}
+.sender-lock span{font-size:8px;letter-spacing:1.1px;text-transform:uppercase;color:#d1d5db}
+.sender-lock b{font-size:12px;color:var(--amber);letter-spacing:.1px}
+.sender-lock small{font-size:9px;color:#c9cdd4}
+.zoho-connection #zohoStatus{margin-top:8px;min-height:16px;color:var(--muted);font-size:10px;line-height:1.5}
+.zoho-connection #zohoStatus.good{color:var(--ok)!important}
+.zoho-connection #zohoStatus.error{color:var(--danger)!important}
+.btn:disabled{opacity:.58;cursor:wait;transform:none}
+@media print{.zoho-connection,.email-actions{display:none!important}}
+@media(max-width:560px){.invoice-intro{padding:18px 20px 0;align-items:flex-start}.invoice-intro .client-name{font-size:16px}.invoice-bottom{grid-template-columns:1fr;margin:0 20px 8px;gap:10px}.invoice-total-box{max-width:100%}.invoice-foot-grid{display:block}.invoice-foot-grid .foot-ref{text-align:left;margin-top:7px}.email-actions .action-buttons{grid-template-columns:1fr}}
+@media print{.invoice-intro{padding:18px 30px 0}.invoice-bottom{margin:0 30px 8px;grid-template-columns:minmax(0,1fr) 245px}.pay .addr{font-size:10px}.email-actions{display:none!important}}
+
+/* report typography */
+#sheet section{background:#fff;padding:29px 42px;border-bottom:1px solid var(--line);break-inside:auto}
+#sheet section.cover{background:var(--ink);color:#fff;border:0;min-height:250px;break-after:avoid}
+#sheet section.cover .brand-d{font-size:21px}
+#sheet section.cover h1{font-family:Georgia,serif;font-style:italic;font-weight:normal;font-size:34px;line-height:1.15;margin:19px 0 7px}
+#sheet section.cover h1 em{font-style:normal;color:#cfd4db}
+#sheet section.cover .sub{color:#c9cdd4;font-size:12px;max-width:570px}
+#sheet section.cover .meta-d{padding:24px 0 0;color:#e6e8ec;grid-template-columns:repeat(3,minmax(0,1fr))}
+#sheet section.cover .meta-d h4{color:var(--amber)}
+#sheet section.cover .meta-d p{color:#e6e8ec;font-size:11.5px}
+#sheet h2.d{font-family:Georgia,serif;font-weight:normal;font-size:21px;line-height:1.2;margin-bottom:11px}
+#sheet h2.d span.no{color:var(--amber);font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:5px;font-family:-apple-system,sans-serif;font-weight:700}
+#sheet h3.subhead{font-size:12px;margin:15px 0 6px;color:var(--ink2)}
+#sheet p{font-size:11.5px;line-height:1.6}
+#sheet .lead{font-size:12.5px;line-height:1.65}
+.warn{border-left:3px solid var(--amber);background:#fdf8ec;padding:11px 14px;border-radius:0 7px 7px 0;font-size:11.5px;margin:13px 0}
+.box-d{background:#fbfaf7;border:1px solid var(--line);border-radius:8px;padding:13px 15px;margin:10px 0;font-size:11.5px}
+.status{display:inline-block;padding:2px 8px;border-radius:99px;font-size:9.5px;font-weight:700;white-space:nowrap}
+.s-verified{background:#e4f2e9;color:var(--ok)}
+.s-evidence{background:#fdf3dd;color:#9a6b12}
+.s-estimate{background:#eef1f5;color:#52617a}
+.priority{font-weight:700;font-size:10px}
+.p-critical,.p-high{color:#9b3939}.p-medium{color:#9a6b12}.p-low{color:#52617a}
+.kpi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}
+.kpi{background:#fbfaf7;border:1px solid var(--line);border-radius:8px;padding:13px}
+.kpi .big{font-family:Georgia,serif;font-size:23px;line-height:1.25;overflow-wrap:anywhere}
+.kpi .lbl{font-size:9px;text-transform:uppercase;letter-spacing:1.1px;color:var(--muted);margin-bottom:4px}
+.kpi .detail{font-size:9.5px;color:var(--muted);margin-top:4px}
+#sheet ul.d{margin:6px 0 7px 18px;font-size:11.5px}
+#sheet li.d{margin-bottom:5px;line-height:1.5}
+.finding-card{border:1px solid var(--line);border-radius:8px;padding:13px 14px;margin:11px 0;break-inside:avoid}
+.finding-title{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
+.finding-title h3{font-family:Georgia,serif;font-size:16px;font-weight:normal;line-height:1.3}
+.finding-meta{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:9.5px;color:var(--muted);margin-bottom:8px}
+.finding-financials{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:9px 0}
+.finding-financials>div{background:#fbfaf7;padding:8px 9px;border-radius:6px}
+.finding-financials strong{display:block;font-family:Georgia,serif;font-size:16px;font-weight:normal}
+.finding-financials span{font-size:8.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px}
+.finding-detail{font-size:10.5px;margin-top:7px;line-height:1.55}
+.finding-detail b{color:var(--ink2)}
+.legend{font-size:9.5px;color:var(--muted);margin-top:8px;line-height:1.5}
+#sheet .rfoot{color:var(--muted);font-size:9.5px;text-align:center;padding:16px 10px 5px}
+.empty{color:#929292;font-style:italic}
+.signature-line{border-top:1px solid var(--line);margin-top:23px;padding-top:7px;color:var(--muted);font-size:9.5px}
+.guide-overlay{position:fixed;inset:0;background:rgba(10,13,17,.62);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}
+.guide-overlay.open{display:flex}
+.guide{width:min(780px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:12px;padding:25px 28px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.guide-head{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:14px}
+.guide h2{font-family:Georgia,serif;font-weight:normal;font-size:25px}
+.guide h3{font-size:13px;margin:16px 0 5px;color:var(--ink2)}
+.guide p,.guide li{font-size:12px;color:#505762;line-height:1.65}
+.guide ul{padding-left:19px;margin:5px 0}
+.guide-close{border:1px solid var(--line);background:#fff;border-radius:6px;padding:6px 10px}
+@media(max-width:1100px){.app{grid-template-columns:340px minmax(0,1fr);gap:14px;padding:14px}}
+@media(max-width:850px){header{position:relative;padding:12px 14px;gap:10px}.hdr-actions{margin-left:0;width:100%}.app{display:flex;flex-direction:column;padding:10px}.panel{position:static;max-height:none;width:100%;overflow:visible}.preview-wrap{width:100%}#sheet{width:100%}}
+@media(max-width:560px){.brand{font-size:17px}.brand small{font-size:8px}.tabs{width:100%}.tabs button{flex:1;padding:7px 8px}.hdr-actions .btn{flex:1}.row2,.row3{grid-template-columns:1fr}.band{padding:22px 20px}.meta-d{padding:20px;grid-template-columns:1fr 1fr}#sheet section{padding:22px 20px}#sheet section.cover .meta-d{grid-template-columns:1fr 1fr}#sheet table{width:calc(100% - 40px);margin:18px 20px}.pay{margin:16px 20px 0}.foot-d{padding:22px 20px}.totals{margin-right:20px}.kpi-grid{grid-template-columns:1fr 1fr}.guide{padding:18px}}
+@media print{
+  @page{size:A4 portrait;margin:12mm}
+  html,body{width:auto!important;min-width:0!important;background:#fff!important;margin:0!important;padding:0!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:10.5pt!important;line-height:1.45!important}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  header,.no-print,.guide-overlay,.zoho-connection,.email-actions{display:none!important}
+  .app{display:block!important;width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+  .panel{display:none!important}
+  .preview-wrap{display:block!important;width:100%!important;min-width:0!important;margin:0!important;padding:0!important}
+  #sheet{display:block!important;width:100%!important;max-width:none!important;min-height:0!important;margin:0!important;box-shadow:none!important;border-radius:0!important;overflow:visible!important}
+  #sheet .band{padding:20px 22px!important}
+  #sheet .meta-d{padding-left:22px!important;padding-right:22px!important;gap:12px!important}
+  #sheet table{width:100%!important;max-width:100%!important;margin:12px 0!important;table-layout:fixed}
+  #sheet th,#sheet td{overflow-wrap:anywhere;word-wrap:break-word;padding:6px 7px!important}
+  #sheet section{padding:17px 18px!important;margin:0!important;break-inside:auto;page-break-inside:auto}
+  #sheet section.cover{break-after:avoid!important;page-break-after:avoid!important;min-height:0!important;padding:22px 24px!important}
+  #sheet section.cover .meta-d{padding-left:0!important;padding-right:0!important}
+  #sheet thead{display:table-header-group}
+  #sheet tr,.finding-card,.kpi,.pay,.warn,.box-d{break-inside:avoid!important;page-break-inside:avoid!important}
+  #sheet h2.d,#sheet h3.subhead{break-inside:avoid!important;page-break-inside:avoid!important;break-after:avoid!important;page-break-after:avoid!important}
+  #sheet .section-opening{break-inside:avoid!important;page-break-inside:avoid!important}
+  #sheet section > h2.d + p{break-after:avoid-page!important;page-break-after:avoid!important}
+  #sheet .invoice-intro{padding:17px 22px 0!important}
+  #sheet .invoice-bottom{margin:0 22px 8px!important;grid-template-columns:minmax(0,1fr) 225px!important;gap:14px!important}
+  #sheet .pay{margin:15px 22px 0!important;padding:15px!important}
+  #sheet .foot-d{padding:20px 22px 24px!important}
+  #sheet .totals{margin-right:22px!important}
+  #sheet .rfoot{padding:12px 0 0!important}
+}
+</style>
+</head>
+<body>
+<header class="no-print">
+  <div class="brand">Liability Liberators <small>Document Studio</small></div>
+  <div class="tabs" role="tablist" aria-label="Document type">
+    <button id="tabInv" class="active" type="button" role="tab" aria-selected="true" onclick="switchTab('inv')">Invoice</button>
+    <button id="tabRep" type="button" role="tab" aria-selected="false" onclick="switchTab('rep')">Audit Report</button>
+  </div>
+  <div class="hdr-actions">
+    <button class="btn ghost" type="button" onclick="openGuide()">How to use</button>
+    <button class="btn ghost" type="button" onclick="downloadBackup()">Download HTML</button>
+    <button class="btn" id="exportBtn" type="button" onclick="exportPDF()">⤓ Export PDF</button>
+  </div>
+</header>
+
+<main class="app">
+  <aside class="panel no-print" aria-label="Document data entry">
+    <h3 id="panelTitle">Invoice — Data Entry</h3>
+    <div class="body">
+      <div class="clientbar" id="clientbar" style="display:none">
+        <select id="clientSel" aria-label="Load saved client"><option value="">— load a saved client —</option></select>
+        <button class="btn danger" type="button" onclick="deleteClient()" title="Delete saved client">✕</button>
+      </div>
+
+      <details class="fgroup">
+        <summary>Business profile · set once</summary>
+        <div class="inner">
+          <label for="biz_name">Legal / business name</label><input id="biz_name" placeholder="e.g. Liability Liberators LLC">
+          <label for="biz_email">Business email</label><input id="biz_email" type="email" placeholder="support@liabilityliberators.com">
+          <label for="biz_addr">Business address</label><textarea id="biz_addr" placeholder="Street, City, State, ZIP, Country"></textarea>
+          <p class="microcopy">This profile is reused on invoices and report footers. Enter the real billing details you want clients to see.</p>
+        </div>
+      </details>
+
+      <div id="formInv">
+        <details class="fgroup" open>
+          <summary>Invoice details</summary>
+          <div class="inner">
+            <div class="row2">
+              <div><label for="inv_no">Invoice number</label><input id="inv_no"></div>
+              <div><label for="inv_ref">Reference / PO</label><input id="inv_ref" placeholder="e.g. ENG-2026-014"></div>
+            </div>
+            <div class="row2">
+              <div><label for="inv_issue">Issue date</label><input type="date" id="inv_issue"></div>
+              <div><label for="inv_due">Due date</label><input type="date" id="inv_due"></div>
+            </div>
+            <label for="inv_client_co">Client company</label><input id="inv_client_co" placeholder="Legal client name">
+            <div class="row2">
+              <div><label for="inv_client_contact">Contact person</label><input id="inv_client_contact"></div>
+              <div><label for="inv_client_email">Client email</label><input id="inv_client_email" type="email"></div>
+            </div>
+            <label for="inv_client_addr">Client billing address</label><textarea id="inv_client_addr"></textarea>
+          </div>
+        </details>
+        <details class="fgroup" open>
+          <summary>Fees & line items</summary>
+          <div class="inner">
+            <div id="inv_items"></div>
+            <button class="addrow" type="button" onclick="addItem()">+ Add line item</button>
+            <div class="row2" style="margin-top:10px">
+              <div><label for="inv_tax">Tax rate (%)</label><input type="number" id="inv_tax" value="0" min="0" step="0.01"></div>
+              <div><label for="inv_note">Payment note</label><input id="inv_note" placeholder="Optional payment reference"></div>
+            </div>
+            <label for="inv_terms">Payment terms</label><input id="inv_terms" placeholder="e.g. Due within 7 days, as agreed in the engagement terms">
+            <p class="microcopy">The default audit fee is $2,000. Change it only when the signed engagement terms specify a different amount.</p>
+          </div>
+        </details>
+        <details class="fgroup">
+          <summary>Payment instructions</summary>
+          <div class="inner">
+            <label for="inv_pay_title">Payment method / network</label><input id="inv_pay_title" value="USDT · BEP-20 (BNB Smart Chain)">
+            <label for="inv_pay_address">Payment address / instructions</label><textarea id="inv_pay_address">0xC8c114dE3fFEa294EcC6e97Bf371EbA852E4B3cd</textarea>
+            <label for="inv_pay_note">Payment instructions note</label><textarea id="inv_pay_note">Send only USDT on BEP-20 (BNB Smart Chain). Use the invoice number as your transaction reference where supported, or email the transaction hash after payment.</textarea>
+            <p class="microcopy">Important: independently verify the payment address and network before sending any invoice. This tool cannot verify wallet ownership.</p>
+          </div>
+        </details>
+        <details class="fgroup" open>
+          <summary>Email delivery · prepare client message</summary>
+          <div class="inner">
+            <label for="inv_email_cc">CC email · optional</label><input id="inv_email_cc" type="email" placeholder="finance@client.com">
+            <label for="inv_email_message">Personal message · optional</label><textarea id="inv_email_message" placeholder="Thank you for the opportunity to support your team. Please find the invoice attached."></textarea>
+            <div class="email-actions">
+              <div class="action-title">Send invoice directly through Zoho Mail</div>
+              <p class="action-copy">The studio creates a high-resolution invoice attachment, attaches it and sends through your Zoho mailbox. The sender is fixed as <b>support@liabilityliberators.com</b>.</p>
+              <div class="zoho-connection">
+                <div class="sender-lock"><span>Sending account</span><b>support@liabilityliberators.com</b><small>Authenticated Zoho Mail sender</small></div>
+                <label for="zoho_worker_url">Secure mail connector URL</label>
+                <input id="zoho_worker_url" type="url" placeholder="https://your-worker.your-subdomain.workers.dev" autocomplete="url">
+                <label for="zoho_access_key">Private studio access key</label>
+                <input id="zoho_access_key" type="password" placeholder="Enter the private key from your Worker settings" autocomplete="off">
+                <p class="microcopy">The connector URL is saved on this device. The access key is used only in this tab and is never written into the HTML or saved client records.</p>
+                <div class="action-buttons">
+                  <button class="btn light" type="button" onclick="connectZoho()">Connect Zoho account</button>
+                  <button class="btn light" type="button" onclick="testZohoConnection()">Test connection</button>
+                  <button class="btn full" id="sendZohoBtn" type="button" onclick="sendInvoiceWithZoho()">Send invoice PDF via Zoho</button>
+                </div>
+                <p id="zohoStatus" class="email-boundary" aria-live="polite">Not connected yet. Deploy the secure connector and enter its URL and access key.</p>
+              </div>
+              <div class="rule"></div>
+              <div class="action-title">Alternative email options</div>
+              <div class="action-buttons">
+                <button class="btn light" type="button" onclick="openInvoiceEmail('gmail')">Create Gmail draft</button>
+                <button class="btn light" type="button" onclick="openInvoiceEmail('mailto')">Open email app</button>
+                <button class="btn light full" type="button" onclick="copyPaymentAddress()">Copy USDT payment address</button>
+              </div>
+              <p class="email-boundary">Zoho sending includes the generated invoice PDF as an attachment. Review the recipient, amount, due date, network and wallet address before sending.</p>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div id="formRep" style="display:none">
+        <div class="readiness" aria-live="polite">
+          <div class="readiness-top"><span>Audit report quality check</span><span id="readinessPct">0% complete</span></div>
+          <div class="readiness-track"><div class="readiness-fill" id="readinessFill"></div></div>
+          <ul id="readinessList"><li>Complete the engagement details to build a decision-ready report.</li></ul>
+        </div>
+        <details class="fgroup" open>
+          <summary>Engagement brief</summary>
+          <div class="inner">
+            <div class="row2">
+              <div><label for="rep_date">Report date</label><input type="date" id="rep_date"></div>
+              <div><label for="rep_ref">Engagement reference</label><input id="rep_ref" placeholder="ENG-2026-001"></div>
+            </div>
+            <label for="rep_client">Client legal / trading name</label><input id="rep_client" placeholder="Client company">
+            <label for="rep_by">Prepared by</label><input id="rep_by" placeholder="Your name · Liability Liberators">
+            <label for="rep_period">Period reviewed</label><input id="rep_period" placeholder="e.g. 1 Jan 2025 – 31 Dec 2025">
+            <label for="rep_status">Report status</label><select id="rep_status"><option>Draft for discussion</option><option>Final</option></select>
+            <label for="rep_objective">Engagement objective</label><textarea id="rep_objective" placeholder="What decision should this review help management make? Define the commercial question in plain language."></textarea>
+            <label for="rep_scope_in">Scope included</label><textarea id="rep_scope_in" placeholder="Systems, entities, locations, spend categories, contracts, revenue streams and time period included."></textarea>
+            <label for="rep_scope_out">Scope excluded / boundaries</label><textarea id="rep_scope_out" placeholder="What was not tested, not provided, or outside this engagement."></textarea>
+          </div>
+        </details>
+        <details class="fgroup" open>
+          <summary>Data, evidence & review method</summary>
+          <div class="inner">
+            <label for="rep_method">Review procedures performed</label><textarea id="rep_method" placeholder="Describe the actual tests: reconciliations, duplicate checks, rate comparisons, contract-to-invoice tests, trend analysis, sample checks, etc."></textarea>
+            <div class="row2">
+              <div><label for="rep_population">Population reviewed</label><input id="rep_population" placeholder="e.g. 4,820 invoices"></div>
+              <div><label for="rep_sample">Sample / items tested</label><input id="rep_sample" placeholder="e.g. 420 invoices"></div>
+            </div>
+            <label for="rep_coverage">Coverage by value / volume</label><input id="rep_coverage" placeholder="e.g. Sample represented 72% of invoiced value">
+            <label for="rep_quality">Data quality & reconciliation notes</label><textarea id="rep_quality" placeholder="Missing fields, duplicate records, unmatched totals, period gaps, system limitations, tie-outs performed."></textarea>
+            <label style="margin-top:13px">Records & systems reviewed</label>
+            <div id="rep_records"></div>
+            <button class="addrow" type="button" onclick="addRecord()">+ Add record or system</button>
+          </div>
+        </details>
+        <details class="fgroup" open>
+          <summary>Findings · quantified leak register</summary>
+          <div class="inner">
+            <p class="microcopy">Create one entry per distinct issue. Separate recurring annual impact from one-time recovery or exposure. Do not count the same dollars in both fields.</p>
+            <div id="rep_findings"></div>
+            <button class="addrow" type="button" onclick="addFinding()">+ Add finding</button>
+          </div>
+        </details>
+        <details class="fgroup" open>
+          <summary>Value realization roadmap</summary>
+          <div class="inner">
+            <p class="microcopy">Actions should map to finding numbers, have an accountable owner and a realistic target date. These are recommendations, not claims that savings have already been achieved.</p>
+            <div id="rep_actions"></div>
+            <button class="addrow" type="button" onclick="addAction()">+ Add action</button>
+          </div>
+        </details>
+        <details class="fgroup" open>
+          <summary>Executive narrative & decisions</summary>
+          <div class="inner">
+            <label for="rep_summary">Executive conclusions</label><textarea id="rep_summary" placeholder="State the most important evidence-backed conclusions, business effect, caveats and the two or three decisions management should make."></textarea>
+            <label for="rep_areas">Other areas reviewed · one per line</label><textarea id="rep_areas" placeholder="Revenue & collections — what was checked and result&#10;Billing & pricing — what was checked and result&#10;Contracts & suppliers — what was checked and result&#10;Recurring spend — what was checked and result"></textarea>
+            <label for="rep_decisions">Management decisions required</label><textarea id="rep_decisions" placeholder="Approve supplier dispute review — CFO — by 15 Dec 2026&#10;Assign billing-rate correction — Operations Director — by 20 Dec 2026"></textarea>
+            <label for="rep_walk">Findings walkthrough · attendees and date</label><input id="rep_walk" placeholder="e.g. 25 Nov 2026 · Client CFO, COO, Liability Liberators">
+            <label for="rep_steps">Agreed next steps · one per line</label><textarea id="rep_steps" placeholder="Action — owner — target date — evidence of completion"></textarea>
+            <label for="rep_limits">Assumptions, limitations & open items · one per line</label><textarea id="rep_limits" placeholder="Management-provided data was not independently confirmed beyond the tests described.&#10;Credit notes after the review cut-off were not included."></textarea>
+          </div>
+        </details>
+        <details class="fgroup">
+          <summary>Report sign-off & professional boundaries</summary>
+          <div class="inner">
+            <label for="rep_signoff">Prepared / reviewed by</label><input id="rep_signoff" placeholder="Name · Title · Date">
+            <label for="rep_disclaimer">Additional engagement-specific disclaimer</label><textarea id="rep_disclaimer" placeholder="Optional approved wording from the engagement agreement."></textarea>
+            <p class="microcopy">The report must distinguish potential opportunities from verified cash recovered or savings realized. Do not label an amount “verified” unless the source evidence and calculation support it.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="save-row">
+        <input id="saveName" placeholder="Save client / engagement as…" aria-label="Saved client name">
+        <button class="btn light" type="button" onclick="saveClient()">Save</button>
+      </div>
+      <p id="saveStatus" aria-live="polite">Autosaves in this browser on this device.</p>
+      <p class="hint">Saved clients and drafts stay in this browser only. Use “Download HTML” for a standalone copy of the current preview; saved client data remains in this browser.</p>
+    </div>
+  </aside>
+
+  <section class="preview-wrap" aria-label="Live document preview"><div id="sheet"></div></section>
+</main>
+
+<div class="guide-overlay" id="guideOverlay" role="dialog" aria-modal="true" aria-labelledby="guideTitle" onclick="if(event.target===this)closeGuide()">
+  <div class="guide">
+    <div class="guide-head"><h2 id="guideTitle">Using the Document Studio</h2><button class="guide-close" type="button" onclick="closeGuide()">Close ✕</button></div>
+    <p>This studio creates two documents: a client invoice and a structured Profit Leak Findings report. The preview updates as you type. Draft and saved-client data stay in this browser. Invoice delivery to Zoho happens only when you deliberately press the Zoho send button and use the secured connector.</p>
+    <h3>1. Set up your business profile once</h3>
+    <p>Open “Business profile” and enter your actual legal/business name, billing email and address. These details appear on the invoice and report footer. Do not use placeholder or unverified details on a client document.</p>
+    <h3>2. Create an invoice</h3>
+    <ul>
+      <li>Enter the invoice number, dates, client billing details and any purchase-order reference.</li>
+      <li>Use line items to describe the agreed service clearly. The default Profit Leak Audit line is $2,000; confirm that amount against the engagement agreement.</li>
+      <li>Check tax treatment with a qualified tax professional where relevant. The calculator only applies the percentage you enter; it does not determine tax liability.</li>
+      <li>Verify payment method, network and address independently before issuing. The studio cannot validate a wallet address or confirm receipt of funds.</li>
+    </ul>
+    <h3>3. Send an invoice by email</h3>
+    <ul>
+      <li>Enter the recipient in the Client email field and confirm the invoice total, due date, payment network and wallet address.</li>
+      <li>Export the invoice as a PDF and save it to your computer.</li>
+      <li>For direct delivery, enter your secure Worker URL and private access key, connect Zoho once, then test the connection. The sending mailbox is fixed as support@liabilityliberators.com.</li>
+      <li>Click “Send invoice PDF via Zoho”. The studio creates a high-resolution invoice attachment, attaches it through the Zoho Mail API and sends it from your authenticated mailbox.</li>
+      <li>Use “Create Gmail draft” or “Open email app” only as alternative manual workflows. Use “Copy USDT payment address” to copy the wallet address; the email body also includes it as plain text.</li>
+    </ul>
+    <h3>4. Build the $2,000 audit report</h3>
+    <ul>
+      <li><b>Engagement brief:</b> define the business question, period, entities/systems covered, what is included and what is excluded.</li>
+      <li><b>Data & evidence:</b> list every data source, the period it covers, access received, population, sample size and coverage. Explain any missing or unreliable data.</li>
+      <li><b>Findings:</b> create one entry for each distinct issue. State what the evidence shows, the calculation, assumptions, evidence reference, priority and status. Classify every one-time amount as recovery/credit, cost avoidance, potential exposure or not applicable. Do not double-count.</li>
+      <li><b>Roadmap:</b> translate findings into practical actions, each linked to a finding, an owner, effort and target date.</li>
+      <li><b>Executive narrative:</b> explain the commercial significance in plain English and identify decisions management needs to make.</li>
+    </ul>
+    <h3>5. What makes the audit worth the fee?</h3>
+    <p>The value is not the number of pages. It is the defined review, evidence trail, transparent calculations, quantified and properly classified opportunities, management-ready priorities, and a practical implementation roadmap. Deliver only tests that were actually performed and evidence that was actually reviewed. The template cannot manufacture proof or guarantee a recovery.</p>
+    <h3>6. Quality check before export</h3>
+    <p>Use the report quality meter as a pre-flight reminder. Make sure every material finding has an evidence reference, calculation method, assumption, defensible status and a corresponding action. Reconcile figures to source records and check that two findings do not count the same transaction or contract value twice. Select “Final” only after your internal review.</p>
+    <h3>7. Export, backup and saved clients</h3>
+    <ul>
+      <li><b>Export PDF:</b> opens the browser's native print dialog. Choose <b>Save as PDF</b>, paper size <b>A4</b>, scale <b>100%</b> or <b>Fit to printable area</b>, and enable <b>Background graphics</b>. This keeps text crisp and selectable instead of turning the page into a blurry screenshot. No pop-up or external PDF library is needed.</li>
+      <li><b>Download HTML:</b> downloads the current document preview as a standalone HTML file. It is a readable copy, not a PDF.</li>
+      <li><b>Save client:</b> saves invoice fields, report fields, records, findings and actions under the label you enter. Choose the saved label at the top of the panel to reload it.</li>
+    </ul>
+    <div class="warn"><b>Commercial boundary:</b> this report is an operational and commercial review, not a statutory financial-statement audit, legal opinion, tax opinion or assurance engagement. Any implementation fees and any 10–25% performance component should be agreed separately in writing and calculated only on verified recovered value or savings, using a clear baseline and measurement period.</div>
+  </div>
+</div>
+
+<script>
+"use strict";
+const LS={profile:"ll_profile",clients:"ll_clients",counter:"ll_counter",draft:"ll_draft",zohoEndpoint:"ll_zoho_worker_url"};
+const ZOHO_FROM="support@liabilityliberators.com";
+const HTML2PDF_SRC="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js";
+const HTML2PDF_SRI="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==";
+const $=id=>document.getElementById(id);
+const SESSION_MEMORY=new Map();
+function storageGet(key){try{const value=window.localStorage.getItem(key);if(value!==null)return value}catch(e){}return SESSION_MEMORY.has(key)?SESSION_MEMORY.get(key):null}
+function storageSet(key,value){try{window.localStorage.setItem(key,String(value));return true}catch(e){SESSION_MEMORY.set(key,String(value));return false}}
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const money=n=>"$"+(Number(n)||0).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const todayISO=()=>{const d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)};
+const prettyDate=v=>{if(!v)return "—";const a=v.split("-").map(Number);if(a.length!==3||a.some(n=>!n))return v;return new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric",year:"numeric",timeZone:"UTC"}).format(new Date(Date.UTC(a[0],a[1]-1,a[2])))};
+let tab="inv",items=[],records=[],findings=[],actions=[];
+const INV_DEFAULT={desc:"Profit Leak Audit — defined-scope review of agreed revenue, billing, contracts and recurring spend records; quantified findings report and management walkthrough. Fixed fee, one time.",qty:1,rate:2000};
+const FIELD_IDS=[
+ "inv_no","inv_ref","inv_issue","inv_due","inv_client_co","inv_client_contact","inv_client_email","inv_client_addr","inv_tax","inv_note","inv_terms","inv_pay_title","inv_pay_address","inv_pay_note","inv_email_cc","inv_email_message",
+ "rep_date","rep_ref","rep_client","rep_by","rep_period","rep_status","rep_objective","rep_scope_in","rep_scope_out","rep_method","rep_population","rep_sample","rep_coverage","rep_quality","rep_summary","rep_areas","rep_decisions","rep_walk","rep_steps","rep_limits","rep_signoff","rep_disclaimer"
+];
+function readStore(key,fallback={}){try{const v=storageGet(key);return v?JSON.parse(v):fallback}catch(e){return fallback}}
+function writeStore(key,value){const ok=storageSet(key,JSON.stringify(value));if(!ok)setSaveStatus("Browser storage is unavailable. This draft is only retained for the current tab; download a backup before closing.",true);return true}
+function getProfile(){return readStore(LS.profile,{})}
+function getClients(){const v=readStore(LS.clients,{});return v&&typeof v==="object"?v:{}}
+function setSaveStatus(msg,isError=false){const el=$("saveStatus");if(el){el.textContent=msg;el.style.color=isError?"var(--danger)":"var(--muted)"}}
+function nextInvNo(){let n=0;try{n=Number(storageGet(LS.counter))||0}catch(e){}n++;storageSet(LS.counter,String(n));return "INV-"+new Date().getFullYear()+"-"+String(n).padStart(3,"0")}
+function statusPill(s){const cls=s==="Verified"?"s-verified":s==="Estimate"?"s-estimate":"s-evidence";return `<span class="status ${cls}">${esc(s)}</span>`}
+function priorityClass(s){const safe=["Critical","High","Medium","Low"].includes(s)?s:"Medium";return "p-"+safe.toLowerCase()}
+function splitLines(id){return $(id).value.split("\n").map(s=>s.trim()).filter(Boolean)}
+function getFieldData(){const d={};FIELD_IDS.forEach(id=>d[id]=$(id)?.value??"");return d}
+function setFieldData(d={}){FIELD_IDS.forEach(id=>{if($(id)&&d[id]!==undefined)$(id).value=d[id]??""})}
+function saveDraft(){const d={tab,fields:getFieldData(),items,records,findings,actions};const ok=writeStore(LS.draft,d);if(ok)setSaveStatus("Saved in this browser · just now")}
+function persistProfile(){const p={name:$("biz_name").value,email:$("biz_email").value,addr:$("biz_addr").value};writeStore(LS.profile,p)}
+function normalizeFinding(f={}){return {title:f.title||"",area:f.area||"Billing & pricing",priority:f.priority||"Medium",annualValue:f.annualValue??f.value??0,oneTimeValue:f.oneTimeValue??0,oneTimeType:f.oneTimeType||"Recovery / credit",population:f.population||"",evidence:f.evidence||f.desc||"",method:f.method||"",assumption:f.assumption??f.assum??"",recommendation:f.recommendation||"",status:f.status||"Evidence-backed"}}
+function normalizeAction(a={}){return {action:a.action||a.act||"",findingRef:a.findingRef||a.ref||"",owner:a.owner||"",effort:a.effort||"Medium",due:a.due||"",expected:a.expected||""}}
+function normalizeRecord(r={}){return {rec:r.rec||"",period:r.period||"",access:r.access||"Provided",notes:r.notes||""}}
+function render(){if(tab==="inv")renderInvoice();else renderReport();updateReadiness();saveDraft()}
+
+/* Dynamic editor rows */
+const DYNAMIC={
+ items:{container:"inv_items",data:()=>items,fields:["desc","qty","rate"]},
+ records:{container:"rep_records",data:()=>records,fields:["rec","period","access","notes"]},
+ findings:{container:"rep_findings",data:()=>findings,fields:["title","area","priority","annualValue","oneTimeValue","oneTimeType","population","evidence","method","assumption","recommendation","status"]},
+ actions:{container:"rep_actions",data:()=>actions,fields:["action","findingRef","owner","effort","due","expected"]}
+};
+function fieldInput(type,i,key,label,placeholder="",opts=null){const v=esc(DYNAMIC[type].data()[i]?.[key]??"");const id=`${type}-${i}-${key}`;if(opts){return `<div><label for="${id}">${label}</label><select id="${id}" data-i="${i}" data-f="${key}">${opts.map(o=>`<option ${String(DYNAMIC[type].data()[i]?.[key]??"")===o?"selected":""}>${esc(o)}</option>`).join("")}</select></div>`}const area=(key==="evidence"||key==="recommendation"||key==="notes");const inputType=(key==="annualValue"||key==="oneTimeValue"||key==="qty"||key==="rate")?"number":"text";const attrs=inputType==="number"?' min="0" step="any"':'';return `<div><label for="${id}">${label}</label>${area?`<textarea id="${id}" data-i="${i}" data-f="${key}" placeholder="${esc(placeholder)}">${v}</textarea>`:`<input id="${id}" data-i="${i}" data-f="${key}" type="${inputType}"${attrs} value="${v}" placeholder="${esc(placeholder)}">`}</div>`}
+function renderDynamic(type){const cfg=DYNAMIC[type],arr=cfg.data(),host=$(cfg.container);if(!host)return;host.innerHTML=arr.map((d,i)=>{
+ let body="",title="";
+ if(type==="items"){title=`Line item ${i+1}`;body=`${fieldInput(type,i,"desc","Description","e.g. Profit Leak Audit — fixed fee") }<div class="row2">${fieldInput(type,i,"qty","Quantity","1")}${fieldInput(type,i,"rate","Rate ($)","2000")}</div>`}
+ if(type==="records"){title=`Source ${i+1}`;body=`${fieldInput(type,i,"rec","Record / system","e.g. ERP invoice export")}<div class="row2">${fieldInput(type,i,"period","Period covered","Dates")}${fieldInput(type,i,"access","Access received","",["Provided","Read-only","Management summary","Not available"])}</div>${fieldInput(type,i,"notes","Notes / limitations","Optional data quality note")}`}
+ if(type==="findings"){title=`Finding ${i+1}`;body=`${fieldInput(type,i,"title","Finding title","e.g. Renewed contracts billed at old rates")}<div class="row2">${fieldInput(type,i,"area","Review area","",["Revenue & collections","Billing & pricing","Contracts & suppliers","Recurring spend","Procurement","Operational process","Other"])}${fieldInput(type,i,"priority","Priority","",["Critical","High","Medium","Low"])}</div><div class="row2">${fieldInput(type,i,"annualValue","Annual recurring opportunity ($)","0")}${fieldInput(type,i,"oneTimeValue","One-time amount ($)","0")}</div>${fieldInput(type,i,"oneTimeType","One-time amount type","",["Recovery / credit","Cost avoidance","Exposure / potential liability","Not applicable"])}<div class="row2">${fieldInput(type,i,"population","Population / sample","e.g. 12 of 140 invoices")}${fieldInput(type,i,"status","Evidence status","",["Verified","Evidence-backed","Estimate"])}</div>${fieldInput(type,i,"evidence","Evidence reference & observation","Source name, file/tab, transaction IDs, dates and what it demonstrates")}${fieldInput(type,i,"method","Calculation method","Show formula, inputs, rate, period and annualization logic")}${fieldInput(type,i,"assumption","Assumptions / caveats","State what must be true for the value to hold")}${fieldInput(type,i,"recommendation","Recommended correction","Specific action to stop, recover or prevent the leakage")}`}
+ if(type==="actions"){title=`Action ${i+1}`;body=`${fieldInput(type,i,"action","Action","Specific action and deliverable")}<div class="row2">${fieldInput(type,i,"findingRef","Finding number","e.g. 1")}${fieldInput(type,i,"owner","Accountable owner","Role or named owner")}</div><div class="row2">${fieldInput(type,i,"effort","Effort","",["Low","Medium","High"])}${fieldInput(type,i,"due","Target date","YYYY-MM-DD")}</div>${fieldInput(type,i,"expected","Expected outcome / proof of completion","e.g. corrected rate in system; credit note received; contract amendment signed")}`}
+ return `<div class="dynrow" data-row="${type}" data-index="${i}"><div class="dynhead"><strong>${title}</strong><button class="rm" type="button" data-remove="${type}" data-i="${i}" aria-label="Remove ${title}">×</button></div>${body}</div>`
+ }).join("");}
+function addItem(d={}){items.push({desc:d.desc||"",qty:d.qty??1,rate:d.rate??0});renderDynamic("items");render()}
+function addRecord(d={}){records.push(normalizeRecord(d));renderDynamic("records");render()}
+function addFinding(d={}){findings.push(normalizeFinding(d));renderDynamic("findings");render()}
+function addAction(d={}){actions.push(normalizeAction(d));renderDynamic("actions");render()}
+function removeDynamic(type,i){const arr=DYNAMIC[type]?.data();if(!arr||i<0||i>=arr.length)return;arr.splice(i,1);renderDynamic(type);render()}
+Object.entries(DYNAMIC).forEach(([type,cfg])=>{const host=$(cfg.container);host.addEventListener("input",e=>{const el=e.target;if(!el.matches("[data-i][data-f]"))return;const i=Number(el.dataset.i),key=el.dataset.f,arr=cfg.data();if(arr[i]){arr[i][key]=el.value;render()}});host.addEventListener("change",e=>{const el=e.target;if(el.matches("[data-i][data-f]")){const arr=cfg.data(),i=Number(el.dataset.i);if(arr[i]){arr[i][el.dataset.f]=el.value;render()}}});host.addEventListener("click",e=>{const b=e.target.closest("[data-remove]");if(b)removeDynamic(b.dataset.remove,Number(b.dataset.i))})});
+
+/* Invoice renderer — professional client-facing layout */
+function renderInvoice(){
+ const p=getProfile();
+ const subtotal=items.reduce((a,it)=>a+(Math.max(0,Number(it.qty)||0)*Math.max(0,Number(it.rate)||0)),0);
+ const taxPct=Math.max(0,Number($("inv_tax").value)||0),tax=subtotal*taxPct/100,total=subtotal+tax;
+ const issuerName=p.name||"Liability Liberators";
+ const from=[issuerName,p.addr,p.email||ZOHO_FROM].filter(Boolean).join("\n");
+ const client=[$("inv_client_co").value,$("inv_client_contact").value,$("inv_client_addr").value,$("inv_client_email").value].filter(Boolean).join("\n");
+ const rows=items.map(it=>`<tr><td><b>${esc(it.desc)||"—"}</b></td><td class="num">${Math.max(0,Number(it.qty)||0)}</td><td class="num">${money(Math.max(0,Number(it.rate)||0))}</td><td class="num"><b>${money(Math.max(0,Number(it.qty)||0)*Math.max(0,Number(it.rate)||0))}</b></td></tr>`).join("");
+ const payTitle=$("inv_pay_title").value.trim(),payAddress=$("inv_pay_address").value.trim(),payNote=$("inv_pay_note").value.trim();
+ const terms=$("inv_terms").value.trim(),note=$("inv_note").value.trim();
+ const due=$("inv_due").value||"Not specified";
+ const invoiceNo=$("inv_no").value.trim()||"—";
+ const paymentBlock=(payTitle||payAddress)?`<div class="pay"><div class="pay-heading"><h4>Payment instructions</h4><span class="network-tag">${esc(payTitle)||"Payment details"}</span></div>${payAddress?`<div class="addr">${esc(payAddress)}</div>`:""}<p class="note">${esc(payNote)||"Use the invoice number as your payment reference where supported."}</p><p class="payment-warning"><b>Network check:</b> use only the stated asset and network. A transfer sent on the wrong network may be unrecoverable. Confirm the address with the issuer through a trusted channel before payment.</p></div>`:"";
+ $("sheet").innerHTML=`
+ <div class="band">
+   <div class="brand-d">Liability Liberators<small>Profit integrity review</small></div>
+   <div class="doc-title"><h1>INVOICE</h1><div class="doc-ref">${esc(invoiceNo)}</div></div>
+ </div>
+ <div class="invoice-intro"><div><div class="eyebrow">Invoice prepared for</div><div class="client-name">${esc($("inv_client_co").value)||"Client company"}</div></div><div class="invoice-state">PAYMENT REQUEST</div></div>
+ <div class="meta-d">
+   <div><h4>Issued by</h4><p>${esc(from)||"Liability Liberators"}</p></div>
+   <div><h4>Bill to</h4><p>${esc(client)||"—"}</p></div>
+   <div><h4>Invoice details</h4><p>Invoice no.: ${esc(invoiceNo)}\nIssue date: ${esc(prettyDate($("inv_issue").value))}\nDue date: ${esc(prettyDate(due))}\nReference: ${esc($("inv_ref").value)||"—"}</p></div>
+ </div>
+ <table><thead><tr><th style="width:50%">Description</th><th class="num">Qty</th><th class="num">Unit rate</th><th class="num">Line total</th></tr></thead><tbody>${rows||`<tr><td colspan="4" class="empty">No line items yet — add them in the form.</td></tr>`}</tbody></table>
+ <div class="invoice-bottom">
+   <div class="invoice-terms">
+     <h4>Payment terms</h4><p>${esc(terms)||"As agreed in the signed engagement agreement."}</p>
+     <h4>Additional note</h4><p>${esc(note)||"Please include the invoice number as your payment reference where supported."}</p>
+   </div>
+   <div class="invoice-total-box"><div class="balance-label">Amount payable</div><div class="totals"><div><span>Subtotal</span><span>${money(subtotal)}</span></div><div><span>Tax (${taxPct}%)</span><span>${money(tax)}</span></div><div class="grand"><span>Total due</span><span>${money(total)}</span></div></div></div>
+ </div>
+ ${paymentBlock}
+ <div class="foot-d"><div class="invoice-foot-grid"><div><p>This invoice reflects the services and fees set out in the agreed engagement terms. Any implementation fee or performance component is governed by a separate written agreement.</p><p>Questions about this invoice? Contact ${esc(p.email||ZOHO_FROM)}.</p></div><div class="foot-ref">Invoice ${esc(invoiceNo)}<br>liabilityliberators.com</div></div></div>`;
+}
+
+/* Invoice delivery helpers. The Zoho Worker sends the generated PDF as an attachment; mailto/Gmail remain manual alternatives. */
+function buildInvoiceEmail(){
+ const to=$("inv_client_email").value.trim();
+ if(!to||!$("inv_client_email").checkValidity()){$("inv_client_email").reportValidity();setSaveStatus("Enter a valid client email address before preparing the message.",true);return null}
+ const ccValue=$("inv_email_cc").value.trim();if(ccValue&&!$("inv_email_cc").checkValidity()){$("inv_email_cc").reportValidity();setSaveStatus("Check the optional CC email address.",true);return null}
+ const p=getProfile(),subtotal=items.reduce((a,it)=>a+(Math.max(0,Number(it.qty)||0)*Math.max(0,Number(it.rate)||0)),0),taxPct=Math.max(0,Number($("inv_tax").value)||0),tax=subtotal*taxPct/100,total=subtotal+tax;
+ const invoiceNo=$("inv_no").value.trim()||"—",due=$("inv_due").value||"Not specified";
+ const clientName=$("inv_client_contact").value.trim()||$("inv_client_co").value.trim()||"there";
+ const subject=`Invoice ${invoiceNo} | Liability Liberators`;
+ const lines=items.filter(it=>it.desc||Number(it.rate)||Number(it.qty)).map(it=>`• ${it.desc||"Service"} — ${it.qty||0} × ${money(it.rate)} = ${money((Number(it.qty)||0)*(Number(it.rate)||0))}`);
+ const payTitle=$("inv_pay_title").value.trim(),payAddress=$("inv_pay_address").value.trim(),payNote=$("inv_pay_note").value.trim();
+ const body=[
+ `Hello ${clientName},`,
+ "",
+ $("inv_email_message").value.trim()||"Please find the attached invoice PDF and the payment details below.",
+ "",
+ `Invoice: ${invoiceNo}`,
+ `Issue date: ${prettyDate($("inv_issue").value)}`,
+ `Payment due: ${prettyDate(due)}`,
+ `Client reference: ${$("inv_ref").value.trim()||"Not specified"}`,
+ "",
+ "Invoice summary:",...lines,
+ "",`Subtotal: ${money(subtotal)}`,`Tax (${taxPct}%): ${money(tax)}`,`TOTAL DUE: ${money(total)}`,
+ "",
+ "Payment details:",payTitle||"Payment method / network not specified",payAddress?`USDT payment address: ${payAddress}`:"Payment address not supplied in the invoice.",payNote||"Use the invoice number as your payment reference where supported.",
+ "",
+ "Please verify the payment asset, network and wallet address before transferring funds. Do not send funds if any detail differs from the invoice.",
+ "",
+ "Thank you,",p.name||"Liability Liberators",p.email||ZOHO_FROM, "liabilityliberators.com"
+ ].filter((line,i,arr)=>line!==""||arr[i-1]!=="");
+ return {to,cc:$("inv_email_cc").value.trim(),subject,body:body.join("\n")};
+}
+function openInvoiceEmail(mode){
+ const data=buildInvoiceEmail();if(!data)return;
+ const params=new URLSearchParams();params.set("to",data.to);if(data.cc)params.set("cc",data.cc);params.set("su",data.subject);params.set("body",data.body);
+ if(mode==="gmail"){
+   const url="https://mail.google.com/mail/?view=cm&fs=1&"+params.toString();
+   const w=window.open(url,"_blank");
+   setSaveStatus(w?"Gmail draft opened. Attach the exported invoice PDF, review, then press Send.":"The browser blocked the Gmail tab. Allow popups or use Open email app.",!w);
+ }else{
+   const mailto="mailto:"+encodeURIComponent(data.to)+"?"+[data.cc?`cc=${encodeURIComponent(data.cc)}`:"",`subject=${encodeURIComponent(data.subject)}`,`body=${encodeURIComponent(data.body)}`].filter(Boolean).join("&");
+   window.location.href=mailto;
+   setSaveStatus("Your default email app should open with the invoice message. Attach the exported PDF before sending.");
+ }
+}
+async function copyPaymentAddress(){
+ const value=$("inv_pay_address").value.trim();if(!value){setSaveStatus("Enter a payment address before copying it.",true);return}
+ try{
+   if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(value)}
+   else{const t=document.createElement("textarea");t.value=value;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();const ok=document.execCommand("copy");t.remove();if(!ok)throw new Error("Clipboard copy unavailable")}
+   setSaveStatus("USDT payment address copied. Verify the network and first/last characters before sharing.");
+ }catch(e){window.prompt("Copy the payment address below:",value);setSaveStatus("Copy the address from the prompt and verify it before sharing.")}
+}
+
+/* Report renderer */
+function renderReport(){
+ const p=getProfile(),usable=findings.filter(f=>f.title||f.evidence),annual=usable.reduce((a,f)=>a+(Number(f.annualValue)||0),0),oneTimeRecovery=usable.filter(f=>f.oneTimeType==="Recovery / credit").reduce((a,f)=>a+(Number(f.oneTimeValue)||0),0),oneTimeAvoidance=usable.filter(f=>f.oneTimeType==="Cost avoidance").reduce((a,f)=>a+(Number(f.oneTimeValue)||0),0),potentialExposure=usable.filter(f=>f.oneTimeType==="Exposure / potential liability").reduce((a,f)=>a+(Number(f.oneTimeValue)||0),0),verified=usable.filter(f=>f.status==="Verified").reduce((a,f)=>a+(Number(f.annualValue)||0),0),evidenceBacked=usable.filter(f=>f.status==="Evidence-backed").reduce((a,f)=>a+(Number(f.annualValue)||0),0);
+ const recordRows=records.filter(r=>r.rec||r.period||r.notes).map(r=>`<tr><td><b>${esc(r.rec)||"—"}</b>${r.notes?`<br><small>${esc(r.notes)}</small>`:""}</td><td>${esc(r.period)||"—"}</td><td>${esc(r.access)||"—"}</td></tr>`).join("");
+ const cards=usable.map((f,i)=>`<article class="finding-card"><div class="finding-title"><div><h3>${i+1}. ${esc(f.title)||"Untitled finding"}</h3><div class="finding-meta"><span>${esc(f.area)}</span><span class="priority ${priorityClass(f.priority)}">${esc(f.priority)} priority</span><span>${statusPill(f.status)}</span></div></div></div>
+ <div class="finding-financials"><div><span>Annual recurring opportunity</span><strong>${money(f.annualValue)}</strong></div><div><span>One-time · ${esc(f.oneTimeType||"Recovery / credit")}</span><strong>${money(f.oneTimeValue)}</strong></div></div>
+ ${f.population?`<div class="finding-detail"><b>Population / sample:</b> ${esc(f.population)}</div>`:""}
+ <div class="finding-detail"><b>Evidence & observation:</b> ${esc(f.evidence)||"Not documented"}</div>
+ <div class="finding-detail"><b>Calculation:</b> ${esc(f.method)||"Not documented"}</div>
+ <div class="finding-detail"><b>Assumptions / caveats:</b> ${esc(f.assumption)||"None stated"}</div>
+ <div class="finding-detail"><b>Recommended correction:</b> ${esc(f.recommendation)||"Not specified"}</div></article>`).join("");
+ const actionRows=actions.filter(a=>a.action).map((a,i)=>`<tr><td>${i+1}</td><td><b>${esc(a.action)}</b>${a.expected?`<br><small>Completion evidence: ${esc(a.expected)}</small>`:""}</td><td>${esc(a.findingRef)||"—"}</td><td>${esc(a.owner)||"—"}</td><td>${esc(a.effort)||"—"}</td><td>${esc(a.due)||"—"}</td></tr>`).join("");
+ const areas=splitLines("rep_areas").map(s=>{const [h,...r]=s.split("—");return `<li class="d"><b>${esc(h.trim())}</b>${r.length?" — "+esc(r.join("—").trim()):""}</li>`}).join("");
+ const decisions=splitLines("rep_decisions").map(s=>`<li class="d">${esc(s)}</li>`).join(""),steps=splitLines("rep_steps").map(s=>`<li class="d">${esc(s)}</li>`).join(""),limits=splitLines("rep_limits").map(s=>`<li class="d">${esc(s)}</li>`).join("");
+ const pName=p.name||"Liability Liberators";
+ $("sheet").innerHTML=`<section class="cover"><div class="brand-d">Liability Liberators</div><h1>Profit Leak <em>Findings</em></h1><p class="sub">Confidential, evidence-led commercial review · decision support, quantified opportunities and an actionable value-realization roadmap</p><div class="meta-d"><div><h4>Prepared for</h4><p>${esc($("rep_client").value)||"—"}</p></div><div><h4>Report date</h4><p>${esc($("rep_date").value)||"—"}</p></div><div><h4>Engagement reference</h4><p>${esc($("rep_ref").value)||"—"}</p></div><div><h4>Prepared by</h4><p>${esc($("rep_by").value)||esc(pName)}</p></div><div><h4>Review period</h4><p>${esc($("rep_period").value)||"—"}</p></div><div><h4>Report status</h4><p>${esc($("rep_status").value)||"Draft for discussion"}</p></div></div></section>
+ <section><h2 class="d"><span class="no">01 · Executive brief</span>What management needs to know</h2><p class="lead">${esc($("rep_objective").value)||"Engagement objective not entered."}</p><div class="kpi-grid"><div class="kpi"><div class="lbl">Annual recurring opportunity identified</div><div class="big">${money(annual)}</div><div class="detail">Run-rate estimate; not a claim of realized savings</div></div><div class="kpi"><div class="lbl">One-time recovery / credit</div><div class="big">${money(oneTimeRecovery)}</div><div class="detail">Potential cash / credit recovery; not yet realized</div></div><div class="kpi"><div class="lbl">One-time cost avoidance</div><div class="big">${money(oneTimeAvoidance)}</div><div class="detail">One-off avoidable cost, not recurring savings</div></div><div class="kpi"><div class="lbl">Potential exposure</div><div class="big">${money(potentialExposure)}</div><div class="detail">Risk / liability indicator; not savings or recovery</div></div><div class="kpi"><div class="lbl">Verified annual recurring amount</div><div class="big">${money(verified)}</div><div class="detail">Only findings marked Verified</div></div><div class="kpi"><div class="lbl">Evidence-backed annual recurring amount</div><div class="big">${money(evidenceBacked)}</div><div class="detail">Some assumptions or client confirmation may remain</div></div></div>
+ <div class="box-d"><b>Findings recorded:</b> ${usable.length} · <b>Sources listed:</b> ${records.filter(r=>r.rec||r.period).length} · <b>Actions proposed:</b> ${actions.filter(a=>a.action).length}</div><h3 class="subhead">Executive conclusions</h3><p>${esc($("rep_summary").value)||"Conclusions not entered. Summarize the strongest evidence, implications and management decisions before issuing the report."}</p><div class="warn"><b>How to read the values:</b> annual recurring opportunities are run-rate estimates based on the stated scope and assumptions. One-time recovery, cost avoidance and potential exposure are classified separately. Exposure is not savings or recoverable cash. No opportunity represents cash recovered or savings realized unless independently tracked and confirmed after implementation.</div></section>
+ <section><h2 class="d"><span class="no">02 · Mandate & scope</span>What this review covered</h2><h3 class="subhead">Objective</h3><p>${esc($("rep_objective").value)||"—"}</p><h3 class="subhead">Included scope</h3><p>${esc($("rep_scope_in").value)||"Not specified."}</p><h3 class="subhead">Exclusions and boundaries</h3><p>${esc($("rep_scope_out").value)||"Not specified."}</p><h3 class="subhead">Review period</h3><p>${esc($("rep_period").value)||"—"}</p></section>
+ <section><h2 class="d"><span class="no">03 · Data & procedures</span>Evidence base and review method</h2><div class="kpi-grid"><div class="kpi"><div class="lbl">Population reviewed</div><div class="big" style="font-size:19px">${esc($("rep_population").value)||"—"}</div></div><div class="kpi"><div class="lbl">Sample / items tested</div><div class="big" style="font-size:19px">${esc($("rep_sample").value)||"—"}</div></div></div><div class="box-d"><b>Coverage:</b> ${esc($("rep_coverage").value)||"Not quantified."}</div><h3 class="subhead">Records and systems</h3><table><thead><tr><th>Source</th><th>Period</th><th>Access</th></tr></thead><tbody>${recordRows||'<tr><td colspan="3" class="empty">No records or systems listed.</td></tr>'}</tbody></table><h3 class="subhead">Procedures performed</h3><p>${esc($("rep_method").value)||"Review procedures not documented."}</p><h3 class="subhead">Data quality, reconciliation and limitations</h3><p>${esc($("rep_quality").value)||"No data-quality note entered."}</p></section>
+ <section><h2 class="d"><span class="no">04 · Quantified leak register</span>Findings, evidence and financial classification</h2><p>Each finding should be traceable to source evidence and a reproducible calculation. Priority reflects the risk and value judgment documented by the reviewer, not an automated score.</p>${cards||'<div class="box-d empty">No findings entered. If no material issues were identified, document the tests performed and that conclusion explicitly rather than leaving the register blank.</div>'}<p class="legend">Status guide: <span class="status s-verified">Verified</span> supported and checked against source records within the stated scope · <span class="status s-evidence">Evidence-backed</span> supported by records but dependent on stated assumptions / confirmation · <span class="status s-estimate">Estimate</span> directional sizing that still requires validation.</p></section>
+ <section><h2 class="d"><span class="no">05 · Value realization plan</span>Actions, accountability and proof</h2><p>Actions below translate the findings into a practical sequence. Owners and dates should be agreed with client management; the expected outcome column defines what would demonstrate completion.</p><table><thead><tr><th>#</th><th>Action & completion evidence</th><th>Finding</th><th>Owner</th><th>Effort</th><th>Target</th></tr></thead><tbody>${actionRows||'<tr><td colspan="6" class="empty">No actions entered.</td></tr>'}</tbody></table><div class="warn"><b>Value verification:</b> after an action is implemented, record the baseline, effective date, realized credit / cash receipt or recurring run-rate change, net of reversals and implementation costs. Do not treat a recommendation or forecast as realized value.</div></section>
+ <section><h2 class="d"><span class="no">06 · Management decisions & next steps</span>Moving from findings to action</h2><h3 class="subhead">Decisions required</h3><ul class="d">${decisions||'<li class="d empty">No management decisions recorded.</li>'}</ul><h3 class="subhead">Findings walkthrough</h3><p>${esc($("rep_walk").value)||"Not scheduled / not recorded."}</p><div class="box-d"><b>Agreed next steps</b><ul class="d">${steps||'<li class="d empty">No next steps recorded.</li>'}</ul></div>${$("rep_signoff").value?`<div class="signature-line">Prepared / reviewed by: ${esc($("rep_signoff").value)}</div>`:""}</section>
+ <section><h2 class="d"><span class="no">07 · Appendix</span>Areas reviewed, assumptions and boundaries</h2><h3 class="subhead">Additional areas reviewed</h3><ul class="d">${areas||'<li class="d empty">No additional areas listed.</li>'}</ul><h3 class="subhead">Assumptions, limitations and open items</h3><ul class="d">${limits||'<li class="d empty">No additional limitations entered. State any material constraints before final issue.</li>'}</ul><div class="warn"><b>Professional boundary:</b> this is an operational and commercial profit-leak review. It is not a statutory financial-statement audit, assurance opinion, legal opinion or tax advice. Conclusions are limited to the agreed scope, source records and procedures described in this report. ${esc($("rep_disclaimer").value)}</div><p class="legend">Confidential — prepared for the named client for the purpose of the agreed engagement. Distribution and reliance are subject to the engagement terms.</p></section>
+ <div class="rfoot">${esc(pName)} · liabilityliberators.com${p.email?" · "+esc(p.email):""} · Report ${esc($("rep_ref").value)||"—"}</div>`;
+ groupReportSectionOpeners();
+}
+function groupReportSectionOpeners(){
+ document.querySelectorAll("#sheet > section:not(.cover)").forEach(section=>{
+   const heading=section.querySelector(":scope > h2.d");
+   if(!heading||heading.parentElement.classList.contains("section-opening"))return;
+   const group=[heading];let next=heading.nextElementSibling;
+   if(next){group.push(next);if(next.matches(".subhead")&&next.nextElementSibling)group.push(next.nextElementSibling);else if(next.tagName==="P"&&next.nextElementSibling?.classList.contains("finding-card"))group.push(next.nextElementSibling)}
+   const wrapper=document.createElement("div");wrapper.className="section-opening";heading.before(wrapper);group.forEach(node=>wrapper.appendChild(node));
+ });
+}
+
+/* Quality meter — reminders, not a substitute for professional review */
+function updateReadiness(){if(!$("readinessPct"))return;const check=[
+ ["Client, report date and engagement reference",!!($("rep_client").value.trim()&&$("rep_date").value&&$("rep_ref").value.trim())],
+ ["Objective and included / excluded scope",!!($("rep_objective").value.trim()&&$("rep_scope_in").value.trim()&&$("rep_scope_out").value.trim())],
+ ["Sources, procedures and data coverage",!!(records.some(r=>r.rec.trim())&&$("rep_method").value.trim()&&($("rep_population").value.trim()||$("rep_sample").value.trim()))],
+ ["At least one documented finding or an explicit no-finding conclusion",!!(findings.some(f=>f.title.trim()&&f.evidence.trim())||/no material|no findings|none identified/i.test($("rep_summary").value))],
+ ["Each finding has evidence, calculation and status",(()=>{const active=findings.filter(f=>f.title.trim()||f.evidence.trim());return active.length?active.every(f=>f.title.trim()&&f.evidence.trim()&&f.method.trim()&&f.status):/no material|no findings|none identified/i.test($("rep_summary").value)})()],
+ ["Actions have owners and target dates",actions.length===0||actions.every(a=>!a.action||a.owner.trim()&&a.due.trim())],
+ ["Conclusions and limitations documented",!!($("rep_summary").value.trim()&&$("rep_limits").value.trim())]
+ ];const count=check.filter(x=>x[1]).length,pct=Math.round(count/check.length*100);$("readinessPct").textContent=pct+"% complete";$("readinessFill").style.width=pct+"%";$("readinessList").innerHTML=check.map(([label,ok])=>`<li class="${ok?"good":""}">${ok?"✓":"○"} ${esc(label)}</li>`).join("")}
+
+/* Tabs and persistence */
+function switchTab(t){tab=t==="rep"?"rep":"inv";$("tabInv").classList.toggle("active",tab==="inv");$("tabRep").classList.toggle("active",tab==="rep");$("tabInv").setAttribute("aria-selected",String(tab==="inv"));$("tabRep").setAttribute("aria-selected",String(tab==="rep"));$("formInv").style.display=tab==="inv"?"block":"none";$("formRep").style.display=tab==="rep"?"block":"none";$("panelTitle").textContent=tab==="inv"?"Invoice — Data Entry":"Audit Report — Data Entry";render()}
+function refreshClientList(){const all=getClients(),sel=$("clientSel"),current=sel.value;sel.innerHTML='<option value="">— load a saved client —</option>'+Object.keys(all).sort().map(n=>`<option value="${esc(n)}">${esc(n)}</option>`).join("");$("clientbar").style.display=Object.keys(all).length?"flex":"none";if(all[current])sel.value=current}
+function saveClient(){const name=$("saveName").value.trim();if(!name){alert("Enter a client or engagement label first.");return}const bundle={fields:getFieldData(),items,records,findings,actions,tab};const all=getClients();all[name]=bundle;if(writeStore(LS.clients,all)){refreshClientList();$("clientSel").value=name;$("saveName").value="";setSaveStatus(`Saved client: ${name}`)}}
+function loadClient(name){const c=getClients()[name];if(!c)return;const fields=c.fields||c;setFieldData(fields);items=Array.isArray(c.items)?c.items:[];records=Array.isArray(c.records)?c.records.map(normalizeRecord):[];findings=Array.isArray(c.findings)?c.findings.map(normalizeFinding):[];actions=Array.isArray(c.actions)?c.actions.map(normalizeAction):[];renderDynamic("items");renderDynamic("records");renderDynamic("findings");renderDynamic("actions");switchTab(c.tab||"rep");setSaveStatus(`Loaded client: ${name}`)}
+function deleteClient(){const name=$("clientSel").value;if(!name)return;if(!confirm(`Delete the saved client “${name}” from this browser?`))return;const all=getClients();delete all[name];writeStore(LS.clients,all);refreshClientList();setSaveStatus(`Deleted saved client: ${name}`)}
+function loadDraft(){const d=readStore(LS.draft,{}),p=getProfile();$("biz_name").value=p.name||"Liability Liberators";$("biz_email").value=p.email||ZOHO_FROM;$("biz_addr").value=p.addr||"";$("zoho_worker_url").value=storageGet(LS.zohoEndpoint)||"";setFieldData(d.fields||d);items=Array.isArray(d.items)&&d.items.length?d.items:[{...INV_DEFAULT}];records=Array.isArray(d.records)?d.records.map(normalizeRecord):[];findings=Array.isArray(d.findings)?d.findings.map(normalizeFinding):[];actions=Array.isArray(d.actions)?d.actions.map(normalizeAction):[];if(!$("inv_issue").value)$("inv_issue").value=todayISO();if(!$("rep_date").value)$("rep_date").value=todayISO();if(!$("inv_no").value)$("inv_no").value=nextInvNo();renderDynamic("items");renderDynamic("records");renderDynamic("findings");renderDynamic("actions");refreshClientList();switchTab(d.tab||"inv")}
+
+/* PDF export: native browser printing keeps all text vector-sharp and selectable. */
+function safeFilePart(value){return String(value||"document").normalize("NFKD").replace(/[^a-zA-Z0-9_-]+/g,"-").replace(/^-+|-+$/g,"").slice(0,70)||"document"}
+function documentPdfName(){
+ const ref=tab==="inv"?($("inv_no").value||"invoice"):($("rep_ref").value||"audit-report");
+ const client=tab==="inv"?($("inv_client_co").value||"client"):($("rep_client").value||"client");
+ return `Liability-Liberators-${tab==="inv"?"Invoice":"Profit-Leak-Report"}-${safeFilePart(ref)}-${safeFilePart(client)}.pdf`;
+}
+function exportPDF(){
+ render();
+ const oldTitle=document.title;
+ document.title=documentPdfName().replace(/\.pdf$/i,"");
+ setSaveStatus("Print-ready PDF opened. In the print dialog choose Save as PDF, A4, 100% scale, and turn Background graphics on.");
+ const restore=()=>{document.title=oldTitle;window.removeEventListener("afterprint",restore)};
+ window.addEventListener("afterprint",restore,{once:true});
+ requestAnimationFrame(()=>{try{window.focus();window.print()}catch(err){restore();setSaveStatus("Print dialog could not open. Press Ctrl+P (Windows) or Cmd+P (Mac), then choose Save as PDF.",true)}});
+}
+
+/* Create a high-resolution PDF attachment for Zoho. This route is for email only;
+   the main Export PDF button uses vector text through the browser print engine. */
+function ensureHtml2Pdf(){
+ if(typeof window.html2pdf==="function")return Promise.resolve();
+ return new Promise((resolve,reject)=>{
+   const existing=document.querySelector('script[data-html2pdf="1"]');
+   if(existing&&existing.dataset.failed!=="true"){
+     existing.addEventListener("load",()=>typeof window.html2pdf==="function"?resolve():reject(new Error("PDF renderer did not initialize")),{once:true});
+     existing.addEventListener("error",()=>reject(new Error("Could not load PDF renderer")),{once:true});return;
+   }
+   if(existing)existing.remove();
+   const script=document.createElement("script");script.src=HTML2PDF_SRC;script.integrity=HTML2PDF_SRI;script.crossOrigin="anonymous";script.referrerPolicy="no-referrer";script.dataset.html2pdf="1";
+   script.onload=()=>typeof window.html2pdf==="function"?resolve():reject(new Error("PDF renderer did not initialize"));
+   script.onerror=()=>{script.dataset.failed="true";reject(new Error("Could not load high-resolution email PDF renderer. Check the internet connection."))};
+   document.head.appendChild(script);
+ });
+}
+async function buildPdfBlob(){
+ await ensureHtml2Pdf();
+ render();
+ if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+ await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+ const source=$("sheet"),host=document.createElement("div"),clone=source.cloneNode(true);
+ host.id="pdf-capture-host";host.setAttribute("aria-hidden","true");
+ host.style.cssText="position:fixed;left:0;top:0;width:850px;height:auto;z-index:2147483000;pointer-events:none;opacity:0.001;background:#ffffff;overflow:visible";
+ clone.id="sheet";clone.style.cssText+=";display:block!important;position:relative!important;left:0!important;top:0!important;width:850px!important;max-width:none!important;min-height:0!important;margin:0!important;overflow:visible!important;box-shadow:none!important;border-radius:0!important;transform:none!important";
+ host.appendChild(clone);document.body.appendChild(host);
+ try{
+   const options={
+     margin:[10,10,12,10],
+     filename:documentPdfName(),
+     image:{type:"png"},
+     html2canvas:{scale:3.5,useCORS:true,backgroundColor:"#ffffff",logging:false,scrollX:0,scrollY:0,windowWidth:1200,width:850,onclone:(doc)=>{const capture=doc.getElementById("pdf-capture-host");if(capture){capture.style.opacity="1";capture.style.left="0";capture.style.top="0";capture.style.zIndex="2147483000"}}},
+     jsPDF:{unit:"mm",format:"a4",orientation:"portrait",compress:true},
+     pagebreak:{mode:["css","legacy"],avoid:["tr","article",".finding-card",".kpi"]}
+   };
+   const worker=window.html2pdf().set(options).from(clone).toPdf();
+   const pdf=await worker.get("pdf");const blob=pdf.output("blob");
+   if(!(blob instanceof Blob)||blob.size<1000)throw new Error("The PDF renderer returned an empty document.");
+   return blob;
+ }finally{host.remove()}
+}
+function saveBlob(blob,filename){const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;a.style.display="none";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000)}
+/* Secure Zoho Mail connection. The Worker keeps all Zoho OAuth secrets server-side. */
+function getZohoEndpoint(){
+ const raw=$("zoho_worker_url").value.trim();if(!raw){throw new Error("Enter your Cloudflare Worker URL first.")}
+ let u;try{u=new URL(raw)}catch(e){throw new Error("The Worker URL is not valid.")}
+ if(u.protocol!=="https:")throw new Error("The Zoho connector must use an HTTPS URL.");
+ return u.origin+u.pathname.replace(/\/$/,"");
+}
+function getZohoKey(){const k=$("zoho_access_key").value.trim();if(!k)throw new Error("Enter the private studio access key from your Worker settings.");return k}
+function zohoStatus(message,type=""){const el=$("zohoStatus");el.textContent=message;el.classList.toggle("good",type==="good");el.classList.toggle("error",type==="error")}
+async function zohoFetch(path,options={}){
+ const endpoint=getZohoEndpoint(),key=getZohoKey();
+ const headers=new Headers(options.headers||{});headers.set("Authorization",`Bearer ${key}`);
+ const res=await fetch(endpoint+path,{...options,headers,mode:"cors",credentials:"omit"});
+ let data={};try{data=await res.json()}catch(e){}
+ if(!res.ok||data.ok===false)throw new Error(data.error||data.message||`Connector returned HTTP ${res.status}`);
+ return data;
+}
+async function connectZoho(){
+ let popup=null;try{popup=window.open("about:blank","_blank");}catch(e){}
+ try{zohoStatus("Starting secure Zoho authorization…");const data=await zohoFetch("/zoho/connect",{method:"POST"});if(!data.authorizationUrl)throw new Error("The connector did not return a Zoho authorization URL.");
+   if(popup){popup.location.href=data.authorizationUrl;popup.focus()}else{window.location.href=data.authorizationUrl}
+   zohoStatus("Zoho authorization opened. Sign in, approve the requested Mail permissions, and return to this studio.")
+ }catch(err){if(popup)try{popup.close()}catch(e){}zohoStatus(err.message,"error")}
+}
+async function testZohoConnection(){
+ try{const endpoint=getZohoEndpoint();storageSet(LS.zohoEndpoint,endpoint);zohoStatus("Checking Zoho mailbox connection…");const data=await zohoFetch("/health");
+   if(data.connected&&String(data.sender||"").toLowerCase()===ZOHO_FROM){zohoStatus(`Connected and verified: ${data.sender}. Ready to send invoice PDFs.`,"good")}
+   else throw new Error(data.message||"The connector is responding, but support@liabilityliberators.com was not verified as the authorized sender.");
+ }catch(err){zohoStatus(err.message,"error")}
+}
+async function sendInvoiceWithZoho(){
+ if(tab!=="inv"){zohoStatus("Switch to the Invoice tab before sending an invoice.","error");return}
+ const email=buildInvoiceEmail();if(!email)return;
+ const btn=$("sendZohoBtn");if(btn.disabled)return;btn.disabled=true;const old=btn.textContent;btn.textContent="Preparing attachment…";
+ try{
+   const endpoint=getZohoEndpoint();storageSet(LS.zohoEndpoint,endpoint);
+   zohoStatus("Preparing a high-resolution invoice attachment…");const pdfBlob=await buildPdfBlob();
+   const filename=documentPdfName(),form=new FormData();form.append("to",email.to);if(email.cc)form.append("cc",email.cc);form.append("subject",email.subject);form.append("content",email.body);form.append("pdf",pdfBlob,filename);
+   btn.textContent="Sending through Zoho…";zohoStatus("Uploading the PDF and sending through support@liabilityliberators.com…");
+   const result=await zohoFetch("/send-invoice",{method:"POST",body:form});
+   zohoStatus(`Sent successfully from ${ZOHO_FROM} to ${email.to}. Zoho message ID: ${result.messageId||"confirmed"}.`,"good");
+ }catch(err){console.error("Zoho invoice send failed:",err);zohoStatus("Not sent: "+err.message,"error")}
+ finally{btn.disabled=false;btn.textContent=old}
+}
+function downloadBackup(){render();const title=tab==="inv"?"invoice":"audit-report";const styles=document.querySelector("style").textContent;const html=`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Liability Liberators · ${title}</title><style>${styles}</style></head><body><main class="preview-wrap"><div id="sheet">${$("sheet").innerHTML}</div></main></body></html>`;const blob=new Blob([html],{type:"text/html;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=`LL-${title}-${todayISO()}.html`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);setSaveStatus("Standalone HTML preview downloaded. This is not a PDF.")}
+
+function openGuide(){$("guideOverlay").classList.add("open");document.body.style.overflow="hidden"}
+function closeGuide(){$("guideOverlay").classList.remove("open");document.body.style.overflow=""}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeGuide()});
+["biz_name","biz_email","biz_addr"].forEach(id=>$(id).addEventListener("input",()=>{persistProfile();render()}));
+FIELD_IDS.forEach(id=>{const el=$(id);el.addEventListener("input",render);el.addEventListener("change",render)});
+$("clientSel").addEventListener("change",e=>loadClient(e.target.value));
+$("zoho_worker_url").addEventListener("change",()=>{try{const v=getZohoEndpoint();storageSet(LS.zohoEndpoint,v);$("zoho_worker_url").value=v;zohoStatus("Connector URL saved on this device. Enter the private key and test the connection.") }catch(e){zohoStatus(e.message,"error")}});
+// Expose backup from the guide keyboard shortcut / console for local use.
+window.downloadBackup=downloadBackup;
+window.exportPDF=exportPDF;
+window.connectZoho=connectZoho;
+window.testZohoConnection=testZohoConnection;
+window.sendInvoiceWithZoho=sendInvoiceWithZoho;
+window.openInvoiceEmail=openInvoiceEmail;
+window.copyPaymentAddress=copyPaymentAddress;
+loadDraft();
+</script>
+</body>
+</html>
